@@ -1,18 +1,20 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Keyboard, Text, TouchableWithoutFeedback, View } from 'react-native';
 
 import { StatusBar } from 'expo-status-bar';
 
-import ExComponents from './ExComponents';
+import LandingPage from './LandingPage';
 import styles from './styles';
 
 export default function App() {
   return (
-    <View style={styles.landingPage}>
-      <Text style={styles.Title}>Stackage App</Text>
-      <ExComponents />
-      <StatusBar style={styles.StatusBar} />
-    </View>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <View style={styles.container}>
+        <Text style={styles.Title}>Stackage App</Text>
+        <LandingPage />
+        <StatusBar style={styles.StatusBar} />
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 
