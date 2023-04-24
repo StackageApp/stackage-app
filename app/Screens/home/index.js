@@ -1,10 +1,19 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-function Home() {
+import { Stack } from 'expo-router';
+
+function HomePage() {
   return (
     <View>
-      <Text>Home Feed</Text>
+      <Text>Home Page</Text>
+      <Stack.Screen
+        option={{
+          title: 'Home',
+        }}
+      />
     </View>
   );
 }
+
+export default HomePage;

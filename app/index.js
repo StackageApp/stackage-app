@@ -1,24 +1,36 @@
 import React from 'react';
 import { Keyboard, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
 
-import { useRouter } from 'expo-router';
+import { Redirect, Stack, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 
 import sharedStyles from '../sharedStyles';
+import HomePage from './Screens/home';
 import LandingPage from './Screens/landing';
 
-function WelcomeScreen() {
-  const navigation = useRouter();
-  return (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View style={styles.container}>
-        <Text style={sharedStyles.Title}>Stackage App</Text>
-        <LandingPage />
-        <StatusBar style={styles.StatusBar} />
-      </View>
-    </TouchableWithoutFeedback>
-  );
+function Index() {
+  return <Redirect href="/Screens/home" />;
 }
+
+// function WelcomeScreen() {
+//   const navigation = useRouter();
+//   return (
+//     <>
+//       <Stack.Screen
+//         options={{
+//           title: 'Welcome',
+//         }}
+//       />
+//       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+//         <View style={styles.container}>
+//           <Text style={sharedStyles.Title}>Stackage App</Text>
+//           <LandingPage />
+//           <StatusBar style={styles.StatusBar} />
+//         </View>
+//       </TouchableWithoutFeedback>
+//     </>
+//   );
+// }
 
 const styles = StyleSheet.create({
   container: {
@@ -32,4 +44,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default WelcomeScreen;
+export default Index;
