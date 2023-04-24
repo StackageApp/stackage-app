@@ -1,11 +1,19 @@
 import React from 'react';
-import { FlatList, Text } from 'react-native';
+import { FlatList, Text, View } from 'react-native';
+
+// DUMMY DATA
+const POSTS = [{ post: 'first' }, { post: 'second' }, { post: 'third' }];
+
+// PLACEHOLDER POST COMPONENT
+function TempPost() {
+  return <Text>This will be a post soon!</Text>;
+}
 
 function HomeFeed() {
   return (
-    <FlatList>
-      <Text>Home Feed Placeholder</Text>
-    </FlatList>
+    <View>
+      <FlatList data={POSTS} renderItem={() => <TempPost />} />
+    </View>
   );
 }
 
