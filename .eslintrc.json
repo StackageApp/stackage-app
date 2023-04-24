@@ -24,6 +24,14 @@
     "no-use-before-define": ["error", { "variables": false }],
     "react/prop-types": [0],
     "no-restricted-exports": [0, { "restrictedNamedExports": ["default"] }],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true,
+        "optionalDependencies": true,
+        "peerDependencies": true
+      }
+    ],
     "import/extensions": [
       "error",
       "ignorePackages",

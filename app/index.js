@@ -1,9 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 
-export default function App() {
+function WelcomeScreen() {
+  const navigation = useRouter();
   return (
     <View style={styles.container}>
       <Text>Stackage App</Text>
@@ -24,3 +26,5 @@ const styles = StyleSheet.create({
     StatusBarStyle: 'auto',
   },
 });
+
+export default WelcomeScreen;

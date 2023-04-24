@@ -4,6 +4,7 @@
     "slug": "stackage-app",
     "version": "1.0.0",
     "orientation": "portrait",
+    "scheme": "myapp",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
@@ -11,9 +12,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.stackageapp.blueocean"
@@ -26,6 +25,7 @@
       "package": "com.stackageapp.blueocean"
     },
     "web": {
+      "bundler": "metro",
       "favicon": "./assets/favicon.png"
     },
     "extra": {
