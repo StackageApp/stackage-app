@@ -1,12 +1,11 @@
 import React from 'react';
 import { Keyboard, Text, TouchableWithoutFeedback, View } from 'react-native';
 
+import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 
-import LandingPage from './LandingPage';
-import styles from './styles';
-
-export default function App() {
+function WelcomeScreen() {
+  const navigation = useRouter();
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
@@ -18,17 +17,16 @@ export default function App() {
   );
 }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   Title: {
-//     fontSize: 20
-//   },
-//   StatusBar: {
-//     StatusBarStyle: 'auto',
-//   },
-// });
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  StatusBar: {
+    StatusBarStyle: 'auto',
+  },
+});
+
+export default WelcomeScreen;
