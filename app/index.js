@@ -12,7 +12,7 @@ function WelcomeScreen() {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
-        <Text style={sharedStyles.Title}>Stackage App</Text>
+        {/* <Text style={sharedStyles.Title}>Stackage App</Text> */}
         <LandingPage />
         <StatusBar style={styles.StatusçBar} />
       </View>
