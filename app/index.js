@@ -14,7 +14,7 @@ function WelcomeScreen() {
       <View style={styles.container}>
         <Text style={sharedStyles.Title}>Stackage App</Text>
         <LandingPage />
-        <StatusBar style={styles.StatusçBar} />
+        <StatusBar style={styles.StatusBar} />
       </View>
     </TouchableWithoutFeedback>
   );
