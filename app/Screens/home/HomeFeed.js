@@ -1,11 +1,11 @@
 import React from 'react';
-import { ScrollView, Text } from 'react-native';
+import { FlatList, Text } from 'react-native';
 
 function HomeFeed() {
   return (
-    <ScrollView>
+    <FlatList>
       <Text>Home Feed Placeholder</Text>
-    </ScrollView>
+    </FlatList>
   );
 }
 

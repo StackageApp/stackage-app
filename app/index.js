@@ -5,6 +5,7 @@ import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 
 import sharedStyles from '../sharedStyles';
+import HomePage from './Screens/home';
 import LandingPage from './Screens/landing';
 
 function WelcomeScreen() {
@@ -13,7 +14,8 @@ function WelcomeScreen() {
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
         <Text style={sharedStyles.Title}>Stackage App</Text>
-        <LandingPage />
+        {/* <LandingPage /> */}
+        <HomePage />
         <StatusBar style={styles.StatusçBar} />
       </View>
     </TouchableWithoutFeedback>
