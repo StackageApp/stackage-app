@@ -42,6 +42,7 @@ export default function ExComponents() {
       <Image style={localStyles.logo} source={logo} />
       {/* Input field example */}
       <TextInput
+        id="username"
         editable
         numberOfLines={1}
         maxLength={20}
@@ -54,6 +55,7 @@ export default function ExComponents() {
         allowFontScaling
       />
       <TextInput
+        id="password"
         editable
         numberOfLines={1}
         maxLength={20}
@@ -77,6 +79,7 @@ export default function ExComponents() {
         <Text>Don&#39;t Have An Account?</Text>
         <TouchableHighlight>
           <Text
+            id="createAccount"
             style={localStyles.clickHere}
             onPress={() => {
               // I've seen a lot of examples using functions directly in the even handlers, but
