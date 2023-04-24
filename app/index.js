@@ -6,14 +6,16 @@ import { StatusBar } from 'expo-status-bar';
 
 import sharedStyles from '../sharedStyles';
 import LandingPage from './Screens/landing';
+import Profile from './Screens/profile';
 
 function WelcomeScreen() {
   const navigation = useRouter();
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
-        <Text style={sharedStyles.Title}>Stackage App</Text>
-        <LandingPage />
+        {/* <Text style={sharedStyles.Title}>Stackage App</Text>
+        <LandingPage /> */}
+        <Profile />
         <StatusBar style={styles.StatusçBar} />
       </View>
     </TouchableWithoutFeedback>
