@@ -1,17 +1,22 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Keyboard, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
 
 import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 
+import sharedStyles from '../sharedStyles';
+import LandingPage from './Screens/landing';
+
 function WelcomeScreen() {
   const navigation = useRouter();
   return (
-    <View style={styles.container}>
-      <Text>Stackage App</Text>
-      <Text>Other Text</Text>
-      <StatusBar style={styles.StatusBar} />
-    </View>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <View style={styles.container}>
+        <Text style={sharedStyles.Title}>Stackage App</Text>
+        <LandingPage />
+        <StatusBar style={styles.StatusçBar} />
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 
