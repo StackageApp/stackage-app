@@ -1,5 +1,4 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const sharedStyles = StyleSheet.create({
   container: {
@@ -39,6 +38,14 @@ const sharedStyles = StyleSheet.create({
     width: 180,
     borderRadius: 5,
     fontSize: 18,
+  },
+  signUpField: {
+    backgroundColor: 'lightgray',
+    borderRadius: 20,
+    fontSize: 18,
+    width: 225,
+    height: 30,
+    paddingLeft: 10,
   },
 });
 
