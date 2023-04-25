@@ -7,7 +7,6 @@ function Approvals() {
   return (
     <View>
       <Text>Approvals Feed Here</Text>
-      <Link href="./Screens/landing">LandingPage</Link>
     </View>
   );
 }

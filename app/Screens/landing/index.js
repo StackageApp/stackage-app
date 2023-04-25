@@ -86,15 +86,30 @@ export default function ExComponents() {
             <Text style={styles.buttonText}>Log In</Text>
           </TouchableOpacity>
 
-        {/* View can be treated like a div */}
-        <View style={localStyles.bottomText}>
-          <Text>Don&#39;t Have An Account?</Text>
-          <TouchableHighlight>
-            <Link href="../Navigation">Click here!</Link>
-          </TouchableHighlight>
+          {/* View can be treated like a div */}
+          <View style={localStyles.bottomText}>
+            {/* <Text>Don&#39;t Have An Account?</Text> */}
+            <TouchableHighlight>
+              <Text
+                id="createAccount"
+                style={localStyles.clickHere}
+                onPress={() => {
+                  Keyboard.dismiss();
+                  showModal();
+                }}
+              >
+                Create Account
+              </Text>
+            </TouchableHighlight>
+            <TouchableHighlight>
+              <Text id="guestContinue" style={localStyles.guest}>
+                Continue as Guest
+              </Text>
+            </TouchableHighlight>
+          </View>
         </View>
-      </View>
-    </TouchableWithoutFeedback>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 }
 
