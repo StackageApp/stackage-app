@@ -11,12 +11,5 @@ export default function ProfileInfo() {
 }
 
 const styles = StyleSheet.create({
-  profilePicture: {
-    width: 150,
-    height: 150,
-    borderRadius: 75,
-  },
-  fullName: {
-    fontWeight: 700,
-  },
+
 });
