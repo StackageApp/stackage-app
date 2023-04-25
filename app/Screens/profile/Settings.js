@@ -1,7 +1,9 @@
 import React from 'react';
 import { StyleSheet, TextInput, Button, View } from 'react-native';
+import { useRouter } from "expo-router";
 
 export default function Settings() {
+  const router = useRouter();
   const [name, onChangeName] = React.useState('Current Name');
   const [username, onChangeUsername] = React.useState('Username');
   const [about, onChangeAbout] = React.useState('About');
@@ -13,7 +15,7 @@ export default function Settings() {
       <TextInput style={styles.input} onChangeValue={onChangeUsername} value={username} />
       <TextInput style={styles.input} onChangeValue={onChangeAbout} value={about} />
       <TextInput style={styles.input} onChangeValue={onChangeOccupation} value={occupation} />
-      <Button title="Save" onPress={() => console.log('submit')} />
+      <Button title="Save" onPress={() => router.back()} />
     </View>
   )
 }

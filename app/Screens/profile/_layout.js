@@ -1,11 +1,15 @@
 import React from 'react';
 import { Stack } from 'expo-router';
 
-export default function myStack() {
+export const unstable_settings = {
+  initialRouteName: "index",
+};
+
+export default function Layout() {
   return (
-    <Stack.Navigator>
+    <Stack>
       <Stack.Screen
-        name="Profile"
+        name="index"
         options={{
           // title: 'My Profile',
           headerShown: false
@@ -15,9 +19,8 @@ export default function myStack() {
         name="Settings"
         options={{
           title: 'Settings',
-          gestureEnabled: false,
         }}
       />
-    </Stack.Navigator>
-  )
+    </Stack>
+  );
 }
