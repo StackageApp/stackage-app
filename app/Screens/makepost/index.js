@@ -1,30 +1,12 @@
-import React, { useState } from 'react';
-import {
-  Button,
-  Image,
-  Keyboard,
-  Pressable,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableHighlight,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  View,
-  enablesReturnKeyAutomatically,
-} from 'react-native';
+import React from 'react';
+import { Text, View } from 'react-native';
 
-const localStyles = StyleSheet.create({
-  container: {
-    alignItems: center;
-  }
-});
+function PostMessage() {
+  return (
+    <View>
+      <Text>Write New Post</Text>
+    </View>
+  );
+}
 
-const MakePost = (props) => {
-  
-
-
-  return <Text>Hello from MakePost!</Text>;
-};
-
-export default MakePost;
+export default PostMessage;
