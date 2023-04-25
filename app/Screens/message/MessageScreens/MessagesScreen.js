@@ -12,62 +12,55 @@ import {
   UserInfo,
   UserInfoText,
   UserName,
-} from './MessageStyles/MessageStyles';
+} from '../MessageStyles/MessageStyles';
 
 const Messages = [
   {
     id: '1',
     userName: 'Brandon',
-    ProfileImg: require('../../../assets/users/Brandon.png'),
+    ProfileImg: require('../../../../assets/users/Brandon.png'),
     messageTime: '4 mins ago',
     messageText: 'Hey there, this is my test for a post of my social app in React Native.',
   },
   {
     id: '2',
     userName: 'Kyle',
-    ProfileImg: require('../../../assets/users/Kyle.png'),
+    ProfileImg: require('../../../../assets/users/Kyle.png'),
     messageTime: '2 hours ago',
     messageText: 'Hey there, this is my test for a post of my social app in React Native.',
   },
   {
     id: '3',
     userName: 'Nam',
-    ProfileImg: require('../../../assets/users/Nam.png'),
+    ProfileImg: require('../../../../assets/users/Nam.png'),
     messageTime: '1 hours ago',
     messageText: 'Hey there, this is my test for a post of my social app in React Native.',
   },
   {
     id: '4',
     userName: 'Mev',
-    ProfileImg: require('../../../assets/users/Mev.png'),
+    ProfileImg: require('../../../../assets/users/Mev.png'),
     messageTime: '1 day ago',
     messageText: 'Hey there, this is my test for a post of my social app in React Native.',
   },
   {
     id: '5',
     userName: 'Jenessa',
-    ProfileImg: require('../../../assets/users/Jenessa.png'),
+    ProfileImg: require('../../../../assets/users/Jenessa.png'),
     messageTime: '2 days ago',
     messageText: 'Hey there, this is my test for a post of my social app in React Native.',
   },
   {
     id: '6',
     userName: 'Majd',
-    ProfileImg: require('../../../assets/users/Majd.png'),
+    ProfileImg: require('../../../../assets/users/Majd.png'),
     messageTime: '2 days ago',
     messageText: 'Hey there, this is my test for a post of my social app in React Native.',
   },
   {
     id: '7',
     userName: 'Donn',
-    ProfileImg: require('../../../assets/users/Donn.png'),
-    messageTime: '2 days ago',
-    messageText: 'Hey there, this is my test for a post of my social app in React Native.',
-  },
-  {
-    id: '8',
-    userName: 'Noah',
-    ProfileImg: require('../../../assets/users/Noah.png'),
+    ProfileImg: require('../../../../assets/users/Donn.png'),
     messageTime: '2 days ago',
     messageText: 'Hey there, this is my test for a post of my social app in React Native.',
   },
@@ -80,7 +73,7 @@ function MessagesScreen({ navigation }) {
         data={Messages}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <Tile onPress={() => navigation.navigate('Chat', { userName: item.userName })}>
+          <Tile onPress={() => navigation.navigate('ChatScreen', { userName: item.userName })}>
             <UserInfo>
               <UserImgWrapper>
                 <ProfileImg source={item.ProfileImg} />

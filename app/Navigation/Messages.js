@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Message from '../Screens/message';
+import MessagesMain from '../Screens/message/index';
 
 function Messages() {
-  return <Message />;
+  return <MessagesMain />;
 }
 
 export default Messages;

@@ -65,10 +65,10 @@ function ChatScreen() {
       {...props}
       wrapperStyle={{
         right: {
-          backgroundColor: '#00FF00',
+          backgroundColor: '#4343F1',
         },
         left: {
-          backgroundColor: '#00FF00',
+          backgroundColor: '#DADDDC',
         },
       }}
       textStyle={{
@@ -76,7 +76,7 @@ function ChatScreen() {
           color: '#fff',
         },
         left: {
-          color: '#fff',
+          color: '#050000',
         },
       }}
     />
@@ -98,6 +98,7 @@ function ChatScreen() {
       renderSend={renderSend}
       scrollToBottom
       scrollToBottomComponent={scrollToBottomComponent}
+      containerStyle={{ backgroundColor: '#fff' }}
     />
   );
 }

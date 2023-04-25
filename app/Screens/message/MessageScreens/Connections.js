@@ -9,48 +9,43 @@ import {
   UserImgWrapper,
   UserInfo,
   UserName,
-} from './MessageStyles/MessageStyles';
+} from '../MessageStyles/MessageStyles';
 
 const contacts = [
   {
     id: '1',
     userName: 'Brandon',
-    ProfileImg: require('../../../assets/users/Brandon.png'),
+    ProfileImg: require('../../../../assets/users/Brandon.png'),
   },
   {
     id: '2',
     userName: 'Kyle',
-    ProfileImg: require('../../../assets/users/Kyle.png'),
+    ProfileImg: require('../../../../assets/users/Kyle.png'),
   },
   {
     id: '3',
     userName: 'Nam',
-    ProfileImg: require('../../../assets/users/Nam.png'),
+    ProfileImg: require('../../../../assets/users/Nam.png'),
   },
   {
     id: '4',
     userName: 'Mev',
-    ProfileImg: require('../../../assets/users/Mev.png'),
+    ProfileImg: require('../../../../assets/users/Mev.png'),
   },
   {
     id: '5',
     userName: 'Jenessa',
-    ProfileImg: require('../../../assets/users/Jenessa.png'),
+    ProfileImg: require('../../../../assets/users/Jenessa.png'),
   },
   {
     id: '6',
     userName: 'Majd',
-    ProfileImg: require('../../../assets/users/Majd.png'),
+    ProfileImg: require('../../../../assets/users/Majd.png'),
   },
   {
     id: '7',
     userName: 'Donn',
-    ProfileImg: require('../../../assets/users/Donn.png'),
-  },
-  {
-    id: '8',
-    userName: 'Noah',
-    ProfileImg: require('../../../assets/users/Noah.png'),
+    ProfileImg: require('../../../../assets/users/Donn.png'),
   },
 ];
 
