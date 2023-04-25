@@ -1,25 +1,31 @@
 import React from 'react';
-<<<<<<< HEAD
-import { StyleSheet, Text, View } from 'react-native';
-import ProfileInfo from './components/ProfileInfo';
+// import { StyleSheet, Pressable, View } from 'react-native';
+// import { Ionicons } from '@expo/vector-icons';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Profile from './components/Profile';
+import Settings from './components/Settings';
 
-export default function Profile() {
+
+const Stack = createNativeStackNavigator();
+
+export default function myStack() {
   return (
-    <View>
-      <ProfileInfo />
-    </View>
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          title: 'My Profile',
+        }}
+      />
+      <Stack.Screen
+        name="Settings"
+        component={Settings}
+        options={{
+          title: 'Settings',
+          gestureEnabled: false,
+        }}
+      />
+    </Stack.Navigator>
   )
 }
-=======
-import { Text, View } from 'react-native';
-
-function Profile() {
-  return (
-    <View>
-      <Text>Profile Feed Here</Text>
-    </View>
-  );
-}
-
-export default Profile;
->>>>>>> dev
