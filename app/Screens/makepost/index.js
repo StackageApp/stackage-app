@@ -1,12 +1,12 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-function Approvals() {
+function PostMessage() {
   return (
     <View>
-      <Text>Approvals Feed Here</Text>
+      <Text>Write New Post</Text>
     </View>
   );
 }
 
-export default Approvals;
+export default PostMessage;
