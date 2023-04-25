@@ -14,6 +14,8 @@ import {
   enablesReturnKeyAutomatically,
 } from 'react-native';
 
+import { Link } from 'expo-router';
+
 import logo from '../../../assets/stackageLogo2.png';
 import styles from '../../../sharedStyles';
 
@@ -84,17 +86,7 @@ export default function ExComponents() {
         <View style={localStyles.bottomText}>
           <Text>Don&#39;t Have An Account?</Text>
           <TouchableHighlight>
-            <Text
-              id="createAccount"
-              style={localStyles.clickHere}
-              onPress={() => {
-                // I've seen a lot of examples using functions directly in the even handlers, but
-                // that probably comes down to preference
-                console.log('my click here');
-              }}
-            >
-              Click Here!
-            </Text>
+            <Link href="../Navigation">Click here!</Link>
           </TouchableHighlight>
         </View>
       </View>
