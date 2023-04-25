@@ -20,6 +20,7 @@ export default function CreateAccount({ visible, showModal }) {
   const [email, setEmail] = useState('');
   const [occupation, setOccupation] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [location, setLocation] = useState('');
 
   const handleInput = (input, field) => {
     if (field === 'username') {
@@ -40,6 +41,10 @@ export default function CreateAccount({ visible, showModal }) {
 
     if (field === 'occupation') {
       setOccupation(input);
+    }
+
+    if (field === 'location') {
+      setLocation(input);
     }
   };
 
@@ -147,6 +152,24 @@ export default function CreateAccount({ visible, showModal }) {
                       handleInput(input, 'email');
                     }}
                     value={email}
+                    style={sharedStyles.signUpField}
+                    allowFontScaling
+                  />
+                </View>
+                <View>
+                  <View style={localStyles.fieldLabel}>
+                    <Text style={localStyles.field}>location</Text>
+                    <Text style={localStyles.star}>*</Text>
+                  </View>
+                  <TextInput
+                    id="location"
+                    editable
+                    numberOfLines={1}
+                    maxLength={20}
+                    onChangeText={(input) => {
+                      handleInput(input, 'location');
+                    }}
+                    value={location}
                     style={sharedStyles.signUpField}
                     allowFontScaling
                   />
