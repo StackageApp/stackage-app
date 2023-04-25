@@ -3,10 +3,8 @@ import { Keyboard, StyleSheet, Text, TouchableWithoutFeedback, View } from 'reac
 
 import { Redirect, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { Provider } from 'react-redux';
 
 import sharedStyles from '../sharedStyles';
-import store from './Redux/Store';
 import LandingPage from './Screens/landing';
 
 function App() {

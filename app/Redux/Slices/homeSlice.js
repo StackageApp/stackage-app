@@ -1,15 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = [{ id: '1', title: 'First Post', textBody: 'Is this thing on?' }];
+const posts = [{ id: '001', title: 'First Post', textBody: 'Is this thing on?' }];
 
 const homeSlice = createSlice({
   name: 'homeFeed',
-  initialState,
+  initialState: {
+    posts,
+  },
   reducers: {
-    newMessages: (state) => {
-      state.id = '2';
+    returnTwo: (state, action) => {
+      state.posts[0].id = action.payload;
+      return state;
     },
   },
 });
 
-export default homeSlice.reducer;
+const { actions, reducer } = homeSlice;
+
+export const { returnTwo } = actions;
+
+export default reducer;

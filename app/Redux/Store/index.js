@@ -1,10 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import homeFeedReducer from '../Slices/homeSlice';
+import homeSliceReducer from '../Slices/homeSlice';
 
 export default configureStore({
   reducer: {
-    homeFeed: homeFeedReducer,
+    homeFeed: homeSliceReducer,
   },
-  // maybe look at middleware
 });
