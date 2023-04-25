@@ -12,6 +12,8 @@ import {
   View,
 } from 'react-native';
 
+import { Provider, useSelector } from 'react-redux';
+
 import logo from '../../../assets/stackageLogo2.png';
 import styles from '../../../sharedStyles';
 import CreateAccount from './CreateAccount';
@@ -40,6 +42,8 @@ export default function ExComponents() {
   const showModal = () => {
     setModalVisible(!modalVisible);
   };
+  const TestRedux = useSelector((state) => state.id);
+  console.log('testRedux', TestRedux);
 
   return (
     <KeyboardAvoidingView enabled={!modalVisible} style={localStyles.container} behavior="padding">

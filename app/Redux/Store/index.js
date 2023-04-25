@@ -6,4 +6,5 @@ export default configureStore({
   reducer: {
     homeFeed: homeFeedReducer,
   },
+  // maybe look at middleware
 });
