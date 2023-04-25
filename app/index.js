@@ -3,16 +3,13 @@ import { Keyboard, StyleSheet, Text, TouchableWithoutFeedback, View } from 'reac
 
 import { Redirect, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import { Provider } from 'react-redux';
 
 import sharedStyles from '../sharedStyles';
+import store from './Redux/Store';
+import LandingPage from './Screens/landing';
 
-// import Home from './Screens/home';
-// import LandingPage from './Screens/landing';
-// import ChatScreen from './Screens/message/ChatScreen';
-// import Connections from './Screens/message/Connections';
-// import MessagesScreen from './Screens/message/MessagesScreen';
-
-function WelcomeScreen() {
+function App() {
   const navigation = useRouter();
   return <Redirect href="./Navigation" />;
 }
@@ -29,4 +26,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default WelcomeScreen;
+export default App;
