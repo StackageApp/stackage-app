@@ -5,7 +5,7 @@ export default function ProfileInfo() {
   return (
     <View style={styles.container}>
       <Image style={styles.profilePicture} source={require('./example-profile.jpeg')} />
-      <Text style={styles.fullName}>Full name</Text>
+      <Text style={styles.fullName}>Full Name</Text>
       <Text>@Architect_guy</Text>
       <Text>This is the about sections</Text>
       <Text>___ likes</Text>
@@ -16,8 +16,9 @@ export default function ProfileInfo() {
 
 const styles = StyleSheet.create({
   container: {
-    display: 'flex',
-    justifyContent: 'center'
+    marginTop: 10,
+    // flex: 1,
+    alignItems: 'center',
   },
   profilePicture: {
     width: 120,

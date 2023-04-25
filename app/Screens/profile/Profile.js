@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Pressable, View } from 'react-native';
+import { StyleSheet, Pressable, View, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import ProfileInfo from './ProfileInfo';
 import ProfileFeed from './ProfileFeed';

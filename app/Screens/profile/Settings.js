@@ -1,15 +1,19 @@
 import React from 'react';
 import { StyleSheet, TextInput, Button, View } from 'react-native';
 
-export default function Settings({ navigation }) {
+export default function Settings() {
   const [name, onChangeName] = React.useState('Current Name');
-  const [username, onChangeUsername] = React.useState('Current Name');
+  const [username, onChangeUsername] = React.useState('Username');
+  const [about, onChangeAbout] = React.useState('About');
+  const [occupation, onChangeOccupation] = React.useState('Occupation');
 
   return (
     <View>
-      <Button title="Go back" onPress={() => navigation.goBack()} />
       <TextInput style={styles.input} onChangeValue={onChangeName} value={name} />
       <TextInput style={styles.input} onChangeValue={onChangeUsername} value={username} />
+      <TextInput style={styles.input} onChangeValue={onChangeAbout} value={about} />
+      <TextInput style={styles.input} onChangeValue={onChangeOccupation} value={occupation} />
+      <Button title="Save" onPress={() => console.log('submit')} />
     </View>
   )
 }
