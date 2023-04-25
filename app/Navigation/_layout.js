@@ -47,7 +47,7 @@ export default function () {
       <Tabs.Screen
         name="Messages"
         options={{
-          title: 'Messages',
+          headerShown: false,
           tabBarIcon: ({ color }) => (
             <Ionicons name="chatbox-ellipses-outline" size={24} color={color} />
           ),
