@@ -3,8 +3,6 @@ import {
   Image,
   Keyboard,
   KeyboardAvoidingView,
-  Modal,
-  Pressable,
   StyleSheet,
   Text,
   TextInput,
@@ -90,8 +88,15 @@ export default function ExComponents() {
           <View style={localStyles.bottomText}>
             {/* <Text>Don&#39;t Have An Account?</Text> */}
             <TouchableHighlight>
-              <Text id="createAccount" style={localStyles.clickHere} onPress={showModal}>
-                Ceate Account
+              <Text
+                id="createAccount"
+                style={localStyles.clickHere}
+                onPress={() => {
+                  Keyboard.dismiss();
+                  showModal();
+                }}
+              >
+                Create Account
               </Text>
             </TouchableHighlight>
             <TouchableHighlight>

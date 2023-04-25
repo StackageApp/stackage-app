@@ -1,17 +1,11 @@
 import React, { useState } from 'react';
 import {
-  Button,
-  Dimensions,
-  Image,
   Keyboard,
   KeyboardAvoidingView,
   Modal,
-  Platform,
-  Pressable,
   StyleSheet,
   Text,
   TextInput,
-  TouchableHighlight,
   TouchableOpacity,
   TouchableWithoutFeedback,
   View,
@@ -56,7 +50,6 @@ export default function CreateAccount({ visible, showModal }) {
     setEmail('');
     setOccupation('');
     setConfirmPassword('');
-    showModal();
   };
 
   const submitInformation = () => {
@@ -186,6 +179,7 @@ export default function CreateAccount({ visible, showModal }) {
                   onPress={() => {
                     Keyboard.dismiss();
                     resetValues();
+                    showModal();
                   }}
                 >
                   <Text style={localStyles.cancel}>Cancel</Text>
