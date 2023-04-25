@@ -1,12 +1,12 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-function Profile() {
+function PostMessage() {
   return (
     <View>
-      <Text>Profile Feed Here</Text>
+      <Text>Write New Post</Text>
     </View>
   );
 }
 
-export default Profile;
+export default PostMessage;
