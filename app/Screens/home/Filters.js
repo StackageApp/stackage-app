@@ -1,10 +1,23 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Pressable, ScrollView, Text, View } from 'react-native';
 
 function Filters() {
   return (
     <View>
-      <Text>Filters Placeholder</Text>
+      <ScrollView horizontal>
+        <Pressable>
+          <Text>Category</Text>
+        </Pressable>
+        <Pressable>
+          <Text>Top</Text>
+        </Pressable>
+        <Pressable>
+          <Text>Top Weekly</Text>
+        </Pressable>
+        <Pressable>
+          <Text>Hot</Text>
+        </Pressable>
+      </ScrollView>
     </View>
   );
 }
