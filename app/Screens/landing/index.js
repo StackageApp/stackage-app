@@ -12,8 +12,6 @@ import {
   View,
 } from 'react-native';
 
-import { Link } from 'expo-router';
-
 import logo from '../../../assets/stackageLogo2.png';
 import styles from '../../../sharedStyles';
 import CreateAccount from './CreateAccount';
