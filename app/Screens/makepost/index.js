@@ -1,26 +1,32 @@
-import React from 'react';
-import { Button, Keyboard, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Button, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
 
 function PostMessage() {
-  const [title, onChangeTitle] = React.useState('Title');
-  const [body, onChangeBody] = React.useState('Write your post here.');
+  const [title, onChangeTitle] = React.useState('');
+  const [body, onChangeBody] = React.useState('');
 
   return (
     <View>
       <View style={styles.fixToRight}>
         <Button title="X" onPress={() => {}} color="#54bab9" />
       </View>
-      <TextInput onChangeText={onChangeTitle} value={title} style={styles.input} />
+      <TextInput
+        onChangeText={onChangeTitle}
+        placeholder="Title"
+        style={styles.input}
+        KeyboardType="default"
+      />
       <TextInput
         editable
         multiline
         numberOfLines={12}
         maxLength={500}
         onChangeText={onChangeBody}
-        value={body}
+        placeholder="Write your post here."
         style={styles.longInput}
+        KeyboardType="default"
       />
       <View style={styles.evenRow}>
         <Ionicons name="ios-pricetags-outline" size={30} color="black" onPress={() => {}} />
@@ -43,7 +49,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   longInput: {
-    height: 300,
+    height: 250,
     margin: 12,
     borderWidth: 1,
     padding: 10,
@@ -67,7 +73,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingVertical: 12,
     paddingHorizontal: 10,
-    borderRadius: 4,
+    borderRadius: 7,
     elevation: 3,
   },
   postButtonText: {
