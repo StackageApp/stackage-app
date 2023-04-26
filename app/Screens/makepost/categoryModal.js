@@ -1,24 +1,70 @@
 import React, { useEffect, useState } from 'react';
 import {
   Button,
+  FlatList,
   KeyboardAvoidingView,
   Pressable,
   StyleSheet,
   Text,
-  TextInput,
+  TouchableOpacity,
   View,
 } from 'react-native';
 
-import { Ionicons } from '@expo/vector-icons';
+import RadioGroup from 'react-native-radio-buttons-group';
+
+// const isEqual = require('lodash.isequal');
 
 function CategoryModal(props) {
   const [category, setCategory] = useState('');
+  const [radioButtons, setRadioButtons] = useState([
+    {
+      id: '1', // acts as primary key, should be unique and non-empty string
+      label: 'Travel',
+      value: 'Travel',
+    },
+    {
+      id: '2',
+      label: 'Sports',
+      value: 'Sports',
+    },
+    {
+      id: '3',
+      label: 'Technology',
+      value: 'Technology',
+    },
+    {
+      id: '4',
+      label: 'Health',
+      value: 'Health',
+    },
+    {
+      id: '5',
+      label: 'Politics',
+      value: 'Politics',
+    },
+    {
+      id: '6',
+      label: 'Entertainment',
+      value: 'Entertainment',
+    },
+    {
+      id: '7',
+      label: 'Business',
+      value: 'Business',
+    },
+  ]);
 
-  const onChangeCategory = (event) => {
-    event.preventDefault();
+  const onPressRadioButton = (radioButtonsArray) => {
+    radioButtonsArray.forEach((selection) => {
+      if (selection.selected === true) {
+        setCategory(selection.value);
+      }
+    });
+    setRadioButtons(radioButtonsArray);
   };
 
   const onDone = () => {
+    props.setCategory(category);
     props.setShowView('main');
   };
 
@@ -33,13 +79,8 @@ function CategoryModal(props) {
           color="#54bab9"
         />
       </View>
-      <Text>We are in the category modal now.</Text>
-      <TextInput
-        onChangeText={onChangeCategory}
-        placeholder="Add category here"
-        style={styles.input}
-        KeyboardType="default"
-      />
+      <Text>Select a category</Text>
+      <RadioGroup radioButtons={radioButtons} onPress={onPressRadioButton} />
       <Pressable
         title="Done"
         onPress={() => {

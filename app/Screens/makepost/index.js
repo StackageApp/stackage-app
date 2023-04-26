@@ -66,7 +66,7 @@ function PostMessage() {
       {showView === 'main' ? (
         <View>
           <View style={styles.fixToRight}>
-            <Button title="X" onPress={() => navigation.navigate('home')} color="#54bab9" />
+            <Button title="X" onPress={() => {}} color="#54bab9" />
           </View>
           <TextInput
             id="title"
@@ -134,7 +134,9 @@ function PostMessage() {
         </View>
       ) : null}
       {showView === 'tags' ? <TagsModal updateTags={updateTags} setShowView={setShowView} /> : null}
-      {showView === 'category' ? <CategoryModal setShowView={setShowView} /> : null}
+      {showView === 'category' ? (
+        <CategoryModal setShowView={setShowView} setCategory={setCategory} />
+      ) : null}
       {showView === 'links' ? (
         <LinksModal updateLinks={updateLinks} setShowView={setShowView} />
       ) : null}
