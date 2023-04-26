@@ -4,43 +4,46 @@ import { Button, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Bubble, GiftedChat, Send } from 'react-native-gifted-chat';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useDispatch, useSelector } from 'react-redux';
 
 function ChatScreen() {
   const [messages, setMessages] = useState([]);
-
+  const { message } = useSelector((state) => state.message);
+  console.log('message', message);
   useEffect(() => {
-    setMessages([
-      {
-        _id: 3,
-        text: 'How are you doing today?',
-        createdAt: new Date(),
-        user: {
-          _id: 2,
-          name: 'React Native',
-          avatar: require('../../../../assets/users/Donn.png'),
-        },
-      },
-      {
-        _id: 2,
-        text: 'Hello world',
-        createdAt: new Date(),
-        user: {
-          _id: 1,
-          name: 'React Native',
-          avatar: '',
-        },
-      },
-      {
-        _id: 1,
-        text: 'Hello developer',
-        createdAt: new Date(),
-        user: {
-          _id: 2,
-          name: 'React Native',
-          avatar: require('../../../../assets/users/Donn.png'),
-        },
-      },
-    ]);
+    setMessages(message);
+    // setMessages([
+    //   {
+    //     _id: 3,
+    //     text: 'How are you doing today?',
+    //     createdAt: new Date(),
+    //     user: {
+    //       _id: 2,
+    //       name: 'React Native',
+    //       avatar: require('../../../../assets/users/Donn.png'),
+    //     },
+    //   },
+    //   {
+    //     _id: 2,
+    //     text: 'Hello world',
+    //     createdAt: new Date(),
+    //     user: {
+    //       _id: 1,
+    //       name: 'React Native',
+    //       avatar: '',
+    //     },
+    //   },
+    //   {
+    //     _id: 1,
+    //     text: 'Hello developer',
+    //     createdAt: new Date(),
+    //     user: {
+    //       _id: 2,
+    //       name: 'React Native',
+    //       avatar: require('../../../../assets/users/Donn.png'),
+    //     },
+    //   },
+    // ]);
   }, []);
 
   const onSend = useCallback((messages = []) => {
