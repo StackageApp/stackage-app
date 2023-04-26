@@ -14,17 +14,17 @@ import {
 import sharedStyles from '../../../sharedStyles';
 
 export default function CreateAccount({ visible, showModal }) {
-  const [username, setUsername] = useState('');
+  const [name, setname] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [email, setEmail] = useState('');
   const [occupation, setOccupation] = useState('');
-  const [submitted, setSubmitted] = useState(false);
   const [location, setLocation] = useState('');
+  const [submitted, setSubmitted] = useState(false);
 
   const handleInput = (input, field) => {
-    if (field === 'username') {
-      setUsername(input);
+    if (field === 'name') {
+      setname(input);
     }
 
     if (field === 'password') {
@@ -50,7 +50,7 @@ export default function CreateAccount({ visible, showModal }) {
 
   const resetValues = () => {
     showModal();
-    setUsername('');
+    setname('');
     setPassword('');
     setEmail('');
     setOccupation('');
@@ -58,12 +58,22 @@ export default function CreateAccount({ visible, showModal }) {
   };
 
   const submitInformation = () => {
-    setUsername('');
+    setname('');
     setPassword('');
     setEmail('');
     setOccupation('');
     setConfirmPassword('');
     setSubmitted(!submitted);
+  };
+
+  const createNewUser = () => {
+    const userInfo = {
+      name,
+      email,
+      location,
+      occupation,
+    };
+    controllers.createNewUser(userInfo);
   };
 
   return (
@@ -86,18 +96,18 @@ export default function CreateAccount({ visible, showModal }) {
                 <View>
                   <Text style={localStyles.signUp}>Sign Up</Text>
                   <View style={localStyles.fieldLabel}>
-                    <Text style={localStyles.field}>Username</Text>
+                    <Text style={localStyles.field}>name</Text>
                     <Text style={localStyles.star}>*</Text>
                   </View>
                   <TextInput
-                    id="username"
+                    id="name"
                     editable
                     numberOfLines={1}
                     maxLength={20}
                     onChangeText={(input) => {
-                      handleInput(input, 'username');
+                      handleInput(input, 'name');
                     }}
-                    value={username}
+                    value={name}
                     style={sharedStyles.signUpField}
                     allowFontScaling
                   />
@@ -194,7 +204,9 @@ export default function CreateAccount({ visible, showModal }) {
                 </View>
                 <View style={{ margin: 10 }}>
                   <TouchableOpacity style={sharedStyles.button} onPress={submitInformation}>
-                    <Text style={sharedStyles.buttonText}>Create Account</Text>
+                    <Text style={sharedStyles.buttonText} onPress={createNewUser}>
+                      Create Account
+                    </Text>
                   </TouchableOpacity>
                 </View>
                 <TouchableOpacity
