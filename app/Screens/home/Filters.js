@@ -16,7 +16,7 @@ function Filters() {
   const [menu, setMenu] = useState(false);
 
   return (
-    <View style={styles.filters}>
+    <View>
       <ScrollView horizontal>
         <Pressable
           onPress={() => {
