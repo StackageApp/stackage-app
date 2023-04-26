@@ -1,13 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const user = {
+  uid: '',
   isGuest: true,
   friendslist: [],
   messages: [],
   notifications: 0,
-  photoURL: '',
   posts: [],
   userInfo: {
+    photoURL: '',
     email: '',
     location: '',
     name: '',
@@ -24,9 +25,9 @@ const homeSlice = createSlice({
       state.user.friendslist = action.payload.friendslist;
       state.user.messafes = action.payload.messages;
       state.user.notifications = action.payload.notifications;
-      state.user.photoURL = action.payload.photoURL;
       state.user.posts = action.payload.posts;
       state.user.userInfo = action.payload.userInfo;
+      state.user.uid = action.payload.uid;
       return state;
     },
     newContinueAsGuest: (state, action) => {

@@ -12,12 +12,15 @@ import {
   View,
 } from 'react-native';
 
+import { useSelector } from 'react-redux';
+
 import logo from '../../../assets/stackageLogo2.png';
 import styles from '../../../sharedStyles';
 import CreateAccount from './CreateAccount';
 import controllers from './controllers';
 
 export default function LandingPage() {
+  const userInfoName = useSelector((store) => store.currentUser.currentUser.userInfo.name);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
@@ -105,6 +108,7 @@ export default function LandingPage() {
                 Continue as Guest
               </Text>
             </TouchableHighlight>
+            <Text>{userInfoName}</Text>
           </View>
         </View>
       </TouchableWithoutFeedback>
