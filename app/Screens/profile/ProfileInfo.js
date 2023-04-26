@@ -8,8 +8,10 @@ export default function ProfileInfo() {
       <Text style={styles.fullName}>Full Name</Text>
       <Text>@Architect_guy</Text>
       <Text>This is the about sections</Text>
-      <Text>___ likes</Text>
-      <Text>Connections</Text>
+      <View>
+        <Text>___ likes</Text>
+        <Text>Connections</Text>
+      </View>
     </View>
   )
 }
