@@ -15,21 +15,22 @@ import {
 import logo from '../../../assets/stackageLogo2.png';
 import styles from '../../../sharedStyles';
 import CreateAccount from './CreateAccount';
+import controllers from './controllers';
 
-export default function ExComponents() {
-  const [username, setUsername] = useState('');
+export default function LandingPage() {
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
 
   const onPress = (e) => {
     e.preventDefault();
-    setUsername('');
+    setEmail('');
     setPassword('');
   };
 
   const handleInput = (input, field) => {
-    if (field === 'username') {
-      setUsername(input);
+    if (field === 'email') {
+      setEmail(input);
     }
 
     if (field === 'password') {
@@ -50,16 +51,16 @@ export default function ExComponents() {
           <Image style={localStyles.logo} source={logo} />
           {/* Input field example */}
           <TextInput
-            id="username"
+            id="email"
             editable
             numberOfLines={1}
             maxLength={20}
             onChangeText={(input) => {
-              handleInput(input, 'username');
+              handleInput(input, 'email');
             }}
-            value={username}
+            value={email}
             style={styles.loginField}
-            placeholder="Username..."
+            placeholder="Email..."
             allowFontScaling
             enablesReturnKeyAutomatically
           />
@@ -100,7 +101,13 @@ export default function ExComponents() {
               </Text>
             </TouchableHighlight>
             <TouchableHighlight>
-              <Text id="guestContinue" style={localStyles.guest}>
+              <Text
+                id="guestContinue"
+                style={localStyles.guest}
+                onPress={() => {
+                  controllers.continueAsGuest();
+                }}
+              >
                 Continue as Guest
               </Text>
             </TouchableHighlight>

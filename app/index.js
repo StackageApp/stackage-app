@@ -5,10 +5,12 @@ import { Redirect, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 
 import sharedStyles from '../sharedStyles';
+import LandingPage from './Screens/landing';
 
 function App() {
   const navigation = useRouter();
-  return <Redirect href="./Navigation" />;
+  // return <Redirect href="./Navigation" />;
+  return <LandingPage />;
 }
 
 const styles = StyleSheet.create({

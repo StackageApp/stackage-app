@@ -50,31 +50,25 @@ export default function CreateAccount({ visible, showModal }) {
   };
 
   const resetValues = () => {
-    showModal();
+    // showModal();
     setname('');
     setPassword('');
     setEmail('');
     setOccupation('');
     setConfirmPassword('');
-  };
-
-  const submitInformation = () => {
-    setname('');
-    setPassword('');
-    setEmail('');
-    setOccupation('');
-    setConfirmPassword('');
-    setSubmitted(!submitted);
+    setLocation('');
   };
 
   const createNewUser = () => {
-    const userInfo = {
-      name,
-      email,
-      location,
-      occupation,
-    };
-    controllers.createNewUser(userInfo);
+    // setname('');
+    // setPassword('');
+    // setEmail('');
+    // setOccupation('');
+    // setConfirmPassword('');
+    // setLocation('');
+    // setSubmitted(!submitted);
+
+    controllers.createNewUser(name, email, location, occupation, password);
   };
 
   return (
@@ -204,7 +198,7 @@ export default function CreateAccount({ visible, showModal }) {
                   />
                 </View>
                 <View style={{ margin: 10 }}>
-                  <TouchableOpacity style={sharedStyles.button} onPress={submitInformation}>
+                  <TouchableOpacity style={sharedStyles.button} onPress={createNewUser}>
                     <Text style={sharedStyles.buttonText} onPress={createNewUser}>
                       Create Account
                     </Text>
@@ -215,7 +209,7 @@ export default function CreateAccount({ visible, showModal }) {
                   onPress={() => {
                     Keyboard.dismiss();
                     resetValues();
-                    showModal();
+                    // showModal();
                   }}
                 >
                   <Text style={localStyles.cancel}>Cancel</Text>
@@ -232,7 +226,7 @@ export default function CreateAccount({ visible, showModal }) {
                 onPress={() => {
                   Keyboard.dismiss();
                   resetValues();
-                  submitInformation();
+                  setSubmitted(!submitted);
                 }}
               >
                 <Text style={localStyles.cancel}>Cancel</Text>
