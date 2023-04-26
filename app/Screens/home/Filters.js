@@ -30,23 +30,59 @@ function Filters() {
           <Text>Category </Text>
         </Pressable>
         {menu && (
-          <Pressable
-            onPress={async () => {
-              if (activeFilters.category) {
-                setActiveFilters({ ...activeFilters, category: false });
-                // remove filter
-                const previousMessages = await JSON.parse(
-                  window.sessionStorage.getItem('stackageHomeFeed')
-                );
-                dispatch(newMessages(previousMessages));
-              } else {
-                setActiveFilters({ ...activeFilters, category: true });
-                dispatch(filterCategory('Virtual Reality'));
-              }
-            }}
-          >
-            <Text>Virtual Reality</Text>
-          </Pressable>
+          <ScrollView>
+            <Pressable
+              onPress={async () => {
+                if (activeFilters.category) {
+                  setActiveFilters({ ...activeFilters, category: false });
+                  // remove filter
+                  const previousMessages = await JSON.parse(
+                    window.sessionStorage.getItem('stackageHomeFeed')
+                  );
+                  dispatch(newMessages(previousMessages));
+                } else {
+                  setActiveFilters({ ...activeFilters, category: true });
+                  dispatch(filterCategory('Virtual Reality'));
+                }
+              }}
+            >
+              <Text>Virtual Reality</Text>
+            </Pressable>
+            <Pressable
+              onPress={async () => {
+                if (activeFilters.category) {
+                  setActiveFilters({ ...activeFilters, category: false });
+                  // remove filter
+                  const previousMessages = await JSON.parse(
+                    window.sessionStorage.getItem('stackageHomeFeed')
+                  );
+                  dispatch(newMessages(previousMessages));
+                } else {
+                  setActiveFilters({ ...activeFilters, category: true });
+                  dispatch(filterCategory('Machine Learning'));
+                }
+              }}
+            >
+              <Text>Machine Learning</Text>
+            </Pressable>
+            <Pressable
+              onPress={async () => {
+                if (activeFilters.category) {
+                  setActiveFilters({ ...activeFilters, category: false });
+                  // remove filter
+                  const previousMessages = await JSON.parse(
+                    window.sessionStorage.getItem('stackageHomeFeed')
+                  );
+                  dispatch(newMessages(previousMessages));
+                } else {
+                  setActiveFilters({ ...activeFilters, category: true });
+                  dispatch(filterCategory('Mobile Development'));
+                }
+              }}
+            >
+              <Text>Mobile Development</Text>
+            </Pressable>
+          </ScrollView>
         )}
         <Pressable
           onPress={async () => {
