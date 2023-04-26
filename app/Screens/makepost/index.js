@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
+import { Link } from 'expo-router';
 import moment from 'moment';
 
 import CategoryModal from './categoryModal.js';
@@ -51,7 +52,7 @@ function PostMessage() {
     const newPost = {};
     // TODO: get user's unique id to put here.
     newPost.uid = 'fakety fake';
-    newPost.timestamp = '';
+    newPost.timestamp = Date.now();
     newPost.title = title || '';
     newPost.text = text || '';
     newPost.tags = tags || [];
@@ -66,7 +67,9 @@ function PostMessage() {
       {showView === 'main' ? (
         <View>
           <View style={styles.fixToRight}>
-            <Button title="X" onPress={() => {}} color="#54bab9" />
+            <Link href="../../Navigation/HomeFeed">
+              <Text style={styles.close}>X</Text>
+            </Link>
           </View>
           <TextInput
             id="title"
@@ -187,6 +190,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     letterSpacing: 0.25,
     color: 'white',
+  },
+  close: {
+    color: '#54bab9',
   },
 });
 

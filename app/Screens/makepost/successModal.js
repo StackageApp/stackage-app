@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Button, KeyboardAvoidingView, Pressable, StyleSheet, Text, View } from 'react-native';
-
-import { Ionicons } from '@expo/vector-icons';
 
 function SuccessModal(props) {
   const onWriteAnotherPost = () => {
@@ -36,6 +34,24 @@ function SuccessModal(props) {
       >
         <Text style={styles.anotherButtonText}>Write another post.</Text>
       </Pressable>
+      <Pressable
+        title="Write another post"
+        onPress={() => {
+          onWriteAnotherPost();
+        }}
+        style={styles.anotherButton}
+      >
+        <Text style={styles.anotherButtonText}>Go to Approvals</Text>
+      </Pressable>
+      <Pressable
+        title="Write another post"
+        onPress={() => {
+          onWriteAnotherPost();
+        }}
+        style={styles.anotherButton}
+      >
+        <Text style={styles.anotherButtonText}>Ok</Text>
+      </Pressable>
     </KeyboardAvoidingView>
   );
 }
@@ -63,6 +79,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 7,
     elevation: 3,
+    margin: 2,
   },
   anotherButtonText: {
     fontSize: 20,
