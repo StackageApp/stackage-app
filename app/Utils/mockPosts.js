@@ -24,6 +24,26 @@ export const dummyPost = {
   ],
 };
 
+export const dummyPost2 = {
+  uid: 1,
+  approved: true,
+  likes: 10,
+  title: 'Do it for the likes',
+  text: 'I just want to get the most likes',
+  category: 'Virtual Reality',
+  tags: ['in', 'another', 'world'],
+  comments: [
+    {
+      name: 'Majd',
+      text: 'The most likes',
+    },
+    {
+      name: 'Janessa',
+      text: 'All the likes',
+    },
+  ],
+};
+
 export const emptyPost = {
   uid: 1,
   approved: true,

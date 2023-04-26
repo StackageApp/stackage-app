@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image, Text, View } from 'react-native';
 
 import { dummyPost } from '../Utils/mockPosts';
 
-export default function Post(props) {
-  const { title, text, name, category, tags, link, likes, comments } = dummyPost;
+export default function Post({ post }) {
+  const { title, text, name, category, tags, link, likes, comments } = post;
+  const [tagsExist, setTagsExists] = useState(false);
+
+  useEffect(() => {
+    if (tags) {
+      setTagsExists(true);
+    }
+  }, [tags]);
 
   return (
     <View>
@@ -19,9 +26,7 @@ export default function Post(props) {
         <Text>{link}</Text>
       </View>
       <View className="post-footer">
-        {tags.map((tag) => (
-          <Text>{tag} |</Text>
-        ))}
+        <View>{tagsExist && tags.map((tag, i) => <Text key={i}>{tag} |</Text>)}</View>
         <Text>
           {likes} Likes {comments.length} Comments
         </Text>

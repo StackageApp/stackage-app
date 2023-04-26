@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { dummyPost, emptyPost } from '../../Utils/mockPosts';
+import { dummyPost, dummyPost2, emptyPost } from '../../Utils/mockPosts';
 
-const posts = [dummyPost, dummyPost];
+const posts = [dummyPost, dummyPost2];
 
 const homeSlice = createSlice({
   name: 'homeFeed',
@@ -14,6 +14,7 @@ const homeSlice = createSlice({
       state.posts[0].id = action.payload;
       return state;
     },
+    newPosts: (state, action) => {},
   },
 });
 
