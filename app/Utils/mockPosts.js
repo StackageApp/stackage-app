@@ -25,7 +25,7 @@ export const dummyPost = {
 };
 
 export const dummyPost2 = {
-  uid: 1,
+  uid: 2,
   approved: true,
   likes: 10,
   title: 'Do it for the likes',

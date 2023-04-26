@@ -10,18 +10,23 @@ const homeSlice = createSlice({
     posts,
   },
   reducers: {
-    returnTwo: (state, action) => {
-      state.posts[0].id = action.payload;
-      return state;
+    filterCategory: (state, action) => {
+      if (state.posts) {
+        state.posts = state.posts.filter((post) => post.category === action.payload);
+        return state;
+      }
     },
     filterTop: (state, action) => {
-      [...state];
+      if (state.posts) {
+        state.posts = state.posts.filter((post) => post.likes > action.payload);
+        return state;
+      }
     },
   },
 });
 
 const { actions, reducer } = homeSlice;
 
-export const { returnTwo } = actions;
+export const { filterCategory, filterTop } = actions;
 
 export default reducer;
