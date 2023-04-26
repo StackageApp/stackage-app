@@ -17,7 +17,7 @@ function ChatScreen() {
         user: {
           _id: 2,
           name: 'React Native',
-          avatar: '../../../assets/users/Majd.png',
+          avatar: require('../../../../assets/users/Donn.png'),
         },
       },
       {
@@ -37,7 +37,7 @@ function ChatScreen() {
         user: {
           _id: 2,
           name: 'React Native',
-          avatar: '../../../assets/users/Majd.png',
+          avatar: require('../../../../assets/users/Donn.png'),
         },
       },
     ]);
