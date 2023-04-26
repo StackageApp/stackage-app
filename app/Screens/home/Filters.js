@@ -1,11 +1,13 @@
 import React from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 
+import { filterTop } from '../../Redux/Slices/homeSlice';
+
 function Filters() {
   return (
     <View>
       <ScrollView horizontal>
-        <Pressable>
+        <Pressable onPress={() => filterTop()}>
           <Text>Category</Text>
         </Pressable>
         <Pressable>

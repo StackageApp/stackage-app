@@ -14,7 +14,9 @@ const homeSlice = createSlice({
       state.posts[0].id = action.payload;
       return state;
     },
-    newPosts: (state, action) => {},
+    filterTop: (state, action) => {
+      [...state];
+    },
   },
 });
 
