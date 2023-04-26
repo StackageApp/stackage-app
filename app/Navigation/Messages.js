@@ -1,9 +1,16 @@
 import React from 'react';
 
-import Message from '../Screens/message';
+import { Provider } from 'react-redux';
+
+import store from '../Redux/Store';
+import MessagesMain from '../Screens/message/index';
 
 function Messages() {
-  return <Message />;
+  return (
+    <Provider store={store}>
+      <MessagesMain />
+    </Provider>
+  );
 }
 
 export default Messages;

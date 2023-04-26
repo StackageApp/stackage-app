@@ -5,13 +5,10 @@ import { Redirect, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 
 import sharedStyles from '../sharedStyles';
-// import Home from './Screens/home';
-import ExComponents from './Screens/landing';
 
-function WelcomeScreen() {
+function App() {
   const navigation = useRouter();
   return (
-    
     <View style={styles.container}>
       <ExComponents />
     </View>
@@ -30,4 +27,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default WelcomeScreen;
+export default App;
