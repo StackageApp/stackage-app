@@ -3,15 +3,26 @@ import { Image, Text, View } from 'react-native';
 
 import { dummyPost } from '../Utils/mockPosts';
 
-export default function Post({ post }) {
-  const { title, text, name, category, tags, link, likes, comments } = post;
-  const [tagsExist, setTagsExists] = useState(false);
+export default function Post({ postData }) {
+  const [{ title, text, name, category, tags, link, likes, comments }, setPost] =
+    useState(dummyPost);
+  const [tagsExist, setTagsExist] = useState(false);
+  const [commentsExist, setCommentsExist] = useState(false);
 
   useEffect(() => {
     if (tags) {
-      setTagsExists(true);
+      setTagsExist(true);
     }
-  }, [tags]);
+    if (comments) {
+      setCommentsExist(true);
+    }
+  }, [tags, comments]);
+
+  useEffect(() => {
+    if (postData) {
+      setPost(postData);
+    }
+  }, [postData]);
 
   return (
     <View>
@@ -26,9 +37,9 @@ export default function Post({ post }) {
         <Text>{link}</Text>
       </View>
       <View className="post-footer">
-        <View>{tagsExist && tags.map((tag, i) => <Text key={i}>{tag} |</Text>)}</View>
+        {tagsExist && tags.map((tag, i) => <Text key={i}>{tag} |</Text>)}
         <Text>
-          {likes} Likes {comments.length} Comments
+          {likes} Likes {commentsExist && comments.length} Comments
         </Text>
       </View>
     </View>

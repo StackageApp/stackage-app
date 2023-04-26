@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { Button, Text, View } from 'react-native';
 
+// DISPATCH TO CHANGE STATE, SELECTOR TO GET STATE
 import { useDispatch, useSelector } from 'react-redux';
 
-// DISPATCH TO CHANGE STATE, SELECTOR TO GET STATE
 // IMPORT REDUCER METHODS TO UPDATE STATE
 import { returnTwo } from '../../Redux/Slices/homeSlice';
 import Filters from './Filters';
