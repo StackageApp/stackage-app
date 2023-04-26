@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { dummyPost, dummyPost2, emptyPost } from '../../Utils/mockPosts';
+import { dummyFeed, dummyPost } from '../../Utils/mockPosts';
 
-const posts = [dummyPost, dummyPost2];
+const posts = dummyFeed;
 
 const homeSlice = createSlice({
   name: 'homeFeed',
@@ -22,11 +22,30 @@ const homeSlice = createSlice({
         return state;
       }
     },
+    filterHot: (state, action) => {
+      const currentTime = Math.floor(new Date().getTime() / 1000);
+      const dayBefore = currentTime - 86400;
+
+      function getTimeOfPost(timestamp) {
+        const time = Math.floor(new Date(timestamp).getTime() / 1000);
+        return time;
+      }
+
+      if (state.posts) {
+        state.posts = state.posts.filter((post) => {
+          const timeOfPost = getTimeOfPost(post.timestamp);
+          if (post.likes > 5 && dayBefore - timeOfPost < 86400) {
+            return post;
+          }
+        });
+        return state;
+      }
+    },
   },
 });
 
 const { actions, reducer } = homeSlice;
 
-export const { filterCategory, filterTop } = actions;
+export const { filterCategory, filterHot, filterTop } = actions;
 
 export default reducer;
