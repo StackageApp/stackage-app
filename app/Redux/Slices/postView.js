@@ -2,23 +2,22 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { dummyPost, emptyPost } from '../../Utils/mockPosts';
 
-const posts = [dummyPost, dummyPost];
+const post = dummyPost;
 
 const homeSlice = createSlice({
-  name: 'homeFeed',
+  name: 'post',
   initialState: {
-    posts,
+    post,
   },
   reducers: {
-    returnTwo: (state, action) => {
-      state.posts[0].id = action.payload;
-      return state;
+    newPost: (state, action) => {
+      state = action.payload;
     },
   },
 });
 
 const { actions, reducer } = homeSlice;
 
-export const { returnTwo } = actions;
+export const { newPost } = actions;
 
 export default reducer;
