@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const posts = [{ id: '001', title: 'First Post', textBody: 'Is this thing on?' }];
+import { dummyPost, emptyPost } from '../../Utils/mockPosts';
+
+const posts = [dummyPost, dummyPost];
 
 const homeSlice = createSlice({
   name: 'homeFeed',

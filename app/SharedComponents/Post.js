@@ -1,37 +1,15 @@
 import React from 'react';
 import { Image, Text, View } from 'react-native';
 
-const dummyPost = {
-  uid: 1,
-  approved: true,
-  likes: 5,
-  title: 'Redux is hard',
-  text: 'redux is tough. This better help or I am going to be mad',
-  category: 'Mobile Development',
-  tags: ['why', 'redux', 'help me'],
-  links: [
-    {
-      title: 'redux',
-      url: 'https://redux.js.org/',
-    },
-  ],
-  comments: [
-    {
-      name: 'Brandon',
-      text: 'Yeah, redux took awhile to understand!',
-    },
-    {
-      name: 'Mev',
-      text: "I don't know what you're talking about. It's easy!",
-    },
-  ],
-};
+import { dummyPost } from '../Utils/mockPosts';
 
-export default function Post({ title, text, name, category, tags, link, likes, comments }) {
+export default function Post(props) {
+  const { title, text, name, category, tags, link, likes, comments } = dummyPost;
+
   return (
-    <>
+    <View>
       <View className="post-header">
-        <Image />
+        {/* <Image /> */}
         <Text>{name}</Text>
         <Text>{category}</Text>
       </View>
@@ -48,6 +26,6 @@ export default function Post({ title, text, name, category, tags, link, likes, c
           {likes} Likes {comments.length} Comments
         </Text>
       </View>
-    </>
+    </View>
   );
 }
