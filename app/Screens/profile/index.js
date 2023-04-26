@@ -1,12 +1,67 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+// import { Stack } from 'expo-router';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Profile from './Profile';
+import Settings from './Settings';
 
-function Profile() {
+const Stack = createStackNavigator();
+
+export default function myStack() {
   return (
-    <View>
-      <Text>Profile Feed Here</Text>
-    </View>
-  );
+    <NavigationContainer independent>
+      <Stack.Navigator
+        initialRouteName="Profile"
+      >
+        <Stack.Screen
+          name="Profile"
+          component={Profile}
+          options={{
+            title: 'My Profile',
+            headerShown: false
+          }}
+        />
+        <Stack.Screen
+          name="Settings"
+          component={Settings}
+          options={{
+            title: 'Settings',
+            gestureEnabled: false,
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
 }
 
-export default Profile;
+// export default function Profile() {
+//   const router = useRouter();
+//   console.log(usePathname());
+//   return (
+//     <View>
+//       <Link href='/Settings' asChild>
+//         <Pressable
+//           onPress={() => {
+//             console.log('press');
+//             router.push('/Settings')
+//           }}
+//         >
+//           {/* {({ hovered, pressed }) => ( */}
+//             {/* <Ionicons style={styles.settingsIcon} name="settings-outline" size={36} /> */}
+//             <Text>Press</Text>
+//           {/* )} */}
+//         </Pressable>
+//       </Link>
+//       <ProfileInfo />
+//       <ProfileFeed />
+//     </View>
+//   )
+// }
+
+// const styles = StyleSheet.create({
+//   settingsIcon: {
+//     position: 'absolute',
+//     right: 0,
+//     padding: 10,
+//   },
+// });
