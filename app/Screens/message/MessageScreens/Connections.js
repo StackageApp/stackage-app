@@ -56,7 +56,7 @@ function Connections({ navigation }) {
         data={contacts}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <Tile onPress={() => navigation.navigate('Profile', { userName: item.userName })}>
+          <Tile onPress={() => navigation.navigate('ChatScreen', { userName: item.userName })}>
             <UserInfo>
               <UserImgWrapper>
                 <ProfileImg source={item.ProfileImg} />
