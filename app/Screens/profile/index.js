@@ -2,11 +2,6 @@ import React from 'react';
 // import { Stack } from 'expo-router';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-// import { StyleSheet, View, Pressable, Text } from 'react-native';
-// import { Ionicons } from '@expo/vector-icons';
-// import { Link, useRouter, usePathname } from "expo-router";
-// import ProfileInfo from './ProfileInfo';
-// import ProfileFeed from './ProfileFeed';
 import Profile from './Profile';
 import Settings from './Settings';
 

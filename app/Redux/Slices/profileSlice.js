@@ -2,9 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const profile = {
   email: 'kyleastevens3@gmail.com',
-  location: 'Cle Elum, WA',
+  location: 'Seattle, WA',
   name: 'Kyle Stevens',
-  occupation: 'janitor'
+  occupation: 'Janitor'
 }
 
 const profileSlice = createSlice({
