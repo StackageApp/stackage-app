@@ -46,6 +46,17 @@ const sharedStyles = StyleSheet.create({
     height: 30,
     paddingLeft: 10,
   },
+  filters: {
+    backgroundColor: 'lightgray',
+  },
+  postContainer: {
+    flex: 1,
+    borderBottomWidth: 2,
+    borderBottomColor: '#E9DAC1',
+  },
+  postHeader: {
+    flex: 1,
+  },
 });
 
 export default sharedStyles;
