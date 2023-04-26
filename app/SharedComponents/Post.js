@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { Image, Text, View } from 'react-native';
 
-import { dummyPost } from '../Utils/mockPosts';
+import { useSelector } from 'react-redux';
 
-export default function Post({ post }) {
-  const { title, text, name, category, tags, link, likes, comments } = dummyPost;
+// USE TO UPDATE POST STATE
+import { newPost } from '../Redux/Slices/postSlice';
+
+export default function Post() {
+  const post = useSelector((store) => store.singlePost.post);
   const [tagsExist, setTagsExist] = useState(false);
+  const [commentsExist, setCommentsExist] = useState(false);
+  const { title, text, name, category, tags, link, likes, comments } = post;
 
   useEffect(() => {
     if (tags) {
       setTagsExist(true);
     }
-  }, [tags]);
+    if (comments) {
+      setCommentsExist(true);
+    }
+  }, [tags, comments]);
 
   return (
     <View>
@@ -26,9 +34,9 @@ export default function Post({ post }) {
         <Text>{link}</Text>
       </View>
       <View className="post-footer">
-        {tagsExist && tags.map((tag) => <Text>{tag} |</Text>)}
+        {tagsExist && tags.map((tag, i) => <Text key={i}>{tag} |</Text>)}
         <Text>
-          {likes} Likes {comments.length} Comments
+          {likes} Likes {commentsExist && comments.length} Comments
         </Text>
       </View>
     </View>
