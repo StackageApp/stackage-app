@@ -33,12 +33,16 @@ const models = {
   },
 
   getUserInfo: (uid) => {
+    // console.log('models sign in', uid);
     axios
       .get(`http://127.0.0.1:3000/users/${uid}`)
       .then((response) => {
         // console.log('the response from our server: ', response);
         // console.log('data', response.data);
-        store.dispatch(newUpdateCurrentUser(response));
+        response.data.isGuest = false;
+        response.data.uid = uid;
+        // console.log('response', response.data);
+        store.dispatch(newUpdateCurrentUser(response.data));
       })
       .catch((err) => {
         console.log('could not get user info', err);

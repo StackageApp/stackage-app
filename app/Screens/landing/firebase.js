@@ -23,8 +23,10 @@ const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 const auth = getAuth(app);
 
-export const authenticateNewUser = (email, password) =>
+export const authenticateNewUserFB = (email, password) =>
   createUserWithEmailAndPassword(auth, email, password).catch((err) => console.log(err));
 
-export const signIn = (email, password) =>
-  signInWithEmailAndPassword(auth, email, password).catch((err) => console.log(err));
+export const signInFB = (email, password) =>
+  signInWithEmailAndPassword(auth, email, password).catch((err) =>
+    console.log('could not sign in', err)
+  );

@@ -11,6 +11,8 @@ import {
   View,
 } from 'react-native';
 
+import { Link } from 'expo-router';
+
 import sharedStyles from '../../../sharedStyles';
 import controllers from './controllers';
 
@@ -21,7 +23,7 @@ export default function CreateAccount({ visible, showModal }) {
   const [email, setEmail] = useState('');
   const [occupation, setOccupation] = useState('');
   const [location, setLocation] = useState('');
-  const [submitted, setSubmitted] = useState(false);
+  const [notSubmitted, setNotSubmitted] = useState(true);
 
   const handleInput = (input, field) => {
     if (field === 'name') {
@@ -50,7 +52,7 @@ export default function CreateAccount({ visible, showModal }) {
   };
 
   const resetValues = () => {
-    // showModal();
+    showModal();
     setname('');
     setPassword('');
     setEmail('');
@@ -60,13 +62,13 @@ export default function CreateAccount({ visible, showModal }) {
   };
 
   const createNewUser = () => {
-    // setname('');
-    // setPassword('');
-    // setEmail('');
-    // setOccupation('');
-    // setConfirmPassword('');
-    // setLocation('');
-    // setSubmitted(!submitted);
+    setname('');
+    setPassword('');
+    setEmail('');
+    setOccupation('');
+    setConfirmPassword('');
+    setLocation('');
+    setNotSubmitted(!notSubmitted);
 
     controllers.createNewUser(name, email, location, occupation, password);
   };
@@ -75,7 +77,7 @@ export default function CreateAccount({ visible, showModal }) {
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View>
         <Modal animationType="slide" transparent visible={visible} onRequestClose={showModal}>
-          {submitted ? (
+          {notSubmitted ? (
             <KeyboardAvoidingView
               enabled
               style={localStyles.container}
@@ -209,7 +211,7 @@ export default function CreateAccount({ visible, showModal }) {
                   onPress={() => {
                     Keyboard.dismiss();
                     resetValues();
-                    // showModal();
+                    showModal();
                   }}
                 >
                   <Text style={localStyles.cancel}>Cancel</Text>

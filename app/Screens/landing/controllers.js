@@ -1,4 +1,4 @@
-import { authenticateNewUser, signIn } from './firebase';
+import { authenticateNewUserFB, signInFB } from './firebase';
 import models from './models';
 
 const controllers = {
@@ -10,14 +10,16 @@ const controllers = {
       occupation,
     };
 
-    authenticateNewUser(email, password).then((userCredential) => {
+    authenticateNewUserFB(email, password).then((userCredential) => {
       models.createNewUser(userCredential.user.uid, userInfo);
     });
   },
 
   signIn: (email, password) => {
-    signIn(email, password).then((userCredential) => {
-      models.getUserInfo(userCredential.user.id);
+    // console.log('sign in controller', email, password);
+    signInFB(email, password).then((userCredential) => {
+      // console.log('signed in auth', userCredential);
+      models.getUserInfo(userCredential.user.uid);
     });
   },
 

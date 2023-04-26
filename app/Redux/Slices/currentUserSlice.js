@@ -18,20 +18,19 @@ const user = {
 
 const homeSlice = createSlice({
   name: 'currentUser',
-  initialState: { user },
+  initialState: user,
   reducers: {
     newUpdateCurrentUser: (state, action) => {
-      state.user.isGuest = false;
-      state.user.friendslist = action.payload.friendslist;
-      state.user.messafes = action.payload.messages;
-      state.user.notifications = action.payload.notifications;
-      state.user.posts = action.payload.posts;
-      state.user.userInfo = action.payload.userInfo;
-      state.user.uid = action.payload.uid;
-      return state;
+      state.isGuest = action.payload.isGuest;
+      state.friendslist = action.payload.friendslist;
+      state.messafes = action.payload.messages;
+      state.notifications = action.payload.notifications;
+      state.posts = action.payload.posts;
+      state.userInfo = action.payload.userInfo;
+      state.uid = action.payload.uid;
     },
     newContinueAsGuest: (state, action) => {
-      state.user.isGuest = true;
+      state.isGuest = true;
     },
   },
 });

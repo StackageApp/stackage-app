@@ -36,7 +36,6 @@ const sharedStyles = StyleSheet.create({
     borderBottomColor: 'black',
     borderBottomWidth: 2,
     width: 180,
-    borderRadius: 5,
     fontSize: 18,
   },
   signUpField: {

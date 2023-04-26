@@ -6,13 +6,11 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  TouchableHighlight,
-  TouchableOpacity,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
 
-import { useSelector } from 'react-redux';
+import { Link } from 'expo-router';
 
 import logo from '../../../assets/stackageLogo2.png';
 import styles from '../../../sharedStyles';
@@ -20,15 +18,15 @@ import CreateAccount from './CreateAccount';
 import controllers from './controllers';
 
 export default function LandingPage() {
-  const userInfoName = useSelector((store) => store.currentUser.currentUser.userInfo.name);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
 
-  const onPress = (e) => {
+  const signIn = (e) => {
     e.preventDefault();
     setEmail('');
     setPassword('');
+    controllers.signIn(email, password);
   };
 
   const handleInput = (input, field) => {
@@ -79,36 +77,36 @@ export default function LandingPage() {
             allowFontScaling
             enablesReturnKeyAutomatically
           />
-
-          <TouchableOpacity style={styles.button} onPress={onPress}>
-            <Text style={styles.buttonText}>Log In</Text>
-          </TouchableOpacity>
-
+          <Link href="../../Navigation/HomeFeed" style={styles.button} id="createAccount">
+            <Text style={styles.buttonText} onPress={signIn}>
+              Log In
+            </Text>
+          </Link>
           <View style={localStyles.bottomText}>
-            <TouchableHighlight>
+            <Text
+              id="createAccount"
+              style={localStyles.clickHere}
+              onPress={() => {
+                Keyboard.dismiss();
+                showModal();
+              }}
+            >
+              Create Account
+            </Text>
+            <Link
+              href="../../Navigation/HomeFeed"
+              style={localStyles.guest}
+              onPress={() => {
+                controllers.continueAsGuest();
+              }}
+            >
               <Text
-                id="createAccount"
-                style={localStyles.clickHere}
-                onPress={() => {
-                  Keyboard.dismiss();
-                  showModal();
-                }}
-              >
-                Create Account
-              </Text>
-            </TouchableHighlight>
-            <TouchableHighlight>
-              <Text
-                id="guestContinue"
-                style={localStyles.guest}
-                onPress={() => {
-                  controllers.continueAsGuest();
-                }}
+              // id="guestContinue"
+              // style={localStyles.guest}
               >
                 Continue as Guest
               </Text>
-            </TouchableHighlight>
-            <Text>{userInfoName}</Text>
+            </Link>
           </View>
         </View>
       </TouchableWithoutFeedback>
