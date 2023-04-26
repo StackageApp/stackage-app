@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Image, Text, View } from 'react-native';
 
+import { dummyPost } from '../Utils/mockPosts';
+
 export default function Post({ post }) {
-  const { title, text, name, category, tags, link, likes, comments } = post;
+  const { title, text, name, category, tags, link, likes, comments } = dummyPost;
   const [tagsExist, setTagsExist] = useState(false);
 
   useEffect(() => {
