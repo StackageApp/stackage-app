@@ -10,6 +10,10 @@ const homeSlice = createSlice({
     posts,
   },
   reducers: {
+    newMessages: (state, action) => {
+      state.posts = action.payload;
+      return state;
+    },
     filterCategory: (state, action) => {
       if (state.posts) {
         state.posts = state.posts.filter((post) => post.category === action.payload);
@@ -46,6 +50,6 @@ const homeSlice = createSlice({
 
 const { actions, reducer } = homeSlice;
 
-export const { filterCategory, filterHot, filterTop } = actions;
+export const { filterCategory, filterHot, filterTop, newMessages } = actions;
 
 export default reducer;

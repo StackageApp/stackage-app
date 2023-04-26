@@ -13,6 +13,14 @@ function HomePage() {
   // useSelector to return state goes to Store -> reducer method -> data
   const posts = useSelector((store) => store.homeFeed.posts);
 
+  useEffect(() => {
+    async function storeData() {
+      await window.sessionStorage.clear();
+      await window.sessionStorage.setItem('stackageHomeFeed', JSON.stringify(posts));
+    }
+    storeData();
+  }, []);
+
   return (
     <View>
       {/* PASS REDUCER METHOD IN TO DISPATCH WITH ARGUMENTS TO CHANGE STATE */}

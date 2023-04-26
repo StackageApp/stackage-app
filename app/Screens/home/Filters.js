@@ -3,7 +3,7 @@ import { Pressable, ScrollView, Text, View } from 'react-native';
 
 import { useDispatch } from 'react-redux';
 
-import { filterCategory, filterHot, filterTop } from '../../Redux/Slices/homeSlice';
+import { filterCategory, filterHot, filterTop, newMessages } from '../../Redux/Slices/homeSlice';
 
 function Filters() {
   const dispatch = useDispatch();
@@ -17,10 +17,14 @@ function Filters() {
     <View>
       <ScrollView horizontal>
         <Pressable
-          onPress={() => {
+          onPress={async () => {
             if (activeFilters.category) {
               setActiveFilters({ ...activeFilters, category: false });
               // remove filter
+              const previousMessages = await JSON.parse(
+                window.sessionStorage.getItem('stackageHomeFeed')
+              );
+              dispatch(newMessages(previousMessages));
             } else {
               setActiveFilters({ ...activeFilters, category: true });
               dispatch(filterCategory('Virtual Reality'));
@@ -30,10 +34,14 @@ function Filters() {
           <Text>Category </Text>
         </Pressable>
         <Pressable
-          onPress={() => {
+          onPress={async () => {
             if (activeFilters.top) {
               setActiveFilters({ ...activeFilters, top: false });
               // remove filter
+              const previousMessages = await JSON.parse(
+                window.sessionStorage.getItem('stackageHomeFeed')
+              );
+              dispatch(newMessages(previousMessages));
             } else {
               setActiveFilters({ ...activeFilters, top: true });
               dispatch(filterTop(5));
@@ -46,10 +54,14 @@ function Filters() {
           <Text>Top Weekly </Text>
         </Pressable> */}
         <Pressable
-          onPress={() => {
+          onPress={async () => {
             if (activeFilters.hot) {
               setActiveFilters({ ...activeFilters, hot: false });
               // remove filter
+              const previousMessages = await JSON.parse(
+                window.sessionStorage.getItem('stackageHomeFeed')
+              );
+              dispatch(newMessages(previousMessages));
             } else {
               setActiveFilters({ ...activeFilters, hot: true });
               dispatch(filterHot('2023.04.24'));
