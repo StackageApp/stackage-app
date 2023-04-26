@@ -16,7 +16,8 @@ function Home() {
     <View>
       <Text>{title}</Text>
       {/* PASS REDUCER METHOD IN TO DISPATCH WITH ARGUMENTS TO CHANGE STATE */}
-      <Button onPress={() => dispatch(returnTwo('003'))}>Click here</Button>
+      {/* Temporarily disabled line below because there was an error message preventing the app from rendering. */}
+      {/* <Button onPress={() => dispatch(returnTwo('003'))}>Click here</Button> */}
     </View>
   );
 }
