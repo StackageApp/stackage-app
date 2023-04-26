@@ -7,7 +7,6 @@ import Filters from './Filters';
 function Approvals() {
   return (
     <View>
-      <Filters />
       <ApprovalsFeed />
     </View>
   );

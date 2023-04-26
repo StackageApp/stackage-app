@@ -5,6 +5,7 @@ import { Redirect, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 
 import sharedStyles from '../sharedStyles';
+import ExComponents from './Screens/landing';
 
 function App() {
   const navigation = useRouter();
