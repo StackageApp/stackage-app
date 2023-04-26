@@ -23,7 +23,7 @@ function HomePage() {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <View>
       {/* PASS REDUCER METHOD IN TO DISPATCH WITH ARGUMENTS TO CHANGE STATE */}
       {/* <Button onPress={() => dispatch(returnTwo('003'))}>Click here</Button> */}
       <Filters />

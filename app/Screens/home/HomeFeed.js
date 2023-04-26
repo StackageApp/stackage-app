@@ -6,7 +6,7 @@ import Post from '../../SharedComponents/Post';
 
 function HomeFeed({ posts }) {
   return (
-    <View style={styles.container}>
+    <View>
       <FlatList data={posts} renderItem={(post) => <Post postData={post.item} />} />
     </View>
   );
