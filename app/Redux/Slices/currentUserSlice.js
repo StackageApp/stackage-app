@@ -37,6 +37,6 @@ const homeSlice = createSlice({
 
 const { actions, reducer } = homeSlice;
 
-export const { updateCurrentUser, continueAsGuest } = actions;
+export const { newUpdateCurrentUser, newContinueAsGuest } = actions;
 
 export default reducer;

@@ -47,9 +47,7 @@ export default function LandingPage() {
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <View style={localStyles.container}>
           <CreateAccount visible={modalVisible} showModal={showModal} />
-          {/* logo was imported from assets folder at the top */}
           <Image style={localStyles.logo} source={logo} />
-          {/* Input field example */}
           <TextInput
             id="email"
             editable
@@ -79,15 +77,11 @@ export default function LandingPage() {
             enablesReturnKeyAutomatically
           />
 
-          {/* TouchableOpacity if for a button that gets lighter with you press it
-      It is the same as Pressable, but is a build in react component */}
           <TouchableOpacity style={styles.button} onPress={onPress}>
             <Text style={styles.buttonText}>Log In</Text>
           </TouchableOpacity>
 
-          {/* View can be treated like a div */}
           <View style={localStyles.bottomText}>
-            {/* <Text>Don&#39;t Have An Account?</Text> */}
             <TouchableHighlight>
               <Text
                 id="createAccount"

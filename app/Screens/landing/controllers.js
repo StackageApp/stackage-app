@@ -11,12 +11,8 @@ const controllers = {
     };
 
     authenticateNewUser(email, password).then((userCredential) => {
-      // models.create user
       models.createNewUser(userCredential.user.uid, userInfo);
     });
-    // .then() => {
-    //   getUserInfo()
-    // }
   },
 
   signIn: (email, password) => {
