@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Image, Text, View } from 'react-native';
 
+import styles from '../../sharedStyles';
 import { dummyPost } from '../Utils/mockPosts';
 
 export default function Post({ postData }) {
@@ -25,9 +26,9 @@ export default function Post({ postData }) {
   }, [postData]);
 
   return (
-    <View>
+    <View style={styles.postContainer}>
       <View className="post-header">
-        {/* <Image /> */}
+        {/* <Image src={}/> */}
         <Text>{name}</Text>
         <Text>{category}</Text>
       </View>

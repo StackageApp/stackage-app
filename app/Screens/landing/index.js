@@ -12,6 +12,8 @@ import {
   View,
 } from 'react-native';
 
+import { Link } from 'expo-router';
+
 import logo from '../../../assets/stackageLogo2.png';
 import styles from '../../../sharedStyles';
 import CreateAccount from './CreateAccount';
@@ -100,9 +102,7 @@ export default function ExComponents() {
               </Text>
             </TouchableHighlight>
             <TouchableHighlight>
-              <Text id="guestContinue" style={localStyles.guest}>
-                Continue as Guest
-              </Text>
+              <Link href="../../Navigation">Click Here</Link>
             </TouchableHighlight>
           </View>
         </View>
