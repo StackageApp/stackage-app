@@ -1,10 +1,13 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
+
+import ApprovalsFeed from './ApprovalsFeed';
+import Filters from './Filters';
 
 function Approvals() {
   return (
     <View>
-      <Text>Approvals Feed Here</Text>
+      <ApprovalsFeed />
     </View>
   );
 }
