@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 
 import sharedStyles from '../../../sharedStyles';
+import controllers from './controllers';
 
 export default function CreateAccount({ visible, showModal }) {
   const [name, setname] = useState('');

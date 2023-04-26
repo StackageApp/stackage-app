@@ -3,9 +3,16 @@ import models from './models';
 
 const controllers = {
   createNewUser: (userInfo) => {
-    authenticateNewUser(userInfo).then((userCredential) => {
-      models.createNewUser(userCredential.id, userInfo);
-    });
+    authenticateNewUser(userInfo)
+      .then((userCredential) => {
+        //models.create user
+        console.log(userCredential);
+        // models.createNewUser(userCredential.uid, userInfo);
+
+      })
+      .then() => {
+        getUserInfo()
+      }
   },
 
   signIn: (userInfo) => {
