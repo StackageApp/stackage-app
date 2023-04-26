@@ -1,28 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Text, View } from 'react-native';
 
 // DISPATCH TO CHANGE STATE, SELECTOR TO GET STATE
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
+import styles from '../../../sharedStyles';
 // IMPORT REDUCER METHODS TO UPDATE STATE
 import { returnTwo } from '../../Redux/Slices/homeSlice';
-import Post from '../../SharedComponents/Post';
+import Filters from './Filters';
+import HomeFeed from './HomeFeed';
 
-function Home() {
+function HomePage() {
   // useSelector to return state goes to Store -> reducer method -> data
-  // const title = useSelector((store) => store.homeFeed.posts[0].uid);
-  // const dispatch = useDispatch();
+  const posts = useSelector((store) => store.homeFeed.posts);
+
+  useEffect(() => {
+    async function storeData() {
+      await window.sessionStorage.clear();
+      await window.sessionStorage.setItem('stackageHomeFeed', JSON.stringify(posts));
+    }
+    storeData();
+  }, []);
 
   return (
     <View>
-      {/* <Text>{title}</Text> */}
       {/* PASS REDUCER METHOD IN TO DISPATCH WITH ARGUMENTS TO CHANGE STATE */}
 
       {/* <Button onPress={() => dispatch(returnTwo('003'))}>Click here</Button> */}
-      <Post />
-
+      <Filters />
+      <HomeFeed posts={posts} />
     </View>
   );
 }
 
-export default Home;
+export default HomePage;
