@@ -25,7 +25,9 @@ function PostMessage() {
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
   const [tags, setTags] = useState([]);
+  const [category, setCategory] = useState('');
   const [links, setLinks] = useState([]);
+  const [postObj, setPostObj] = useState({});
 
   const handleInput = (input, field) => {
     if (field === 'title') {
@@ -45,26 +47,18 @@ function PostMessage() {
     setLinks(linksArray);
   };
 
-  const openTagsModal = (event) => {
-    event.preventDefault();
-  };
-
-  const openCategoryModal = (event) => {
-    event.preventDefault();
-  };
-
-  const openLinksModal = (event) => {
-    event.preventDefault();
-  };
-
-  const openSuccessModal = (event) => {
-    event.preventDefault();
-  };
-
-  const closeModal = (event) => {};
-
   const buildPostObject = () => {
     const newPost = {};
+    // TODO: get user's unique id to put here.
+    newPost.uid = 'fakety fake';
+    newPost.timestamp = '';
+    newPost.title = title || '';
+    newPost.text = text || '';
+    newPost.tags = tags || [];
+    newPost.category = category || '';
+    newPost.links = links || [];
+
+    setPostObj(newPost);
   };
 
   return (
@@ -72,7 +66,7 @@ function PostMessage() {
       {showView === 'main' ? (
         <View>
           <View style={styles.fixToRight}>
-            <Button title="X" onPress={() => {}} color="#54bab9" />
+            <Button title="X" onPress={() => navigation.navigate('home')} color="#54bab9" />
           </View>
           <TextInput
             id="title"
@@ -129,6 +123,7 @@ function PostMessage() {
             <Pressable
               title="Post"
               onPress={() => {
+                buildPostObject();
                 setShowView('success');
               }}
               style={styles.postButton}
@@ -143,7 +138,7 @@ function PostMessage() {
       {showView === 'links' ? (
         <LinksModal updateLinks={updateLinks} setShowView={setShowView} />
       ) : null}
-      {showView === 'success' ? <SuccessModal setShowView={setShowView} /> : null}
+      {showView === 'success' ? <SuccessModal setShowView={setShowView} postObj={postObj} /> : null}
     </KeyboardAvoidingView>
   );
 }
