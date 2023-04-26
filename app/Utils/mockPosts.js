@@ -92,6 +92,28 @@ export const dummyFeed = [
       },
     ],
   },
+  {
+    uid: 4,
+    approved: true,
+    likes: 2,
+    title: 'totam rem aperiam',
+    text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
+    category: 'Machine Learning',
+    timestamp: '4.26.2023',
+    tags: ['cool', 'tech', 'crazy'],
+    comments: [],
+  },
+  {
+    uid: 5,
+    approved: true,
+    likes: 8,
+    title: 'At vero eos et accusamus',
+    text: ' ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos',
+    category: 'Virtual Reality',
+    timestamp: '4.26.2023',
+    tags: ['cool', 'tech', 'crazy'],
+    comments: [],
+  },
 ];
 
 export const emptyPost = {

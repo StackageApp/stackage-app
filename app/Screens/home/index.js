@@ -4,6 +4,7 @@ import { Button, Text, View } from 'react-native';
 // DISPATCH TO CHANGE STATE, SELECTOR TO GET STATE
 import { useSelector } from 'react-redux';
 
+import styles from '../../../sharedStyles';
 // IMPORT REDUCER METHODS TO UPDATE STATE
 import { returnTwo } from '../../Redux/Slices/homeSlice';
 import Filters from './Filters';
@@ -22,7 +23,7 @@ function HomePage() {
   }, []);
 
   return (
-    <View>
+    <View style={styles.container}>
       {/* PASS REDUCER METHOD IN TO DISPATCH WITH ARGUMENTS TO CHANGE STATE */}
       {/* <Button onPress={() => dispatch(returnTwo('003'))}>Click here</Button> */}
       <Filters />

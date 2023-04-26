@@ -3,6 +3,7 @@ import { Pressable, ScrollView, Text, View } from 'react-native';
 
 import { useDispatch } from 'react-redux';
 
+import styles from '../../../sharedStyles';
 import { filterCategory, filterHot, filterTop, newMessages } from '../../Redux/Slices/homeSlice';
 
 function Filters() {
@@ -12,27 +13,41 @@ function Filters() {
     top: false,
     hot: false,
   });
+  const [menu, setMenu] = useState(false);
 
   return (
-    <View>
+    <View style={styles.filters}>
       <ScrollView horizontal>
         <Pressable
-          onPress={async () => {
-            if (activeFilters.category) {
-              setActiveFilters({ ...activeFilters, category: false });
-              // remove filter
-              const previousMessages = await JSON.parse(
-                window.sessionStorage.getItem('stackageHomeFeed')
-              );
-              dispatch(newMessages(previousMessages));
+          onPress={() => {
+            if (menu) {
+              setMenu(false);
             } else {
-              setActiveFilters({ ...activeFilters, category: true });
-              dispatch(filterCategory('Virtual Reality'));
+              setMenu(true);
             }
           }}
         >
           <Text>Category </Text>
         </Pressable>
+        {menu && (
+          <Pressable
+            onPress={async () => {
+              if (activeFilters.category) {
+                setActiveFilters({ ...activeFilters, category: false });
+                // remove filter
+                const previousMessages = await JSON.parse(
+                  window.sessionStorage.getItem('stackageHomeFeed')
+                );
+                dispatch(newMessages(previousMessages));
+              } else {
+                setActiveFilters({ ...activeFilters, category: true });
+                dispatch(filterCategory('Virtual Reality'));
+              }
+            }}
+          >
+            <Text>Virtual Reality</Text>
+          </Pressable>
+        )}
         <Pressable
           onPress={async () => {
             if (activeFilters.top) {
