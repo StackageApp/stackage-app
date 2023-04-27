@@ -4,22 +4,19 @@ import { dummyFeed } from '../../Utils/mockPosts';
 
 const posts = dummyFeed;
 
-const profile = {
-  email: 'kyleastevens3@gmail.com',
-  location: 'Seattle, WA',
-  name: 'Kyle Stevens',
-  occupation: 'Janitor'
-}
-
 const profileSlice = createSlice({
   name: 'profileInfo',
   initialState: {
-    profile,
+    // profile,
     posts,
   },
   reducers: {
-    newProfile: (state, action) => {
-      state.profile = action.payload;
+    // newProfile: (state, action) => {
+    //   state.profile = action.payload;
+    //   return state;
+    // },
+    newPostFeed: (state, action) => {
+      state.posts = action.payload;
       return state;
     }
   }
@@ -27,6 +24,6 @@ const profileSlice = createSlice({
 
 const { actions, reducer } = profileSlice;
 
-export const { newProfile } = actions;
+export const { newProfile, newPostFeed } = actions;
 
 export default reducer;

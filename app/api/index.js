@@ -1,3 +1,3 @@
 import profileApi from './profileApi';
 
-export default { profileApi };
+export default profileApi;

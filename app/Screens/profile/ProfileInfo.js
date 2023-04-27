@@ -1,20 +1,20 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 export default function ProfileInfo() {
-  const { profile } = useSelector((store) => store.profileInfo);
+  const userInfo = useSelector(store => store.currentUser.userInfo);
 
   return (
     <View style={styles.container}>
       <Image style={styles.profilePicture} source={require('./example-profile.jpeg')} />
-      <Text style={styles.fullName}>{profile.name}</Text>
-      <Text>@Architect_guy</Text>
-      <Text>{`${profile.occupation} ${profile.location}`}</Text>
-      <View>
+      <Text style={styles.fullName}>{userInfo.name}</Text>
+      <Text>{userInfo.email}</Text>
+      <Text>{`${userInfo.occupation} - ${userInfo.location}`}</Text>
+      {/* <View>
         <Text>___ likes</Text>
         <Text>Connections</Text>
-      </View>
+      </View> */}
     </View>
   )
 }
