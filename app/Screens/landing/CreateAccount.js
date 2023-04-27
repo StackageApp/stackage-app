@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {
+  Alert,
   Keyboard,
   KeyboardAvoidingView,
   Modal,
@@ -11,19 +12,25 @@ import {
   View,
 } from 'react-native';
 
+import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
+
 import sharedStyles from '../../../sharedStyles';
+import controllers from './controllers';
 
 export default function CreateAccount({ visible, showModal }) {
-  const [username, setUsername] = useState('');
+  const router = useRouter();
+  const [name, setname] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [email, setEmail] = useState('');
   const [occupation, setOccupation] = useState('');
-  const [submitted, setSubmitted] = useState(false);
+  const [location, setLocation] = useState('');
+  const [notSubmitted, setNotSubmitted] = useState(true);
 
   const handleInput = (input, field) => {
-    if (field === 'username') {
-      setUsername(input);
+    if (field === 'name') {
+      setname(input);
     }
 
     if (field === 'password') {
@@ -41,31 +48,63 @@ export default function CreateAccount({ visible, showModal }) {
     if (field === 'occupation') {
       setOccupation(input);
     }
+
+    if (field === 'location') {
+      setLocation(input);
+    }
   };
 
   const resetValues = () => {
     showModal();
-    setUsername('');
+    setname('');
     setPassword('');
     setEmail('');
     setOccupation('');
     setConfirmPassword('');
+    setLocation('');
   };
 
-  const submitInformation = () => {
-    setUsername('');
+  const createNewUser = () => {
+    const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (password.length < 6) {
+      Alert.alert('Password too short', 'must be longer than 6 characters', [
+        { text: 'OK', onPress: () => console.log('cancel'), style: 'cancel' },
+      ]);
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      Alert.alert('Passwords do not match', '', [
+        { text: 'OK', onPress: () => console.log('cancel'), style: 'cancel' },
+      ]);
+      return;
+    }
+
+    if (!email.match(regexEmail)) {
+      Alert.alert('Must be a valid email', '', [
+        { text: 'OK', onPress: () => console.log('cancel'), style: 'cancel' },
+      ]);
+      return;
+    }
+    controllers.createNewUser(name, email, location, occupation, password);
+    setname('');
     setPassword('');
     setEmail('');
     setOccupation('');
     setConfirmPassword('');
-    setSubmitted(!submitted);
+    setLocation('');
+    setNotSubmitted(!notSubmitted);
+
+    setTimeout(() => {
+      router.push('../../Navigation/HomeFeed');
+    }, 2500);
   };
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View>
         <Modal animationType="slide" transparent visible={visible} onRequestClose={showModal}>
-          {submitted ? (
+          {notSubmitted ? (
             <KeyboardAvoidingView
               enabled
               style={localStyles.container}
@@ -81,18 +120,18 @@ export default function CreateAccount({ visible, showModal }) {
                 <View>
                   <Text style={localStyles.signUp}>Sign Up</Text>
                   <View style={localStyles.fieldLabel}>
-                    <Text style={localStyles.field}>Username</Text>
+                    <Text style={localStyles.field}>Name</Text>
                     <Text style={localStyles.star}>*</Text>
                   </View>
                   <TextInput
-                    id="username"
+                    id="name"
                     editable
                     numberOfLines={1}
                     maxLength={20}
                     onChangeText={(input) => {
-                      handleInput(input, 'username');
+                      handleInput(input, 'name');
                     }}
-                    value={username}
+                    value={name}
                     style={sharedStyles.signUpField}
                     allowFontScaling
                   />
@@ -113,6 +152,7 @@ export default function CreateAccount({ visible, showModal }) {
                     value={password}
                     style={sharedStyles.signUpField}
                     allowFontScaling
+                    secureTextEntry
                   />
                 </View>
                 <View>
@@ -131,6 +171,7 @@ export default function CreateAccount({ visible, showModal }) {
                     value={confirmPassword}
                     style={sharedStyles.signUpField}
                     allowFontScaling
+                    secureTextEntry
                   />
                 </View>
                 <View>
@@ -147,6 +188,24 @@ export default function CreateAccount({ visible, showModal }) {
                       handleInput(input, 'email');
                     }}
                     value={email}
+                    style={sharedStyles.signUpField}
+                    allowFontScaling
+                  />
+                </View>
+                <View>
+                  <View style={localStyles.fieldLabel}>
+                    <Text style={localStyles.field}>location</Text>
+                    <Text style={localStyles.star}>*</Text>
+                  </View>
+                  <TextInput
+                    id="location"
+                    editable
+                    numberOfLines={1}
+                    maxLength={20}
+                    onChangeText={(input) => {
+                      handleInput(input, 'location');
+                    }}
+                    value={location}
                     style={sharedStyles.signUpField}
                     allowFontScaling
                   />
@@ -170,9 +229,16 @@ export default function CreateAccount({ visible, showModal }) {
                   />
                 </View>
                 <View style={{ margin: 10 }}>
-                  <TouchableOpacity style={sharedStyles.button} onPress={submitInformation}>
-                    <Text style={sharedStyles.buttonText}>Create Account</Text>
-                  </TouchableOpacity>
+                  <View style={sharedStyles.button}>
+                    <Text
+                      style={sharedStyles.buttonText}
+                      onPress={() => {
+                        createNewUser();
+                      }}
+                    >
+                      Create Account
+                    </Text>
+                  </View>
                 </View>
                 <TouchableOpacity
                   style={localStyles.tapCancel}
@@ -189,18 +255,9 @@ export default function CreateAccount({ visible, showModal }) {
           ) : (
             <View style={localStyles.modalView}>
               <Text style={localStyles.confirmationText}>
-                Your account has been created. Redirecting to home page shortly.
+                Welcome to Stackage! Moving to home feed shortly.
               </Text>
-              <TouchableOpacity
-                style={localStyles.tapCancel}
-                onPress={() => {
-                  Keyboard.dismiss();
-                  resetValues();
-                  submitInformation();
-                }}
-              >
-                <Text style={localStyles.cancel}>Cancel</Text>
-              </TouchableOpacity>
+              <Ionicons name="checkmark-circle-outline" size={100} color="#54bab9" />
             </View>
           )}
         </Modal>
@@ -222,7 +279,7 @@ const localStyles = StyleSheet.create({
     color: 'red',
   },
   confirmationText: {
-    width: '80%',
+    width: '90%',
     textAlign: 'center',
     fontSize: 30,
   },

@@ -36,7 +36,6 @@ const sharedStyles = StyleSheet.create({
     borderBottomColor: 'black',
     borderBottomWidth: 2,
     width: 180,
-    borderRadius: 5,
     fontSize: 18,
   },
   signUpField: {
@@ -46,6 +45,17 @@ const sharedStyles = StyleSheet.create({
     width: 225,
     height: 30,
     paddingLeft: 10,
+  },
+  filters: {
+    backgroundColor: 'lightgray',
+  },
+  postContainer: {
+    flex: 1,
+    borderBottomWidth: 2,
+    borderBottomColor: '#E9DAC1',
+  },
+  postHeader: {
+    flex: 1,
   },
 });
 
