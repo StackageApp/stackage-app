@@ -3,10 +3,10 @@ import { Pressable, ScrollView, Text, View } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
 import { useDispatch } from 'react-redux';
-import { postApi } from "../../api"
 
 import styles from '../../../sharedStyles';
 import { filterCategory, filterHot, filterTop } from '../../Redux/Slices/homeSlice';
+import { postApi } from '../../api';
 
 function Filters({ posts }) {
   const dispatch = useDispatch();
@@ -16,24 +16,6 @@ function Filters({ posts }) {
     hot: false,
   });
   const [menu, setMenu] = useState(false);
-
-  function getCategories() {
-    return posts.map((post) => (
-        <Pressable key={post.id}
-              onPress={async () => {
-                if (activeFilters.category) {
-                  setActiveFilters({ ...activeFilters, category: false });
-                  postApi.getAllPosts();
-                } else {
-                  setActiveFilters({ ...activeFilters, category: true });
-                  dispatch(filterCategory(`${post.category}`));
-                }
-              }}
-            >
-              <Text>{post.category}</Text>
-            </Pressable>
-      ))
-  }
 
   return (
     <View>
@@ -51,7 +33,22 @@ function Filters({ posts }) {
         </Pressable>
         {menu && (
           <ScrollView>
-            {getCategories()}
+            {posts.map((post) => (
+              <Pressable
+                key={post.id}
+                onPress={async () => {
+                  if (activeFilters.category) {
+                    setActiveFilters({ ...activeFilters, category: false });
+                    postApi.getAllPosts();
+                  } else {
+                    setActiveFilters({ ...activeFilters, category: true });
+                    dispatch(filterCategory(`${post.category}`));
+                  }
+                }}
+              >
+                <Text>{post.category}</Text>
+              </Pressable>
+            ))}
           </ScrollView>
         )}
         <Pressable
