@@ -13,7 +13,7 @@ import { AntDesign } from '@expo/vector-icons';
 
 function TagsModal(props) {
   const [currentTag, setCurrentTag] = useState('');
-  const [tags, setTags] = useState(['car', 'tree', 'dog']);
+  const [tags, setTags] = useState([]);
 
   const handleTag = (input) => {
     setCurrentTag(input);

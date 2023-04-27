@@ -1,18 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import {
-  Button,
-  KeyboardAvoidingView,
-  Modal,
-  Pressable,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
+import React, { useState } from 'react';
+import { KeyboardAvoidingView, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
 import { Link } from 'expo-router';
+import { useSelector } from 'react-redux';
 
+import makePostAPI from '../../api';
 import CategoryModal from './categoryModal.js';
 import LinksModal from './linksModal.js';
 import SuccessModal from './successModal.js';
@@ -26,6 +19,7 @@ function PostMessage() {
   const [category, setCategory] = useState('');
   const [links, setLinks] = useState([]);
   const [postObj, setPostObj] = useState({});
+  const uid = useSelector((store) => store.currentUser.uid);
 
   const handleInput = (input, field) => {
     if (field === 'title') {
@@ -48,7 +42,7 @@ function PostMessage() {
   const buildPostObject = () => {
     const newPost = {};
     // TODO: get user's unique id to put here.
-    newPost.uid = 'fakety fake';
+    newPost.uid = uid;
     newPost.timestamp = Date.now();
     newPost.title = title || '';
     newPost.text = text || '';
@@ -57,6 +51,11 @@ function PostMessage() {
     newPost.links = links || [];
 
     setPostObj(newPost);
+  };
+
+  const sendPost = () => {
+    buildPostObject();
+    makePostAPI.postThis(postObj);
   };
 
   return (
@@ -140,7 +139,9 @@ function PostMessage() {
       {showView === 'links' ? (
         <LinksModal updateLinks={updateLinks} setShowView={setShowView} />
       ) : null}
-      {showView === 'success' ? <SuccessModal setShowView={setShowView} postObj={postObj} /> : null}
+      {showView === 'success' ? (
+        <SuccessModal setShowView={setShowView} postObj={postObj} sendPost={sendPost} />
+      ) : null}
     </KeyboardAvoidingView>
   );
 }

@@ -46,7 +46,7 @@ function SuccessModal(props) {
       <Pressable
         title="Write another post"
         onPress={() => {
-          onWriteAnotherPost();
+          props.sendPost();
         }}
         style={styles.anotherButton}
       >
