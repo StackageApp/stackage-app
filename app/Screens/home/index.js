@@ -8,8 +8,12 @@ import Filters from './Filters';
 import HomeFeed from './HomeFeed';
 
 function HomePage() {
-  // useSelector to return state goes to Store -> reducer method -> data
   const posts = useSelector((store) => store.homeFeed.posts);
+  console.log(posts);
+
+  function getCategories() {
+    // for ()
+  }
 
   useEffect(() => {
     postApi.getAllPosts();
@@ -17,7 +21,7 @@ function HomePage() {
 
   return (
     <View>
-      <Filters />
+      <Filters posts={posts}/>
       <HomeFeed posts={posts} />
     </View>
   );

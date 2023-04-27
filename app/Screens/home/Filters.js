@@ -3,11 +3,12 @@ import { Pressable, ScrollView, Text, View } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
 import { useDispatch } from 'react-redux';
+import { postApi } from "../../api"
 
 import styles from '../../../sharedStyles';
-import { filterCategory, filterHot, filterTop, newPosts } from '../../Redux/Slices/homeSlice';
+import { filterCategory, filterHot, filterTop } from '../../Redux/Slices/homeSlice';
 
-function Filters() {
+function Filters({ posts }) {
   const dispatch = useDispatch();
   const [activeFilters, setActiveFilters] = useState({
     category: false,
@@ -15,6 +16,24 @@ function Filters() {
     hot: false,
   });
   const [menu, setMenu] = useState(false);
+
+  function getCategories() {
+    return posts.map((post) => (
+        <Pressable key={post.id}
+              onPress={async () => {
+                if (activeFilters.category) {
+                  setActiveFilters({ ...activeFilters, category: false });
+                  postApi.getAllPosts();
+                } else {
+                  setActiveFilters({ ...activeFilters, category: true });
+                  dispatch(filterCategory(`${post.category}`));
+                }
+              }}
+            >
+              <Text>{post.category}</Text>
+            </Pressable>
+      ))
+  }
 
   return (
     <View>
@@ -32,57 +51,7 @@ function Filters() {
         </Pressable>
         {menu && (
           <ScrollView>
-            <Pressable
-              onPress={async () => {
-                if (activeFilters.category) {
-                  setActiveFilters({ ...activeFilters, category: false });
-                  // remove filter
-                  const previousPosts = await JSON.parse(
-                    window.sessionStorage.getItem('stackageHomeFeed')
-                  );
-                  dispatch(newPosts(previousPosts));
-                } else {
-                  setActiveFilters({ ...activeFilters, category: true });
-                  dispatch(filterCategory('Virtual Reality'));
-                }
-              }}
-            >
-              <Text>Virtual Reality</Text>
-            </Pressable>
-            <Pressable
-              onPress={async () => {
-                if (activeFilters.category) {
-                  setActiveFilters({ ...activeFilters, category: false });
-                  // remove filter
-                  const previousMessages = await JSON.parse(
-                    window.sessionStorage.getItem('stackageHomeFeed')
-                  );
-                  dispatch(newPosts(previousMessages));
-                } else {
-                  setActiveFilters({ ...activeFilters, category: true });
-                  dispatch(filterCategory('Machine Learning'));
-                }
-              }}
-            >
-              <Text>Machine Learning</Text>
-            </Pressable>
-            <Pressable
-              onPress={async () => {
-                if (activeFilters.category) {
-                  setActiveFilters({ ...activeFilters, category: false });
-                  // remove filter
-                  const previousPosts = await JSON.parse(
-                    window.sessionStorage.getItem('stackageHomeFeed')
-                  );
-                  dispatch(newPosts(previousPosts));
-                } else {
-                  setActiveFilters({ ...activeFilters, category: true });
-                  dispatch(filterCategory('Mobile Development'));
-                }
-              }}
-            >
-              <Text>Mobile Development</Text>
-            </Pressable>
+            {getCategories()}
           </ScrollView>
         )}
         <Pressable
@@ -90,10 +59,7 @@ function Filters() {
             if (activeFilters.top) {
               setActiveFilters({ ...activeFilters, top: false });
               // remove filter
-              const previousPosts = await JSON.parse(
-                window.sessionStorage.getItem('stackageHomeFeed')
-              );
-              dispatch(newPosts(previousPosts));
+              postApi.getAllPosts();
             } else {
               setActiveFilters({ ...activeFilters, top: true });
               dispatch(filterTop(5));
