@@ -1,5 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { dummyFeed } from '../../Utils/mockPosts';
+
+const posts = dummyFeed;
+
 const profile = {
   email: 'kyleastevens3@gmail.com',
   location: 'Seattle, WA',
@@ -11,10 +15,11 @@ const profileSlice = createSlice({
   name: 'profileInfo',
   initialState: {
     profile,
+    posts,
   },
   reducers: {
-    returnTwo: (state, action) => {
-      state.profile.name = action.payload;
+    newProfile: (state, action) => {
+      state.profile = action.payload;
       return state;
     }
   }
@@ -22,6 +27,6 @@ const profileSlice = createSlice({
 
 const { actions, reducer } = profileSlice;
 
-export const { returnTwo } = actions;
+export const { newProfile } = actions;
 
 export default reducer;
