@@ -5,7 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useDispatch } from 'react-redux';
 
 import styles from '../../../sharedStyles';
-import { filterCategory, filterHot, filterTop, newMessages } from '../../Redux/Slices/homeSlice';
+import { filterCategory, filterHot, filterTop, newPosts } from '../../Redux/Slices/homeSlice';
 
 function Filters() {
   const dispatch = useDispatch();
@@ -37,10 +37,10 @@ function Filters() {
                 if (activeFilters.category) {
                   setActiveFilters({ ...activeFilters, category: false });
                   // remove filter
-                  const previousMessages = await JSON.parse(
+                  const previousPosts = await JSON.parse(
                     window.sessionStorage.getItem('stackageHomeFeed')
                   );
-                  dispatch(newMessages(previousMessages));
+                  dispatch(newPosts(previousPosts));
                 } else {
                   setActiveFilters({ ...activeFilters, category: true });
                   dispatch(filterCategory('Virtual Reality'));
@@ -57,7 +57,7 @@ function Filters() {
                   const previousMessages = await JSON.parse(
                     window.sessionStorage.getItem('stackageHomeFeed')
                   );
-                  dispatch(newMessages(previousMessages));
+                  dispatch(newPosts(previousMessages));
                 } else {
                   setActiveFilters({ ...activeFilters, category: true });
                   dispatch(filterCategory('Machine Learning'));
@@ -71,10 +71,10 @@ function Filters() {
                 if (activeFilters.category) {
                   setActiveFilters({ ...activeFilters, category: false });
                   // remove filter
-                  const previousMessages = await JSON.parse(
+                  const previousPosts = await JSON.parse(
                     window.sessionStorage.getItem('stackageHomeFeed')
                   );
-                  dispatch(newMessages(previousMessages));
+                  dispatch(newPosts(previousPosts));
                 } else {
                   setActiveFilters({ ...activeFilters, category: true });
                   dispatch(filterCategory('Mobile Development'));
@@ -90,10 +90,10 @@ function Filters() {
             if (activeFilters.top) {
               setActiveFilters({ ...activeFilters, top: false });
               // remove filter
-              const previousMessages = await JSON.parse(
+              const previousPosts = await JSON.parse(
                 window.sessionStorage.getItem('stackageHomeFeed')
               );
-              dispatch(newMessages(previousMessages));
+              dispatch(newPosts(previousPosts));
             } else {
               setActiveFilters({ ...activeFilters, top: true });
               dispatch(filterTop(5));
@@ -105,15 +105,15 @@ function Filters() {
         {/* <Pressable>
           <Text>Top Weekly </Text>
         </Pressable> */}
-        <Pressable
+        {/* <Pressable
           onPress={async () => {
             if (activeFilters.hot) {
               setActiveFilters({ ...activeFilters, hot: false });
               // remove filter
-              const previousMessages = await JSON.parse(
+              const previousPosts = await JSON.parse(
                 window.sessionStorage.getItem('stackageHomeFeed')
               );
-              dispatch(newMessages(previousMessages));
+              dispatch(newPosts(previousPosts));
             } else {
               setActiveFilters({ ...activeFilters, hot: true });
               dispatch(filterHot('2023.04.24'));
@@ -121,7 +121,7 @@ function Filters() {
           }}
         >
           <Text>Hot </Text>
-        </Pressable>
+        </Pressable> */}
       </ScrollView>
     </View>
   );
