@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { Button, Text, View } from 'react-native';
+import { useSelector } from 'react-redux';
+import { postApi } from '../../api'
 
 // DISPATCH TO CHANGE STATE, SELECTOR TO GET STATE
-import { useSelector } from 'react-redux';
 
 import styles from '../../../sharedStyles';
 // IMPORT REDUCER METHODS TO UPDATE STATE
