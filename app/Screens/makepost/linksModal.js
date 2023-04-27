@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 import { AntDesign } from '@expo/vector-icons';
+import RNUrlPreview from 'react-native-url-preview';
 
 function LinksModal(props) {
   const [currentLink, setCurrentLink] = useState('');
@@ -81,6 +82,7 @@ function LinksModal(props) {
           <Text style={styles.doneButtonText}>Done</Text>
         </Pressable>
       </View>
+      <RNUrlPreview text="any text to be parsed , https://www.youtube.com/watch?v=Kmiw4FYTg2U" />
     </KeyboardAvoidingView>
   );
 }

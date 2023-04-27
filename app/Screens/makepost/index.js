@@ -12,17 +12,14 @@ import {
 
 import { Ionicons } from '@expo/vector-icons';
 import { Link } from 'expo-router';
-import moment from 'moment';
 
 import CategoryModal from './categoryModal.js';
 import LinksModal from './linksModal.js';
 import SuccessModal from './successModal.js';
 import TagsModal from './tagsModal.js';
 
-moment().format();
-
 function PostMessage() {
-  const [showView, setShowView] = useState('tags');
+  const [showView, setShowView] = useState('main');
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
   const [tags, setTags] = useState([]);
