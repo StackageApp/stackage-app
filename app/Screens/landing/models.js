@@ -11,8 +11,6 @@ update the store or do some other action
 
 const models = {
   createNewUser: (uid, user) => {
-    // console.log('models userInfo: ', user);
-    // console.log('models uid: ', uid);
     axios
       .post(
         `http://127.0.0.1:3000/users/${uid}`,
@@ -24,7 +22,6 @@ const models = {
         }
       )
       .then(() => {
-        // console.log(response.status);
         models.getUserInfo(uid);
       })
       .catch((err) => {
@@ -33,15 +30,11 @@ const models = {
   },
 
   getUserInfo: (uid) => {
-    // console.log('models sign in', uid);
     axios
       .get(`http://127.0.0.1:3000/users/${uid}`)
       .then((response) => {
-        // console.log('the response from our server: ', response);
-        // console.log('data', response.data);
         response.data.isGuest = false;
         response.data.uid = uid;
-        // console.log('response', response.data);
         store.dispatch(newUpdateCurrentUser(response.data));
       })
       .catch((err) => {

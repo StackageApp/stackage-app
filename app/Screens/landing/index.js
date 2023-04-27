@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {
+  Alert,
   Image,
   Keyboard,
   KeyboardAvoidingView,
@@ -10,7 +11,7 @@ import {
   View,
 } from 'react-native';
 
-import { Link } from 'expo-router';
+import { useRouter } from 'expo-router';
 
 import logo from '../../../assets/stackageLogo2.png';
 import styles from '../../../sharedStyles';
@@ -18,15 +19,32 @@ import CreateAccount from './CreateAccount';
 import controllers from './controllers';
 
 export default function LandingPage() {
+  const router = useRouter();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
 
-  const signIn = (e) => {
-    e.preventDefault();
+  const signIn = () => {
+    const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (password.length < 6) {
+      Alert.alert('Password too short', 'must be longer than 6 characters', [
+        { text: 'OK', onPress: () => console.log('cancel'), style: 'cancel' },
+      ]);
+      return;
+    }
+
+    if (!email.match(regexEmail)) {
+      Alert.alert('Must be a valid email', '', [
+        { text: 'OK', onPress: () => console.log('cancel'), style: 'cancel' },
+      ]);
+      return;
+    }
+
+    controllers.signIn(email, password);
+    router.push('../../Navigation/HomeFeed');
     setEmail('');
     setPassword('');
-    controllers.signIn(email, password);
   };
 
   const handleInput = (input, field) => {
@@ -77,11 +95,17 @@ export default function LandingPage() {
             allowFontScaling
             enablesReturnKeyAutomatically
           />
-          <Link href="../../Navigation/HomeFeed" style={styles.button} id="createAccount">
-            <Text style={styles.buttonText} onPress={signIn}>
+          <View style={styles.button}>
+            <Text
+              style={styles.buttonText}
+              onPress={() => {
+                signIn();
+              }}
+            >
               Log In
             </Text>
-          </Link>
+          </View>
+
           <View style={localStyles.bottomText}>
             <Text
               id="createAccount"
@@ -93,20 +117,16 @@ export default function LandingPage() {
             >
               Create Account
             </Text>
-            <Link
-              href="../../Navigation/HomeFeed"
+
+            <Text
               style={localStyles.guest}
               onPress={() => {
                 controllers.continueAsGuest();
+                router.push('../../Navigation/HomeFeed');
               }}
             >
-              <Text
-              // id="guestContinue"
-              // style={localStyles.guest}
-              >
-                Continue as Guest
-              </Text>
-            </Link>
+              Continue as Guest
+            </Text>
           </View>
         </View>
       </TouchableWithoutFeedback>

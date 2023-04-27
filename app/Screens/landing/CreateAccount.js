@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {
+  Alert,
   Keyboard,
   KeyboardAvoidingView,
   Modal,
@@ -11,12 +12,13 @@ import {
   View,
 } from 'react-native';
 
-import { Link } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 
 import sharedStyles from '../../../sharedStyles';
 import controllers from './controllers';
 
 export default function CreateAccount({ visible, showModal }) {
+  const router = useRouter();
   const [name, setname] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -62,6 +64,29 @@ export default function CreateAccount({ visible, showModal }) {
   };
 
   const createNewUser = () => {
+    const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (password.length < 6) {
+      Alert.alert('Password too short', 'must be longer than 6 characters', [
+        { text: 'OK', onPress: () => console.log('cancel'), style: 'cancel' },
+      ]);
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      Alert.alert('Passwords do not match', '', [
+        { text: 'OK', onPress: () => console.log('cancel'), style: 'cancel' },
+      ]);
+      return;
+    }
+
+    if (!email.match(regexEmail)) {
+      Alert.alert('Must be a valid email', '', [
+        { text: 'OK', onPress: () => console.log('cancel'), style: 'cancel' },
+      ]);
+      return;
+    }
+    controllers.createNewUser(name, email, location, occupation, password);
+
     setname('');
     setPassword('');
     setEmail('');
@@ -69,8 +94,6 @@ export default function CreateAccount({ visible, showModal }) {
     setConfirmPassword('');
     setLocation('');
     setNotSubmitted(!notSubmitted);
-
-    controllers.createNewUser(name, email, location, occupation, password);
   };
 
   return (
@@ -93,7 +116,7 @@ export default function CreateAccount({ visible, showModal }) {
                 <View>
                   <Text style={localStyles.signUp}>Sign Up</Text>
                   <View style={localStyles.fieldLabel}>
-                    <Text style={localStyles.field}>name</Text>
+                    <Text style={localStyles.field}>Name</Text>
                     <Text style={localStyles.star}>*</Text>
                   </View>
                   <TextInput
@@ -200,11 +223,18 @@ export default function CreateAccount({ visible, showModal }) {
                   />
                 </View>
                 <View style={{ margin: 10 }}>
-                  <TouchableOpacity style={sharedStyles.button} onPress={createNewUser}>
-                    <Text style={sharedStyles.buttonText} onPress={createNewUser}>
+                  {/* <TouchableOpacity style={sharedStyles.button}> */}
+                  <View style={sharedStyles.button}>
+                    <Text
+                      style={sharedStyles.buttonText}
+                      onPress={() => {
+                        createNewUser();
+                      }}
+                    >
                       Create Account
                     </Text>
-                  </TouchableOpacity>
+                    {/* </TouchableOpacity> */}
+                  </View>
                 </View>
                 <TouchableOpacity
                   style={localStyles.tapCancel}
@@ -221,14 +251,19 @@ export default function CreateAccount({ visible, showModal }) {
           ) : (
             <View style={localStyles.modalView}>
               <Text style={localStyles.confirmationText}>
-                Your account has been created. Redirecting to home page shortly.
+                Your account has been successfully created.
               </Text>
+              <View style={sharedStyles.button}>
+                <Link href="../../Navigation/HomeFeed">
+                  <Text style={sharedStyles.buttonText}>Continue</Text>
+                </Link>
+              </View>
               <TouchableOpacity
                 style={localStyles.tapCancel}
                 onPress={() => {
                   Keyboard.dismiss();
                   resetValues();
-                  setSubmitted(!submitted);
+                  setNotSubmitted(!notSubmitted);
                 }}
               >
                 <Text style={localStyles.cancel}>Cancel</Text>
