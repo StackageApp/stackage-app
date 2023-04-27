@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 
+import { Ionicons } from '@expo/vector-icons';
 import { useDispatch } from 'react-redux';
 
 import styles from '../../../sharedStyles';
