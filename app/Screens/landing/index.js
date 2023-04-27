@@ -1,35 +1,55 @@
 import React, { useState } from 'react';
 import {
+  Alert,
   Image,
   Keyboard,
   KeyboardAvoidingView,
   StyleSheet,
   Text,
   TextInput,
-  TouchableHighlight,
-  TouchableOpacity,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
 
+import { useRouter } from 'expo-router';
+
 import logo from '../../../assets/stackageLogo2.png';
 import styles from '../../../sharedStyles';
 import CreateAccount from './CreateAccount';
+import controllers from './controllers';
 
-export default function ExComponents() {
-  const [username, setUsername] = useState('');
+export default function LandingPage() {
+  const router = useRouter();
+
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
 
-  const onPress = (e) => {
-    e.preventDefault();
-    setUsername('');
+  const signIn = () => {
+    const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (password.length < 6) {
+      Alert.alert('Password too short', 'must be longer than 6 characters', [
+        { text: 'OK', onPress: () => console.log('cancel'), style: 'cancel' },
+      ]);
+      return;
+    }
+
+    if (!email.match(regexEmail)) {
+      Alert.alert('Must be a valid email', '', [
+        { text: 'OK', onPress: () => console.log('cancel'), style: 'cancel' },
+      ]);
+      return;
+    }
+
+    controllers.signIn(email, password);
+    router.push('../../Navigation/HomeFeed');
+    setEmail('');
     setPassword('');
   };
 
   const handleInput = (input, field) => {
-    if (field === 'username') {
-      setUsername(input);
+    if (field === 'email') {
+      setEmail(input);
     }
 
     if (field === 'password') {
@@ -46,22 +66,19 @@ export default function ExComponents() {
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <View style={localStyles.container}>
           <CreateAccount visible={modalVisible} showModal={showModal} />
-          {/* logo was imported from assets folder at the top */}
           <Image style={localStyles.logo} source={logo} />
-          {/* Input field example */}
           <TextInput
-            id="username"
+            id="email"
             editable
             numberOfLines={1}
             maxLength={20}
             onChangeText={(input) => {
-              handleInput(input, 'username');
+              handleInput(input, 'email');
             }}
-            value={username}
+            value={email}
             style={styles.loginField}
-            placeholder="Username..."
+            placeholder="Email..."
             allowFontScaling
-            enablesReturnKeyAutomatically
           />
           <TextInput
             id="password"
@@ -75,35 +92,35 @@ export default function ExComponents() {
             style={styles.loginField}
             placeholder="Password..."
             allowFontScaling
-            enablesReturnKeyAutomatically
+            secureTextEntry
           />
+          <View style={styles.button}>
+            <Text style={styles.buttonText} onPress={signIn}>
+              Log In
+            </Text>
+          </View>
 
-          {/* TouchableOpacity if for a button that gets lighter with you press it
-      It is the same as Pressable, but is a build in react component */}
-          <TouchableOpacity style={styles.button} onPress={onPress}>
-            <Text style={styles.buttonText}>Log In</Text>
-          </TouchableOpacity>
-
-          {/* View can be treated like a div */}
           <View style={localStyles.bottomText}>
-            {/* <Text>Don&#39;t Have An Account?</Text> */}
-            <TouchableHighlight>
-              <Text
-                id="createAccount"
-                style={localStyles.clickHere}
-                onPress={() => {
-                  Keyboard.dismiss();
-                  showModal();
-                }}
-              >
-                Create Account
-              </Text>
-            </TouchableHighlight>
-            <TouchableHighlight>
-              <Text id="guestContinue" style={localStyles.guest}>
-                Continue as Guest
-              </Text>
-            </TouchableHighlight>
+            <Text
+              id="createAccount"
+              style={localStyles.clickHere}
+              onPress={() => {
+                Keyboard.dismiss();
+                showModal();
+              }}
+            >
+              Create Account
+            </Text>
+
+            <Text
+              style={localStyles.guest}
+              onPress={() => {
+                controllers.continueAsGuest();
+                router.push('../../Navigation/HomeFeed');
+              }}
+            >
+              Continue as Guest
+            </Text>
           </View>
         </View>
       </TouchableWithoutFeedback>
