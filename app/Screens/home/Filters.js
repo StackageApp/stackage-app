@@ -68,26 +68,20 @@ function Filters({ posts }) {
         >
           <Text>Top </Text>
         </Pressable>
-        {/* <Pressable>
-          <Text>Top Weekly </Text>
-        </Pressable> */}
-        {/* <Pressable
+        <Pressable
           onPress={async () => {
             if (activeFilters.hot) {
               setActiveFilters({ ...activeFilters, hot: false });
               // remove filter
-              const previousPosts = await JSON.parse(
-                window.sessionStorage.getItem('stackageHomeFeed')
-              );
-              dispatch(newPosts(previousPosts));
+              postApi.getAllPosts();
             } else {
               setActiveFilters({ ...activeFilters, hot: true });
-              dispatch(filterHot('2023.04.24'));
+              dispatch(filterHot(Date.now()));
             }
           }}
         >
           <Text>Hot </Text>
-        </Pressable> */}
+        </Pressable>
       </ScrollView>
     </View>
   );

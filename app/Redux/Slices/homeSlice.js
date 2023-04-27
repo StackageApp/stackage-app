@@ -22,25 +22,16 @@ const homeSlice = createSlice({
         state.posts = state.posts.filter((post) => post.likes > action.payload);
         return state;
     },
-    // filterHot: (state, action) => {
-    //   const currentTime = Math.floor(new Date().getTime() / 1000);
-    //   const dayBefore = currentTime - 86400;
-
-    //   function getTimeOfPost(timestamp) {
-    //     const time = Math.floor(new Date(timestamp).getTime() / 1000);
-    //     return time;
-    //   }
-
-    //   if (state.posts) {
-    //     state.posts = state.posts.filter((post) => {
-    //       const timeOfPost = getTimeOfPost(post.timestamp);
-    //       if (post.likes > 5 && dayBefore - timeOfPost < 86400) {
-    //         return post;
-    //       }
-    //     });
-    //     return state;
-    //   }
-    // },
+    filterHot: (state, action) => {
+      const currentTime = action.payload / 1000;
+      state.posts = state.posts.filter((post) => {
+        const timeOfPost = post.timestamp / 1000;
+        if (post.likes > 5 && currentTime - timeOfPost < 86400) {
+          return post;
+        }
+      });
+      return state;
+    },
   },
 });
 

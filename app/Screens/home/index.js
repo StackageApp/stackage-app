@@ -9,11 +9,6 @@ import HomeFeed from './HomeFeed';
 
 function HomePage() {
   const posts = useSelector((store) => store.homeFeed.posts);
-  console.log(posts);
-
-  function getCategories() {
-    // for ()
-  }
 
   useEffect(() => {
     postApi.getAllPosts();
