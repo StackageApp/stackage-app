@@ -79,7 +79,6 @@ export default function LandingPage() {
             style={styles.loginField}
             placeholder="Email..."
             allowFontScaling
-            enablesReturnKeyAutomatically
           />
           <TextInput
             id="password"
@@ -93,15 +92,10 @@ export default function LandingPage() {
             style={styles.loginField}
             placeholder="Password..."
             allowFontScaling
-            enablesReturnKeyAutomatically
+            secureTextEntry
           />
           <View style={styles.button}>
-            <Text
-              style={styles.buttonText}
-              onPress={() => {
-                signIn();
-              }}
-            >
+            <Text style={styles.buttonText} onPress={signIn}>
               Log In
             </Text>
           </View>

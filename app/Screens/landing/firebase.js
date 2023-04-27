@@ -1,7 +1,12 @@
 // Import the functions you need from the SDKs you need
 // import { getAnalytics } from 'firebase/analytics';
 import { initializeApp } from 'firebase/app';
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
+} from 'firebase/auth';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -29,3 +34,8 @@ export const signInFB = (email, password) =>
   signInWithEmailAndPassword(auth, email, password).catch((err) =>
     console.log('could not sign in', err)
   );
+
+export const signOutFB = () =>
+  signOut(auth).catch((err) => {
+    console.log('could not sign out', err);
+  });

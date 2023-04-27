@@ -12,7 +12,8 @@ import {
   View,
 } from 'react-native';
 
-import { Link, useRouter } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 
 import sharedStyles from '../../../sharedStyles';
 import controllers from './controllers';
@@ -86,7 +87,6 @@ export default function CreateAccount({ visible, showModal }) {
       return;
     }
     controllers.createNewUser(name, email, location, occupation, password);
-
     setname('');
     setPassword('');
     setEmail('');
@@ -94,6 +94,10 @@ export default function CreateAccount({ visible, showModal }) {
     setConfirmPassword('');
     setLocation('');
     setNotSubmitted(!notSubmitted);
+
+    setTimeout(() => {
+      router.push('../../Navigation/HomeFeed');
+    }, 2500);
   };
 
   return (
@@ -148,6 +152,7 @@ export default function CreateAccount({ visible, showModal }) {
                     value={password}
                     style={sharedStyles.signUpField}
                     allowFontScaling
+                    secureTextEntry
                   />
                 </View>
                 <View>
@@ -166,6 +171,7 @@ export default function CreateAccount({ visible, showModal }) {
                     value={confirmPassword}
                     style={sharedStyles.signUpField}
                     allowFontScaling
+                    secureTextEntry
                   />
                 </View>
                 <View>
@@ -223,7 +229,6 @@ export default function CreateAccount({ visible, showModal }) {
                   />
                 </View>
                 <View style={{ margin: 10 }}>
-                  {/* <TouchableOpacity style={sharedStyles.button}> */}
                   <View style={sharedStyles.button}>
                     <Text
                       style={sharedStyles.buttonText}
@@ -233,7 +238,6 @@ export default function CreateAccount({ visible, showModal }) {
                     >
                       Create Account
                     </Text>
-                    {/* </TouchableOpacity> */}
                   </View>
                 </View>
                 <TouchableOpacity
@@ -251,23 +255,9 @@ export default function CreateAccount({ visible, showModal }) {
           ) : (
             <View style={localStyles.modalView}>
               <Text style={localStyles.confirmationText}>
-                Your account has been successfully created.
+                Welcome to Stackage! Moving to home feed shortly.
               </Text>
-              <View style={sharedStyles.button}>
-                <Link href="../../Navigation/HomeFeed">
-                  <Text style={sharedStyles.buttonText}>Continue</Text>
-                </Link>
-              </View>
-              <TouchableOpacity
-                style={localStyles.tapCancel}
-                onPress={() => {
-                  Keyboard.dismiss();
-                  resetValues();
-                  setNotSubmitted(!notSubmitted);
-                }}
-              >
-                <Text style={localStyles.cancel}>Cancel</Text>
-              </TouchableOpacity>
+              <Ionicons name="checkmark-circle-outline" size={100} color="#54bab9" />
             </View>
           )}
         </Modal>
@@ -289,7 +279,7 @@ const localStyles = StyleSheet.create({
     color: 'red',
   },
   confirmationText: {
-    width: '80%',
+    width: '90%',
     textAlign: 'center',
     fontSize: 30,
   },
