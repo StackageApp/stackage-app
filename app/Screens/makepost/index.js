@@ -78,6 +78,7 @@ function PostMessage() {
             placeholder="Title"
             style={styles.input}
             KeyboardType="default"
+            clearButtonMode="always"
           />
           <TextInput
             id="text"
@@ -92,6 +93,7 @@ function PostMessage() {
             placeholder="Write your post here."
             style={styles.longInput}
             KeyboardType="default"
+            clearButtonMode="always"
           />
           <View style={styles.evenRow}>
             <Ionicons
@@ -131,12 +133,14 @@ function PostMessage() {
           </View>
         </View>
       ) : null}
-      {showView === 'tags' ? <TagsModal updateTags={updateTags} setShowView={setShowView} /> : null}
+      {showView === 'tags' ? (
+        <TagsModal updateTags={updateTags} setShowView={setShowView} tags={tags} />
+      ) : null}
       {showView === 'category' ? (
         <CategoryModal setShowView={setShowView} setCategory={setCategory} />
       ) : null}
       {showView === 'links' ? (
-        <LinksModal updateLinks={updateLinks} setShowView={setShowView} />
+        <LinksModal updateLinks={updateLinks} setShowView={setShowView} links={links} />
       ) : null}
       {showView === 'success' ? (
         <SuccessModal setShowView={setShowView} postObj={postObj} sendPost={sendPost} />

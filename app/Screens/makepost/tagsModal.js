@@ -13,7 +13,7 @@ import { AntDesign } from '@expo/vector-icons';
 
 function TagsModal(props) {
   const [currentTag, setCurrentTag] = useState('');
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState(props.tags);
 
   const handleTag = (input) => {
     setCurrentTag(input);
@@ -24,6 +24,7 @@ function TagsModal(props) {
       const newTags = tags.slice();
       newTags.push(currentTag);
       setTags(newTags);
+      setCurrentTag('');
     }
   };
 
@@ -44,10 +45,14 @@ function TagsModal(props) {
           color="#54bab9"
         />
       </View>
-      <Text>Add your tags here.</Text>
-      {tags.map((tag) => (
-        <Text>{tag}</Text>
-      ))}
+      <View style={styles.centerEverything}>
+        <Text style={styles.instructions}>Add your tags here</Text>
+        <View>
+          {tags.map((tag) => (
+            <Text>{tag}</Text>
+          ))}
+        </View>
+      </View>
       <TextInput
         onChangeText={(input) => {
           handleTag(input);
@@ -62,7 +67,7 @@ function TagsModal(props) {
           <Pressable>
             <AntDesign
               name="pluscircle"
-              size={24}
+              size={45}
               color="#54bab9"
               onPress={() => {
                 onAddTag();
@@ -120,6 +125,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     paddingTop: 10,
+  },
+  centerEverything: {
+    alignItems: 'center',
+  },
+  instructions: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    margin: 30,
   },
 });
 

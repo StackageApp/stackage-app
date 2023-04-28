@@ -1,10 +1,22 @@
 import React from 'react';
 import { Button, KeyboardAvoidingView, Pressable, StyleSheet, Text, View } from 'react-native';
 
+// import { useRouter } from 'expo-router';
+
+// const router = useRouter();
+
 function SuccessModal(props) {
   const onReturnToEdit = () => {
     props.setShowView('main');
   };
+
+  const onSubmit = () => {
+    props.sendPost();
+    // TODO - Either fix or replace this.
+    // router.push('../../Navigation/HomeFeed');
+    props.setShowView('main');
+  };
+
   return (
     <KeyboardAvoidingView>
       <View style={styles.fixToRight}>
@@ -35,13 +47,7 @@ function SuccessModal(props) {
           <Text style={styles.buttonText}>Edit</Text>
         </Pressable>
 
-        <Pressable
-          title="Submit"
-          onPress={() => {
-            props.sendPost();
-          }}
-          style={styles.submitButton}
-        >
+        <Pressable title="Submit" onPress={onSubmit} style={styles.submitButton}>
           <Text style={styles.buttonText}>Submit</Text>
         </Pressable>
       </View>
