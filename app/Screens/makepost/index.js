@@ -5,7 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Link } from 'expo-router';
 import { useSelector } from 'react-redux';
 
-import makePostAPI from '../../api';
+import { makePostAPI } from '../../api';
 import AfterSuccessModal from './afterSuccessModal.js';
 import CategoryModal from './categoryModal.js';
 import LinksModal from './linksModal.js';
