@@ -18,7 +18,7 @@ function PostMessage() {
   const [text, setText] = useState('');
   const [tags, setTags] = useState([]);
   const [category, setCategory] = useState('');
-  const [links, setLinks] = useState([]);
+  const [links, setLinks] = useState(['https://apple.com']);
   const [postObj, setPostObj] = useState({
     uid: '',
     timestamp: '',
