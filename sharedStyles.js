@@ -51,11 +51,58 @@ const sharedStyles = StyleSheet.create({
   },
   postContainer: {
     flex: 1,
+    flexDirection: 'column',
     borderBottomWidth: 2,
     borderBottomColor: '#E9DAC1',
   },
   postHeader: {
     flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    paddingTop: 5,
+  },
+  main: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+  },
+  postFooter: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    paddingBottom: 10,
+  },
+  postCategory: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
+    width: '100%',
+    paddingRight: 10,
+    paddingTop: 5,
+  },
+
+  postBody: {
+    gap: 10,
+  },
+  postTitle: {
+    flex: 1,
+    fontSize: 20,
+    fontWeight: 'bold',
+    paddingBottom: 10,
+  },
+  postTags: {
+    flex: 1,
+    flexDirection: 'row',
+    paddingLeft: 10,
+  },
+  postCommentLikes: {
+    flex: 1,
+    flexDirection: 'row',
+    gap: 10,
+    justifyContent: 'flex-end',
+    paddingRight: 10,
   },
 });
 
