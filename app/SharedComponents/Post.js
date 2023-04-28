@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Image, Text, View } from 'react-native';
+import { Image, Pressable, Text, View } from 'react-native';
 
 import styles from '../../sharedStyles';
 import { dummyPost } from '../Utils/mockPosts';
+import { postApi } from '../api';
 
 export default function Post({ postData }) {
-  const [{ title, text, name, category, tags, link, likes, comments }, setPost] =
+  let [{ title, text, name, category, tags, link, likes, comments, id }, setPost] =
     useState(dummyPost);
   const [tagsExist, setTagsExist] = useState(false);
   const [commentsExist, setCommentsExist] = useState(false);
+  const [commentView, setCommentView] = useState(false);
 
   useEffect(() => {
     if (tags) {
@@ -25,24 +27,61 @@ export default function Post({ postData }) {
     }
   }, [postData]);
 
+  function toggleComments() {
+    if (commentView) {
+      setCommentView(false);
+    } else {
+      setCommentView(true);
+    }
+  }
+
   return (
     <View style={styles.postContainer}>
-      <View className="post-header">
-        {/* <Image src={}/> */}
-        <Text>{name}</Text>
-        <Text>{category}</Text>
+      <View className="post-header" style={styles.postHeader}>
+        <View style={styles.postCategory}>
+          <Text>{category}</Text>
+        </View>
+        <View style={styles.main}>
+          {/* <Image src={}/> */}
+          <Text style={{ width: '10%' }}>PFP</Text>
+          <View style={{ width: '85%', gap: 10 }}>
+            <Text>{name} @nameOrEmail</Text>
+            <View className="post-body" style={styles.postBody}>
+              <Text style={styles.postTitle}>{title}</Text>
+              <Text>{text}</Text>
+              <Text>{link}</Text>
+            </View>
+          </View>
+        </View>
       </View>
-      <View className="post-body">
-        <Text>{title}</Text>
-        <Text>{text}</Text>
-        <Text>{link}</Text>
+      <View className="post-footer" style={styles.postFooter}>
+        <View style={styles.postTags}>
+          {tagsExist &&
+            tags.map((tag, i) =>
+              i === tags.length - 1 ? <Text key={i}>{tag}</Text> : <Text key={i}>{tag} | </Text>
+            )}
+        </View>
+        <View style={styles.postCommentLikes}>
+          <Pressable
+            onPress={() => {
+              postApi.incrementLikeBy1(id);
+              setPost({ ...postData, likes: (likes += 1) });
+            }}
+          >
+            <Text>{likes} Likes</Text>
+          </Pressable>
+          <Pressable onPress={() => toggleComments()}>
+            <Text>{commentsExist && comments.length} Comments</Text>
+          </Pressable>
+        </View>
       </View>
-      <View className="post-footer">
-        {tagsExist && tags.map((tag, i) => <Text key={i}>{tag} |</Text>)}
-        <Text>
-          {likes} Likes {commentsExist && comments.length} Comments
-        </Text>
-      </View>
+      {commentView &&
+        comments.map((comment, i) => (
+          <View key={i}>
+            <Text>{comment.author}</Text>
+            <Text>{comment.text}</Text>
+          </View>
+        ))}
     </View>
   );
 }

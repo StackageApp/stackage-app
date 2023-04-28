@@ -1,35 +1,38 @@
 import React from 'react';
-import { StyleSheet, View, Pressable, Text } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
+
 import { Ionicons } from '@expo/vector-icons';
+
+import ProfileFeed from './ProfileFeed';
 // import { Link, useRouter, usePathname } from "expo-router";
 import ProfileInfo from './ProfileInfo';
-import ProfileFeed from './ProfileFeed';
 
 export default function Profile({ navigation }) {
   // const router = useRouter();
   // console.log(usePathname());
   return (
-    <View>
-        <Pressable
-          onPress={() => navigation.navigate('Settings')}
-          >
-            <Text>Settings</Text>
-        </Pressable>
-          {/* <Link href='/Settings' asChild> */}
-          {/* {({ hovered, pressed }) => ( */}
-            {/* <Ionicons style={styles.settingsIcon} name="settings-outline" size={36} /> */}
-          {/* )} */}
+    <View style={styles.container}>
+      {/* <Link href='/Settings' asChild> */}
+      {/* {({ hovered, pressed }) => ( */}
+      {/* <Ionicons style={styles.settingsIcon} name="settings-outline" size={36} /> */}
+      {/* )} */}
       {/* </Link> */}
-      <ProfileInfo />
+      <ProfileInfo navigation={navigation} />
       <ProfileFeed />
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   settingsIcon: {
-    position: 'absolute',
-    right: 0,
-    padding: 10,
+    alignItems: 'end',
+    borderColor: 'blue',
+    borderWidth: 3,
   },
 });
