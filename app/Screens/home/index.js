@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { View } from 'react-native';
+
 import { useSelector } from 'react-redux';
-import { postApi } from '../../api'
 
 import styles from '../../../sharedStyles';
+import { postApi } from '../../api';
 import Filters from './Filters';
 import HomeFeed from './HomeFeed';
 
@@ -15,10 +15,10 @@ function HomePage() {
   }, []);
 
   return (
-    <View>
-      <Filters posts={posts}/>
+    <>
+      <Filters posts={posts} />
       <HomeFeed posts={posts} />
-    </View>
+    </>
   );
 }
 
