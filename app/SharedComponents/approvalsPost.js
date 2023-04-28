@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
+import { LinkPreview } from '@flyerhq/react-native-link-preview';
+import { Link } from 'expo-router';
+
 import { dummyApprovalsPost } from '../Utils/mockApprovalsPosts';
 import { postApi } from '../api';
 
@@ -52,7 +55,9 @@ export default function ApprovalPost({ postData }) {
       <View style={style.textContainer}>
         <Text style={style.text}>{text}</Text>
 
-        <Text style={style.link}>{link}</Text>
+        <LinkPreview text={link} metadataContainerStyle={style.linkPreviewContainer} />
+
+        {/* <Text style={style.link}>{link}</Text> */}
       </View>
       <View style={style.metaContainer}>
         {tagsExist &&
@@ -179,6 +184,11 @@ const style = StyleSheet.create({
     padding: 10,
     borderRadius: 40,
     color: '#9C50B6',
+    fontSize: 10,
+  },
+  linkPreviewContainer: {
+    flex: 1,
+    paddingHorizontal: 24,
     fontSize: 10,
   },
   metaContainer: {
