@@ -1,10 +1,13 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { FlatList, Text, View } from 'react-native';
+
+import Post from '../../SharedComponents/Post';
 
 export default function PostView() {
   return (
-    <View>
-      <Text>Post view</Text>
-    </View>
+    <>
+      <Post />
+      <FlatList />
+    </>
   );
 }

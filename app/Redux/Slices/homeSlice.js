@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { emptyFeed } from '../../Utils/mockPosts';
+import { dummyFeed, emptyFeed } from '../../Utils/mockPosts';
 
-const posts = emptyFeed;
+const posts = dummyFeed;
 
 const homeSlice = createSlice({
   name: 'homeFeed',
@@ -15,12 +15,12 @@ const homeSlice = createSlice({
       return state;
     },
     filterCategory: (state, action) => {
-        state.posts = state.posts.filter((post) => post.category === action.payload);
-        return state;
+      state.posts = state.posts.filter((post) => post.category === action.payload);
+      return state;
     },
     filterTop: (state, action) => {
-        state.posts = state.posts.filter((post) => post.likes > action.payload);
-        return state;
+      state.posts = state.posts.filter((post) => post.likes > action.payload);
+      return state;
     },
     filterHot: (state, action) => {
       const currentTime = action.payload / 1000;

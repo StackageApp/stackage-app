@@ -1,33 +1,53 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Pressable } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
+
+import { useSelector } from 'react-redux';
+
 import Post from '../../SharedComponents/Post';
+import { profileApi } from '../../api';
 
 export default function ProfileInfo() {
   const [tab, setTab] = useState(true);
-  const posts = [1, 2, 3];
+  const uid = useSelector((store) => store.currentUser.uid);
+  const posts = useSelector((store) => store.profileInfo.posts);
+
+  useEffect(() => {
+    profileApi.getProfileFeed(uid);
+  }, []);
 
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.tabs}>
         <Pressable onPress={() => setTab(true)}>
-          <Text style={tab ? styles.selectedTab : null} >Posts</Text>
-        </Pressable>
-        <Pressable onPress={() => setTab(false)}>
-          <Text style={tab ? null : styles.selectedTab} >Saved</Text>
+          <Text style={styles.selectedTab}>Your Posts</Text>
         </Pressable>
       </View>
-      {posts.map((post) => <Post key={post} />)}
+      <FlatList data={posts} renderItem={(post) => <Post postData={post.item} />} />
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    width: '100%',
+    height: '50%',
+  },
   tabs: {
     flexDirection: 'row',
-    justifyContent: 'space-evenly'
+    justifyContent: 'space-evenly',
+    fontSize: 30,
+    borderBottomColor: '#E9DAC1',
+    borderBottomWidth: 2,
   },
   selectedTab: {
     fontWeight: 'bold',
-    textDecorationLine: 'underline'
-  }
+    textDecorationLine: 'underline',
+    paddingBottom: 15,
+    fontSize: 20,
+  },
+  notSelectedTab: {
+    fontSize: 20,
+  },
 });
