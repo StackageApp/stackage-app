@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,13 +10,14 @@ import ApprovalsFeed from './ApprovalsFeed';
 
 function Approvals() {
   const posts = useSelector((store) => store.homeFeed.posts);
+  const [unapprovedPosts, setUnapprovedPosts] = useState(posts);
   // const posts = dummyApprovalsFeed;
   const dispatch = useDispatch();
-  console.log(posts);
-  // useEffect(() => {
-  //   postApi.getAllPosts();
-  //   // dispatch(approvalsPost());
-  // }, []);
+
+  useEffect(() => {
+    postApi.getAllPosts();
+    setUnapprovedPosts(posts.filter((post) => post.isApproved === false));
+  }, []);
 
   return (
     <View>
