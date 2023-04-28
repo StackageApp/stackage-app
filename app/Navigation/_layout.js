@@ -1,15 +1,41 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
+import axios from 'axios';
 import { Tabs } from 'expo-router';
 import { Badge } from 'react-native-elements';
+import { useSelector } from 'react-redux';
 
 export default function () {
-  const [messageCount, setMessageCount] = useState(1);
+  const [messageCount, setMessageCount] = useState(0);
+  // using redux return use Provider wrapper error
+  // const notifications = useSelector((state) => state.currentUser.notifications);
+
+  // these axios calls need to move somewhere else
+  useEffect(() => {
+    axios
+      .get(`http://127.0.0.1:3000/users/vY1hQh5wpwgI1zzaweeooEqyJAi1`)
+      .then((response) => {
+        // set message count to equal number of notifications
+        setMessageCount(response.data.notifications);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const handleBadgePress = () => {
-    setMessageCount(0);
+    // insted of resetting the state, send a put request using axios to users/notifications/reset/:uid
+    axios
+      .patch(`http://127.0.0.1:3000/users/notifications/reset/vY1hQh5wpwgI1zzaweeooEqyJAi1`)
+      .then((response) => {
+        // set message count to equal number of notifications
+        setMessageCount(0);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <Tabs
