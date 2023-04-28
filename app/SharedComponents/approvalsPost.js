@@ -66,8 +66,12 @@ export default function ApprovalPost({ postData }) {
           )}
       </View>
       <View style={style.voteContainer}>
-        <Text>Approve</Text>
-        <Text>Disapprove</Text>
+        <View style={style.vote}>
+          <Text style={style.textVote}>Approve</Text>
+        </View>
+        <View style={style.vote}>
+          <Text style={style.textVote}>Disapprove</Text>
+        </View>
       </View>
     </View>
   );
@@ -76,13 +80,15 @@ export default function ApprovalPost({ postData }) {
 const style = StyleSheet.create({
   postContainer: {
     flex: 1,
-    backgroundColor: 'f7ecde',
+
     marginVertical: 4,
     paddingLeft: 10,
     paddingRight: 0,
     paddingBottom: 10,
     borderTopWidth: 2.5,
-    borderTopColor: '#E9DAC1',
+    borderTopColor: '#e9dac1',
+    borderBottomColor: '#e9dac1',
+    borderBottomWidth: 1.5,
   },
   categoryContainer: {
     flexDirection: 'row',
@@ -91,13 +97,13 @@ const style = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   categoryStyle: {
-    backgroundColor: '#E9DAC1',
+    backgroundColor: '#e9dac1',
     borderBottomLeftRadius: 50,
 
     overflow: 'hidden',
   },
   category: {
-    backgroundColor: '#E9DAC1',
+    backgroundColor: '#e9dac1',
     padding: 2,
     marginLeft: 15,
     marginRight: 5,
@@ -124,9 +130,10 @@ const style = StyleSheet.create({
   postTitle: {
     fontSize: 23,
     fontWeight: 600,
+    color: '#1d1d1f',
   },
   userName: {
-    color: '#9ed2c6',
+    color: '#54bab9',
     fontWeight: 600,
     fontSize: 12,
   },
@@ -135,6 +142,7 @@ const style = StyleSheet.create({
     paddingLeft: 57,
     paddingRight: 15,
     borderRadius: 40,
+    color: '#1d1d1f',
   },
   text: {
     padding: 10,
@@ -148,11 +156,28 @@ const style = StyleSheet.create({
   tags: {
     flexDirection: 'row',
     fontSize: 10,
-    color: '#54bab9',
+    color: '#9ed2c6',
     fontWeight: 600,
   },
   voteContainer: {
     flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 20,
+  },
+  vote: {
+    borderWidth: 1,
+    borderColor: '#e9dac1',
+    paddingHorizontal: 15,
+    paddingVertical: 9,
+
+    borderRadius: 5,
+    marginHorizontal: 5,
+  },
+  textVote: {
+    fontSize: 10,
+    color: '#54bab9',
+
+    fontWeight: 600,
   },
 });
 
