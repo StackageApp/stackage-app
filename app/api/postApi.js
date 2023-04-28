@@ -6,7 +6,7 @@ import store from '../Redux/Store';
 const postApi = {
   getAllPosts: () => {
     axios
-      .get('http://localhost:3000/posts')
+      .get('http://18.219.151.178:3000/posts')
       .then((res) => {
         store.dispatch(newPosts(res.data));
       })
@@ -14,9 +14,9 @@ const postApi = {
   },
   incrementLikeBy1: (postid) => {
     axios
-      .patch(`http://localhost:3000/posts/${postid}`)
+      .patch(`http://18.219.151.178:3000/posts/like/${postid}`)
       .then(() => {
-        axios.get('http://localhost:3000/posts');
+        axios.get('http://18.219.151.178:3000/posts');
       })
       .then((res) => {
         store.dispatch(newPosts(res.data));
