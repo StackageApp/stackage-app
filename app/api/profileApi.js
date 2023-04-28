@@ -7,7 +7,6 @@ const profileApi = {
   getProfileFeed: (uid) => {
     axios.get(`http://127.0.0.1:3000/posts?uid=${uid}`)
       .then((response) => {
-        console.log('res:', response.data)
         store.dispatch(newPostFeed(response.data))
       })
       .catch((err) => console.log(err))

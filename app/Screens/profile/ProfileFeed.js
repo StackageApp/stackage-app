@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, FlatList, View, Pressable } from 'react-native';
 import { useSelector } from 'react-redux';
 import Post from '../../SharedComponents/Post';
-import profileApi from '../../api';
+import { profileApi } from '../../api';
 
 export default function ProfileInfo() {
   const [tab, setTab] = useState(true);
@@ -10,10 +10,9 @@ export default function ProfileInfo() {
   const posts = useSelector(store => store.profileInfo.posts);
   // const posts = [1, 2, 3];
 
-  // useEffect(() => {
-  //   console.log(uid)
-  //   profileApi.getProfileFeed(uid);
-  // }, [])
+  useEffect(() => {
+    profileApi.getProfileFeed(uid);
+  }, [])
 
   return (
     <View>

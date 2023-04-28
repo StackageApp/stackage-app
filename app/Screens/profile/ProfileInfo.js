@@ -4,17 +4,14 @@ import { useSelector } from 'react-redux';
 
 export default function ProfileInfo() {
   const userInfo = useSelector(store => store.currentUser.userInfo);
+  // const picture = userInfo.profileUrl
 
   return (
     <View style={styles.container}>
-      <Image style={styles.profilePicture} source={require('./example-profile.jpeg')} />
+      <Image style={styles.profilePicture} source={userInfo.profileUrl} />
       <Text style={styles.fullName}>{userInfo.name}</Text>
       <Text>{userInfo.email}</Text>
       <Text>{`${userInfo.occupation} - ${userInfo.location}`}</Text>
-      {/* <View>
-        <Text>___ likes</Text>
-        <Text>Connections</Text>
-      </View> */}
     </View>
   )
 }
@@ -22,7 +19,6 @@ export default function ProfileInfo() {
 const styles = StyleSheet.create({
   container: {
     marginTop: 10,
-    // flex: 1,
     alignItems: 'center',
   },
   profilePicture: {

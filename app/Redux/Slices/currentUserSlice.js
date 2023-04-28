@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const user = {
-  uid: 'vY1hQh5wpwgI1zzaweeooEqyJAi1',
+  uid: '24680',
   isGuest: true,
   friendslist: [],
   messages: [],
