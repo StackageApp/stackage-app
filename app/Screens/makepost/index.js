@@ -18,7 +18,7 @@ function PostMessage() {
   const [text, setText] = useState('');
   const [tags, setTags] = useState([]);
   const [category, setCategory] = useState('');
-  const [links, setLinks] = useState(['https://apple.com']);
+  const [links, setLinks] = useState([]);
   const [postObj, setPostObj] = useState({
     uid: '',
     timestamp: '',
@@ -244,7 +244,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   labelField: {
-    fontSize: 10,
+    fontSize: 15,
     marginLeft: 20,
     marginBottom: 0,
   },
