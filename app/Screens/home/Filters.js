@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
@@ -16,9 +16,18 @@ function Filters({ posts }) {
     hot: false,
   });
   const [menu, setMenu] = useState(false);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const categoryList = new Set();
+    posts.forEach((post) => {
+      categoryList.add(post.category);
+    });
+    setCategories([...categoryList]);
+  }, [posts]);
 
   return (
-    <View>
+    <View style={styles.filters}>
       <ScrollView horizontal>
         <Pressable
           onPress={() => {
@@ -28,25 +37,27 @@ function Filters({ posts }) {
               setMenu(true);
             }
           }}
+          style={styles.button}
         >
-          <Text>Category </Text>
+          <Text style={styles.buttonText}>Category </Text>
         </Pressable>
         {menu && (
           <ScrollView>
-            {posts.map((post) => (
+            {categories.map((category, i) => (
               <Pressable
-                key={post.id}
+                key={i}
                 onPress={async () => {
                   if (activeFilters.category) {
                     setActiveFilters({ ...activeFilters, category: false });
                     postApi.getAllPosts();
                   } else {
                     setActiveFilters({ ...activeFilters, category: true });
-                    dispatch(filterCategory(`${post.category}`));
+                    dispatch(filterCategory(`${category}`));
                   }
                 }}
+                style={styles.button}
               >
-                <Text>{post.category}</Text>
+                <Text style={styles.buttonText}>{category}</Text>
               </Pressable>
             ))}
           </ScrollView>
@@ -62,8 +73,9 @@ function Filters({ posts }) {
               dispatch(filterTop(5));
             }
           }}
+          style={styles.button}
         >
-          <Text>Top </Text>
+          <Text style={styles.buttonText}>Top </Text>
         </Pressable>
         <Pressable
           onPress={async () => {
@@ -76,8 +88,9 @@ function Filters({ posts }) {
               dispatch(filterHot(Date.now()));
             }
           }}
+          style={styles.button}
         >
-          <Text>Hot </Text>
+          <Text style={styles.buttonText}>Hot </Text>
         </Pressable>
       </ScrollView>
     </View>

@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import { Image, Pressable, Text, View } from 'react-native';
 
 import styles from '../../sharedStyles';
 import { dummyPost } from '../Utils/mockPosts';
+import { postApi } from '../api';
 
 export default function Post({ postData }) {
-  const [{ title, text, name, category, tags, link, likes, comments }, setPost] =
+  let [{ title, text, name, category, tags, link, likes, comments, id }, setPost] =
     useState(dummyPost);
   const [tagsExist, setTagsExist] = useState(false);
   const [commentsExist, setCommentsExist] = useState(false);
+  const [commentView, setCommentView] = useState(false);
 
   useEffect(() => {
     if (tags) {
@@ -24,6 +26,14 @@ export default function Post({ postData }) {
       setPost(postData);
     }
   }, [postData]);
+
+  function toggleComments() {
+    if (commentView) {
+      setCommentView(false);
+    } else {
+      setCommentView(true);
+    }
+  }
 
   return (
     <View style={styles.postContainer}>
@@ -52,10 +62,26 @@ export default function Post({ postData }) {
             )}
         </View>
         <View style={styles.postCommentLikes}>
-          <Text>{likes} Likes</Text>
-          <Text>{commentsExist && comments.length} Comments</Text>
+          <Pressable
+            onPress={() => {
+              postApi.incrementLikeBy1(id);
+              setPost({ ...postData, likes: (likes += 1) });
+            }}
+          >
+            <Text>{likes} Likes</Text>
+          </Pressable>
+          <Pressable onPress={() => toggleComments()}>
+            <Text>{commentsExist && comments.length} Comments</Text>
+          </Pressable>
         </View>
       </View>
+      {commentView &&
+        comments.map((comment, i) => (
+          <View key={i}>
+            <Text>{comment.author}</Text>
+            <Text>{comment.text}</Text>
+          </View>
+        ))}
     </View>
   );
 }
