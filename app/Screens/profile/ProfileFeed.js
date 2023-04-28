@@ -8,7 +8,6 @@ export default function ProfileInfo() {
   const [tab, setTab] = useState(true);
   const uid = useSelector(store => store.currentUser.uid);
   const posts = useSelector(store => store.profileInfo.posts);
-  // const posts = [1, 2, 3];
 
   useEffect(() => {
     profileApi.getProfileFeed(uid);

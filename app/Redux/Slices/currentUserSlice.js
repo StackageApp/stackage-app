@@ -9,7 +9,7 @@ const user = {
   posts: [],
   userInfo: {
     photoURL: '',
-    email: 'kyle@email',
+    email: 'kyle@emails',
     location: 'Seattle, WA',
     name: 'Kyle Stevens',
     occupation: 'Janitor',
