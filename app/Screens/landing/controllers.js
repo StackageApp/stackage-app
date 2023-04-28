@@ -8,6 +8,7 @@ const controllers = {
       email,
       location,
       occupation,
+      photoURL: '',
     };
     authenticateNewUserFB(email, password).then((userCredential) => {
       models.createNewUser(userCredential.user.uid, userInfo);

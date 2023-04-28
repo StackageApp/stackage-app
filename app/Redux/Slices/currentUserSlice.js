@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const user = {
-  uid: '',
+  uid: '24680',
   isGuest: true,
   friendslist: [],
   messages: [],
@@ -9,10 +9,10 @@ const user = {
   posts: [],
   userInfo: {
     photoURL: '',
-    email: '',
-    location: '',
-    name: '',
-    occupation: '',
+    email: 'kyle@emails',
+    location: 'Seattle, WA',
+    name: 'Kyle Stevens',
+    occupation: 'Janitor',
   },
 };
 
