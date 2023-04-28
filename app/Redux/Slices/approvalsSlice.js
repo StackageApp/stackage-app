@@ -11,9 +11,7 @@ const approvalsSlice = createSlice({
   },
   reducers: {
     approvalsPost: (state, action) => {
-      state.posts = state.posts.filter((post) => {
-        !post.isApproved === action.payload;
-      });
+      state.posts = action.payload;
       return state;
     },
   },
