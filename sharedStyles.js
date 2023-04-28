@@ -83,7 +83,6 @@ const sharedStyles = StyleSheet.create({
     width: '100%',
     borderTopWidth: 2,
     borderTopColor: '#E9DAC1',
-    paddingBottom: 5,
 
     // paddingTop: 5,
   },
