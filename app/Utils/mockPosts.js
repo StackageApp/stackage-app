@@ -127,3 +127,19 @@ export const emptyPost = {
   links: [],
   comments: [],
 };
+
+export const emptyFeed = [
+  {
+    category: '',
+    comments: [],
+    id: '',
+    isApproved: true,
+    likes: 0,
+    links: [],
+    tags: [],
+    text: '',
+    timestamp: '',
+    title: '',
+    uid: '',
+  },
+]

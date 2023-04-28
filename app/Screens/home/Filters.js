@@ -5,9 +5,10 @@ import { Ionicons } from '@expo/vector-icons';
 import { useDispatch } from 'react-redux';
 
 import styles from '../../../sharedStyles';
-import { filterCategory, filterHot, filterTop, newMessages } from '../../Redux/Slices/homeSlice';
+import { filterCategory, filterHot, filterTop } from '../../Redux/Slices/homeSlice';
+import { postApi } from '../../api';
 
-function Filters() {
+function Filters({ posts }) {
   const dispatch = useDispatch();
   const [activeFilters, setActiveFilters] = useState({
     category: false,
@@ -32,57 +33,22 @@ function Filters() {
         </Pressable>
         {menu && (
           <ScrollView>
-            <Pressable
-              onPress={async () => {
-                if (activeFilters.category) {
-                  setActiveFilters({ ...activeFilters, category: false });
-                  // remove filter
-                  const previousMessages = await JSON.parse(
-                    window.sessionStorage.getItem('stackageHomeFeed')
-                  );
-                  dispatch(newMessages(previousMessages));
-                } else {
-                  setActiveFilters({ ...activeFilters, category: true });
-                  dispatch(filterCategory('Virtual Reality'));
-                }
-              }}
-            >
-              <Text>Virtual Reality</Text>
-            </Pressable>
-            <Pressable
-              onPress={async () => {
-                if (activeFilters.category) {
-                  setActiveFilters({ ...activeFilters, category: false });
-                  // remove filter
-                  const previousMessages = await JSON.parse(
-                    window.sessionStorage.getItem('stackageHomeFeed')
-                  );
-                  dispatch(newMessages(previousMessages));
-                } else {
-                  setActiveFilters({ ...activeFilters, category: true });
-                  dispatch(filterCategory('Machine Learning'));
-                }
-              }}
-            >
-              <Text>Machine Learning</Text>
-            </Pressable>
-            <Pressable
-              onPress={async () => {
-                if (activeFilters.category) {
-                  setActiveFilters({ ...activeFilters, category: false });
-                  // remove filter
-                  const previousMessages = await JSON.parse(
-                    window.sessionStorage.getItem('stackageHomeFeed')
-                  );
-                  dispatch(newMessages(previousMessages));
-                } else {
-                  setActiveFilters({ ...activeFilters, category: true });
-                  dispatch(filterCategory('Mobile Development'));
-                }
-              }}
-            >
-              <Text>Mobile Development</Text>
-            </Pressable>
+            {posts.map((post) => (
+              <Pressable
+                key={post.id}
+                onPress={async () => {
+                  if (activeFilters.category) {
+                    setActiveFilters({ ...activeFilters, category: false });
+                    postApi.getAllPosts();
+                  } else {
+                    setActiveFilters({ ...activeFilters, category: true });
+                    dispatch(filterCategory(`${post.category}`));
+                  }
+                }}
+              >
+                <Text>{post.category}</Text>
+              </Pressable>
+            ))}
           </ScrollView>
         )}
         <Pressable
@@ -90,10 +56,7 @@ function Filters() {
             if (activeFilters.top) {
               setActiveFilters({ ...activeFilters, top: false });
               // remove filter
-              const previousMessages = await JSON.parse(
-                window.sessionStorage.getItem('stackageHomeFeed')
-              );
-              dispatch(newMessages(previousMessages));
+              postApi.getAllPosts();
             } else {
               setActiveFilters({ ...activeFilters, top: true });
               dispatch(filterTop(5));
@@ -102,21 +65,15 @@ function Filters() {
         >
           <Text>Top </Text>
         </Pressable>
-        {/* <Pressable>
-          <Text>Top Weekly </Text>
-        </Pressable> */}
         <Pressable
           onPress={async () => {
             if (activeFilters.hot) {
               setActiveFilters({ ...activeFilters, hot: false });
               // remove filter
-              const previousMessages = await JSON.parse(
-                window.sessionStorage.getItem('stackageHomeFeed')
-              );
-              dispatch(newMessages(previousMessages));
+              postApi.getAllPosts();
             } else {
               setActiveFilters({ ...activeFilters, hot: true });
-              dispatch(filterHot('2023.04.24'));
+              dispatch(filterHot(Date.now()));
             }
           }}
         >
