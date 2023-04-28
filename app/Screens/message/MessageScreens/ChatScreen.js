@@ -1,52 +1,57 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Button, ScrollView, StyleSheet, Text, View } from 'react-native';
 
+import axios from 'axios';
+import { nanoid } from 'nanoid';
 import { Bubble, GiftedChat, Send } from 'react-native-gifted-chat';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useDispatch, useSelector } from 'react-redux';
 
-function ChatScreen() {
+function ChatScreen({ route }) {
+  const uid = useSelector((store) => store.currentUser.uid) || 'vY1hQh5wpwgI1zzaweeooEqyJAi1';
+  const { id } = route.params;
+
+  console.log('id: ', id);
+  console.log('userId: ', uid);
+
   const [messages, setMessages] = useState([]);
-  const { message } = useSelector((state) => state.message);
-  console.log('message', message);
+
+  // redux data
+  // const { message } = useSelector((state) => state.message);
+  // console.log('message', message);
+
   useEffect(() => {
-    setMessages(message);
-    // setMessages([
-    //   {
-    //     _id: 3,
-    //     text: 'How are you doing today?',
-    //     createdAt: new Date(),
-    //     user: {
-    //       _id: 2,
-    //       name: 'React Native',
-    //       avatar: require('../../../../assets/users/Donn.png'),
-    //     },
-    //   },
-    //   {
-    //     _id: 2,
-    //     text: 'Hello world',
-    //     createdAt: new Date(),
-    //     user: {
-    //       _id: 1,
-    //       name: 'React Native',
-    //       avatar: '',
-    //     },
-    //   },
-    //   {
-    //     _id: 1,
-    //     text: 'Hello developer',
-    //     createdAt: new Date(),
-    //     user: {
-    //       _id: 2,
-    //       name: 'React Native',
-    //       avatar: require('../../../../assets/users/Donn.png'),
-    //     },
-    //   },
-    // ]);
+    // axios get request here and assign the value of the response to the testMessages state
+    axios
+      .get(`http://127.0.0.1:3000/users/${uid}`)
+      .then((response) => {
+        const messagesThread = response.data.messages[id];
+        // reverse the order of messages
+        messagesThread.reverse();
+        setMessages(messagesThread);
+
+        console.log('response', messagesThread);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
   const onSend = useCallback((messages = []) => {
+    console.log('on send', messages);
+    const postObj = { message: messages[0] };
+    // setSentMessages(postObj);
+    axios
+      .post(`http://127.0.0.1:3000/users/messages/${uid}/${id}`, postObj)
+      .then((response) => {
+        console.log('post sucessful', response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    console.log('postObj', postObj);
     setMessages((previousMessages) => GiftedChat.append(previousMessages, messages));
   }, []);
 
@@ -57,7 +62,7 @@ function ChatScreen() {
           name="send-circle"
           style={{ marginBottom: 5, marginRight: 5 }}
           size={32}
-          color="#00FF00"
+          color="#1B6B6B"
         />
       </View>
     </Send>
@@ -68,7 +73,7 @@ function ChatScreen() {
       {...props}
       wrapperStyle={{
         right: {
-          backgroundColor: '#4343F1',
+          backgroundColor: '#9ED2C6',
         },
         left: {
           backgroundColor: '#DADDDC',
@@ -94,7 +99,7 @@ function ChatScreen() {
       messages={messages}
       onSend={(messages) => onSend(messages)}
       user={{
-        _id: 1,
+        _id: uid,
       }}
       renderBubble={renderBubble}
       alwaysShowSend
