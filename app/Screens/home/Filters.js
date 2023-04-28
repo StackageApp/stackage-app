@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Pressable, ScrollView, Text, View } from 'react-native';
+import { Pressable, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
 import { useDispatch } from 'react-redux';
@@ -27,7 +27,10 @@ function Filters({ posts }) {
   }, [posts]);
 
   return (
-    <View style={styles.filters}>
+    <View>
+      <View style={{ backgroundColor: '#E9DAC1' }}>
+        <Text style={{ paddingLeft: 3, color: 'black', fontSize: 16 }}>Filters</Text>
+      </View>
       <ScrollView horizontal>
         <Pressable
           onPress={() => {
@@ -37,9 +40,9 @@ function Filters({ posts }) {
               setMenu(true);
             }
           }}
-          style={styles.button}
+          style={[styles.inactiveBtn, activeFilters.category ? styles.button : styles.inactiveBtn]}
         >
-          <Text style={styles.buttonText}>Category </Text>
+          <Text style={styles.buttonText}>Category</Text>
         </Pressable>
         {menu && (
           <ScrollView>
@@ -55,7 +58,6 @@ function Filters({ posts }) {
                     dispatch(filterCategory(`${category}`));
                   }
                 }}
-                style={styles.button}
               >
                 <Text style={styles.buttonText}>{category}</Text>
               </Pressable>
@@ -73,9 +75,9 @@ function Filters({ posts }) {
               dispatch(filterTop(5));
             }
           }}
-          style={styles.button}
+          style={[styles.inactiveBtn, activeFilters.top ? styles.button : styles.inactiveBtn]}
         >
-          <Text style={styles.buttonText}>Top </Text>
+          <Text style={styles.buttonText}>Top</Text>
         </Pressable>
         <Pressable
           onPress={async () => {
@@ -88,9 +90,9 @@ function Filters({ posts }) {
               dispatch(filterHot(Date.now()));
             }
           }}
-          style={styles.button}
+          style={[styles.inactiveBtn, activeFilters.hot ? styles.button : styles.inactiveBtn]}
         >
-          <Text style={styles.buttonText}>Hot </Text>
+          <Text style={styles.buttonText}>Hot</Text>
         </Pressable>
       </ScrollView>
     </View>
