@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, TextInput, Button, View, Image, Text } from 'react-native';
 // import { useRouter } from "expo-router";
+import { useSelector } from 'react-redux';
+import profileApi from '../../api';
 
 export default function Settings() {
   // const router = useRouter();
-  const [name, setName] = React.useState('Current Name');
-  const [username, setUsername] = React.useState('Username');
-  const [about, setAbout] = React.useState('About');
-  const [occupation, setOccupation] = React.useState('Occupation');
+  const uid = useSelector(store => store.currentUser.uid);
+  const userInfo = useSelector(store => store.currentUser.userInfo);
+  const [name, setName] = useState(userInfo.name);
+  const [email, setEmail] = useState(userInfo.email);
+  const [occupation, setOccupation] = useState(userInfo.occupation);
+  const [location, setLocation] = useState(userInfo.location);
+
+  const handleSubmit = () => {
+    const newUserInfo = {
+      userInfo: {
+        name,
+        email,
+        occupation,
+        location
+      }
+    }
+    profileApi.updateProfile(uid, newUserInfo);
+  }
 
   return (
     <View>
@@ -16,10 +32,10 @@ export default function Settings() {
         <Text>Update profile picture</Text>
       </View>
       <TextInput style={styles.input} onChangeText={setName} value={name} />
-      <TextInput style={styles.input} onChangeText={setUsername} value={username} />
-      <TextInput style={styles.input} onChangeText={setAbout} value={about} />
+      <TextInput style={styles.input} onChangeText={setEmail} value={email} />
       <TextInput style={styles.input} onChangeText={setOccupation} value={occupation} />
-      <Button title="Save" onPress={() => console.log('saved')} />
+      <TextInput style={styles.input} onChangeText={setLocation} value={location} />
+      <Button title="Save" onPress={handleSubmit} />
     </View>
   )
 }

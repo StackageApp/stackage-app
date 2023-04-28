@@ -11,7 +11,7 @@ const profileSlice = createSlice({
     posts,
   },
   reducers: {
-    // newProfile: (state, action) => {
+    // updateProfile: (state, action) => {
     //   state.profile = action.payload;
     //   return state;
     // },
@@ -24,6 +24,6 @@ const profileSlice = createSlice({
 
 const { actions, reducer } = profileSlice;
 
-export const { newProfile, newPostFeed } = actions;
+export const { newPostFeed } = actions;
 
 export default reducer;

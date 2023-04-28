@@ -10,10 +10,10 @@ export default function ProfileInfo() {
   const posts = useSelector(store => store.profileInfo.posts);
   // const posts = [1, 2, 3];
 
-  useEffect(() => {
-    console.log(uid)
-    profileApi.getProfileFeed(uid);
-  })
+  // useEffect(() => {
+  //   console.log(uid)
+  //   profileApi.getProfileFeed(uid);
+  // }, [])
 
   return (
     <View>
