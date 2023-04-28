@@ -14,7 +14,7 @@ const postApi = {
   },
   incrementLikeBy1: (postid) => {
     axios
-      .patch(`http://18.219.151.178:3000/posts/${postid}`)
+      .patch(`http://18.219.151.178:3000/posts/like/${postid}`)
       .then(() => {
         axios.get('http://18.219.151.178:3000/posts');
       })
