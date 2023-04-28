@@ -22,15 +22,39 @@ function SuccessModal(props) {
           color="#54bab9"
         />
       </View>
+      <View style={styles.centerDiv}>
+        <Text style={styles.mainTitle}>Is the following information correct?</Text>
+        <Text style={styles.mainTitle}>If so, press Submit.</Text>
+        <View style={styles.rowWrapper}>
+          <Text style={styles.fieldTitle}>Title:</Text>
+          <Text style={styles.otherValueStyle}>{props.postObj.title}</Text>
+        </View>
+        <View style={styles.rowWrapper}>
+          <Text style={styles.fieldTitle}>Text:</Text>
+          <Text style={styles.otherValueStyle}>{props.postObj.text}</Text>
+        </View>
+        <View style={styles.rowWrapper}>
+          <Text style={styles.fieldTitle}>Category:</Text>
+          <Text style={styles.categoryValueStyle}>{props.postObj.category}</Text>
+        </View>
+        <View style={styles.rowWrapper}>
+          <Text style={styles.fieldTitle}>Tags:</Text>
+          <View style={styles.littleList}>
+            {props.postObj.tags.map((tag) => (
+              <Text style={styles.otherValueStyle}>{tag}</Text>
+            ))}
+          </View>
+        </View>
+        <View style={styles.rowWrapper}>
+          <Text style={styles.fieldTitle}>Links:</Text>
+          <View style={styles.littleList}>
+            {props.postObj.links.map((link) => (
+              <Text style={styles.otherValueStyle}>{link}</Text>
+            ))}
+          </View>
+        </View>
+      </View>
 
-      <Text>Temporary formatting - Here's the complete post ready to send:</Text>
-      <Text>Title:{props.postObj.title}</Text>
-      <Text>Text:{props.postObj.text}</Text>
-      <Text>Tags:{props.postObj.tags}</Text>
-      <Text>Category:{props.postObj.category}</Text>
-      <Text>Links:{props.postObj.links}</Text>
-      <Text>uid:{props.postObj.uid}</Text>
-      <Text>timestamp:{props.postObj.timestamp}</Text>
       <View style={styles.buttonsWrapper}>
         <Pressable
           title="Return to edit"
@@ -51,16 +75,40 @@ function SuccessModal(props) {
 }
 
 const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-    borderRadius: 5,
-  },
   fixToRight: {
     flexDirection: 'row-reverse',
     padding: 10,
+  },
+  rowWrapper: {
+    flexDirection: 'row',
+  },
+  fieldTitle: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    margin: 10,
+  },
+  otherValueStyle: {
+    marginLeft: 44,
+    marginBottom: 10,
+    marginRight: 10,
+    marginTop: 10,
+    fontSize: 15,
+  },
+  categoryValueStyle: {
+    margin: 10,
+    fontSize: 15,
+  },
+  littleList: {
+    flexDirection: 'column',
+  },
+  centerDiv: {
+    width: 300,
+    marginLeft: 40,
+  },
+  mainTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    margin: 10,
   },
   editButton: {
     height: 50,
