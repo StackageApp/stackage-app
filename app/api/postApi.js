@@ -13,7 +13,6 @@ const postApi = {
       .catch((err) => err);
   },
   incrementLikeBy1: (postid) => {
-    console.log(postid);
     axios
       .patch(`http://localhost:3000/posts/${postid}`)
       .then(() => {
