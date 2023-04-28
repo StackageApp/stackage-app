@@ -3,12 +3,13 @@ import { TouchableOpacity, View } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
-import { Tabs } from 'expo-router';
+import { Tabs, useNavigation } from 'expo-router';
 import { Badge } from 'react-native-elements';
 import { useSelector } from 'react-redux';
 
 export default function () {
   const [messageCount, setMessageCount] = useState(0);
+  const navigation = useNavigation();
   // using redux return use Provider wrapper error
   // const notifications = useSelector((state) => state.currentUser.notifications);
 
@@ -36,6 +37,7 @@ export default function () {
       .catch((error) => {
         console.log(error);
       });
+    navigation.navigate('Messages');
   };
   return (
     <Tabs
