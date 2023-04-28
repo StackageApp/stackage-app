@@ -1,4 +1,9 @@
+import { Dimensions } from 'react-native';
+
 import styled from 'styled-components';
+
+const screenWidth = Dimensions.get('window').width;
+const textSectionWidth = screenWidth - 80;
 
 export const Container = styled.View`
   flex: 1;
@@ -34,7 +39,7 @@ export const TextSection = styled.View`
   padding: 15px;
   padding-left: 0;
   margin-left: 10px;
-  flex-shrink: 1;
+  width: ${textSectionWidth}px;
   border-bottom-width: 1px;
   border-bottom-color: #cccccc;
 `;
@@ -43,23 +48,19 @@ export const UserInfoText = styled.View`
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 5px;
-  width: 100%;
 `;
 
 export const UserName = styled.Text`
   font-size: 14px;
   font-weight: bold;
-  flex-shrink: 1;
 `;
 
 export const MessageTime = styled.Text`
   font-size: 12px;
   color: #666;
-  flex-shrink: 1;
 `;
 
 export const MessageText = styled.Text`
   font-size: 14px;
   color: #333333;
-  flex-shrink: 1;
 `;

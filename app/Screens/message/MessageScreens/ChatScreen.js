@@ -19,23 +19,35 @@ function ChatScreen({ route }) {
 
   // redux data
   // const { message } = useSelector((state) => state.message);
-  // console.log('message', message);
 
   useEffect(() => {
-    // axios get request here and assign the value of the response to the testMessages state
-    axios
-      .get(`http://127.0.0.1:3000/users/${uid}`)
-      .then((response) => {
-        const messagesThread = response.data.messages[id];
-        // reverse the order of messages
-        messagesThread.reverse();
-        setMessages(messagesThread);
+    // Fetch messages every 1 second
+    const fetchMessages = () => {
+      axios
+        .get(`http://127.0.0.1:3000/users/${uid}`)
+        .then((response) => {
+          const messagesThread = response.data.messages[id];
+          // reverse the order of messages
+          messagesThread.reverse();
+          setMessages(messagesThread);
 
-        console.log('response', messagesThread);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+          console.log('response', messagesThread);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+
+    // Call fetchMessages initially
+    fetchMessages();
+
+    // Set up interval to call fetchMessages every 1 second
+    const intervalId = setInterval(fetchMessages, 1000);
+
+    // Cleanup function
+    return () => {
+      clearInterval(intervalId);
+    };
   }, []);
 
   const onSend = useCallback((messages = []) => {

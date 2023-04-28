@@ -32,14 +32,14 @@ const Messages = [
   {
     id: '3',
     userName: 'Nam',
-    ProfileImg: require('../../../../assets/users/Nam.png'),
+    ProfileImg: 'https://i.imgur.com/swnqERH.png',
     messageTime: '1 hours ago',
     messageText: 'Hey there, this is my test for a post of my social app in React Native.',
   },
   {
     id: 'pbbQjIfF7abqfvKD38DOBAbgoHr2',
     userName: 'Mev',
-    ProfileImg: require('../../../../assets/users/Mev.png'),
+    ProfileImg: 'https://i.imgur.com/Biw5Jsb.png',
     messageTime: '1 day ago',
     messageText: 'Hey there, this is my test for a post of my social app in React Native.',
   },
@@ -80,7 +80,11 @@ function MessagesScreen({ navigation }) {
           >
             <UserInfo>
               <UserImgWrapper>
-                <ProfileImg source={item.ProfileImg} />
+                <ProfileImg
+                  source={
+                    typeof item.ProfileImg === 'string' ? { uri: item.ProfileImg } : item.ProfileImg
+                  }
+                />
               </UserImgWrapper>
               <TextSection>
                 <UserInfoText>
