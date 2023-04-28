@@ -12,6 +12,7 @@ export default function Post({ postData }) {
     useState(dummyPost);
   const [tagsExist, setTagsExist] = useState(false);
   const [commentsExist, setCommentsExist] = useState(false);
+  const [commentView, setCommentView] = useState(false);
 
   useEffect(() => {
     if (tags) {
@@ -27,6 +28,14 @@ export default function Post({ postData }) {
       setPost(postData);
     }
   }, [postData]);
+
+  function toggleComments() {
+    if (commentView) {
+      setCommentView(false);
+    } else {
+      setCommentView(true);
+    }
+  }
 
   return (
     <View style={styles.postContainer}>
@@ -63,9 +72,18 @@ export default function Post({ postData }) {
           >
             <Text>{likes} Likes</Text>
           </Pressable>
-          <Text>{commentsExist && comments.length} Comments</Text>
+          <Pressable onPress={() => toggleComments()}>
+            <Text>{commentsExist && comments.length} Comments</Text>
+          </Pressable>
         </View>
       </View>
+      {commentView &&
+        comments.map((comment, i) => (
+          <View key={i}>
+            <Text>{comment.author}</Text>
+            <Text>{comment.text}</Text>
+          </View>
+        ))}
     </View>
   );
 }
