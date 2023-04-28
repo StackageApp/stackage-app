@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, Pressable, Text, View } from 'react-native';
 
+import styles from '../../sharedStyles';
 import { dummyApprovalsPost } from '../Utils/mockApprovalsPosts';
+import { postApi } from '../api';
 
 export default function ApprovalPost({ postData }) {
   const [{ title, text, name, category, tags, link, likes, comments, userAvatar }, setPost] =
-    useState(postData);
+    useState(dummyApprovalsPost);
   const [tagsExist, setTagsExist] = useState(false);
   const [commentsExist, setCommentsExist] = useState(false);
+  const [commentView, setCommentView] = useState(false);
 
   useEffect(() => {
     if (tags) {
@@ -23,72 +26,109 @@ export default function ApprovalPost({ postData }) {
       setPost(postData);
     }
   }, [postData]);
+  function toggleComments() {
+    if (commentView) {
+      setCommentView(false);
+    } else {
+      setCommentView(true);
+    }
+  }
 
   return (
-    <View style={styles.feedItem}>
-      <Text>Render Me</Text>
-      <View style={{ flex: 1 }}>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignpostDatas: 'center',
-          }}
-        >
-          <View>
-            <Text style={styles.name}>{name}</Text>
+    <View style={styles.postContainer}>
+      <View className="post-header" style={styles.postHeader}>
+        <View style={styles.postCategory}>
+          <Text>{category}</Text>
+        </View>
+        <View style={styles.main}>
+          {/* <Image src={}/> */}
+          <Text style={{ width: '10%' }}>PFP</Text>
+          <View style={{ width: '85%', gap: 10 }}>
+            <Text>{name} @nameOrEmail</Text>
+            <View className="post-body" style={styles.postBody}>
+              <Text style={styles.postTitle}>{title}</Text>
+              <Text>{text}</Text>
+              <Text>{link}</Text>
+            </View>
           </View>
         </View>
-        <Text style={styles.post}>{text}</Text>
       </View>
+      <View className="post-footer" style={styles.postFooter}>
+        <View style={styles.postTags}>
+          {tagsExist &&
+            tags.map((tag, i) =>
+              i === tags.length - 1 ? <Text key={i}>{tag}</Text> : <Text key={i}>{tag} | </Text>
+            )}
+        </View>
+        <View style={styles.postCommentLikes}>
+          <Pressable
+            onPress={() => {
+              postApi.incrementLikeBy1(id);
+              setPost({ ...postData, likes: (likes += 1) });
+            }}
+          >
+            <Text>{likes} Likes</Text>
+          </Pressable>
+          <Pressable onPress={() => toggleComments()}>
+            <Text>{commentsExist && comments.length} Comments</Text>
+          </Pressable>
+        </View>
+      </View>
+      {commentView &&
+        comments.map((comment, i) => (
+          <View key={i}>
+            <Text>{comment.author}</Text>
+            <Text>{comment.text}</Text>
+          </View>
+        ))}
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#EBECF4',
-  },
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#EBECF4',
+//   },
 
-  feed: {
-    marginHorizontal: 16,
-  },
-  feedItem: {
-    backgroundColor: '#FFF',
-    borderRadius: 5,
-    padding: 8,
-    flexDirection: 'row',
-    marginVertical: 8,
-  },
-  avatar: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    marginRight: 16,
-  },
-  name: {
-    fontSize: 15,
-    fontWeight: '500',
-    color: '#454D65',
-  },
-  timestamp: {
-    fontSize: 11,
-    color: '#C4C6CE',
-    marginTop: 4,
-  },
-  post: {
-    marginTop: 16,
-    fontSize: 14,
-    color: '#838899',
-  },
-  postImage: {
-    width: undefined,
-    height: 150,
-    borderRadius: 5,
-    marginVertical: 16,
-  },
-});
+//   feed: {
+//     marginHorizontal: 16,
+//   },
+//   feedItem: {
+//     backgroundColor: '#FFF',
+//     borderRadius: 5,
+//     padding: 8,
+//     flexDirection: 'row',
+//     marginVertical: 8,
+//   },
+//   avatar: {
+//     width: 36,
+//     height: 36,
+//     borderRadius: 18,
+//     marginRight: 16,
+//   },
+//   name: {
+//     fontSize: 15,
+//     fontWeight: '500',
+//     color: '#454D65',
+//   },
+//   timestamp: {
+//     fontSize: 11,
+//     color: '#C4C6CE',
+//     marginTop: 4,
+//   },
+//   post: {
+//     marginTop: 16,
+//     fontSize: 14,
+//     color: '#838899',
+//   },
+//   postImage: {
+//     width: undefined,
+//     height: 150,
+//     borderRadius: 5,
+//     marginVertical: 16,
+//   },
+// });
 
 // PLACEHOLDER POST COMPONENT
 // function TempPost({ item }) {

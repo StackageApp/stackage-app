@@ -8,8 +8,8 @@ import { postApi } from '../../api';
 import ApprovalsFeed from './ApprovalsFeed';
 
 function Approvals() {
-  // const posts = useSelector((store) => store.approvalsFeed.posts);
-  const posts = dummyApprovalsFeed;
+  const posts = useSelector((store) => store.approvalsFeed.posts);
+  // const posts = dummyApprovalsFeed;
 
   useEffect(() => {
     postApi.getAllPosts();

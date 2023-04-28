@@ -8,8 +8,8 @@ function ApprovalsFeed({ posts }) {
     <View>
       <FlatList
         data={posts}
-        keyExtractor={(item) => item.id}
-        renderItem={(item) => <ApprovalPost postData={item} />}
+        keyExtractor={(post) => post.id}
+        renderItem={(post) => <ApprovalPost postData={post.item} />}
       />
     </View>
   );

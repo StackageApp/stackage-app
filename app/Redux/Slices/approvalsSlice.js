@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { emptyFeed } from '../../Utils/mockPosts';
+import { dummyApprovalsFeed } from '../../Utils/mockApprovalsPosts';
 
-const posts = emptyFeed;
+const posts = dummyApprovalsFeed;
 
 const approvalsSlice = createSlice({
   name: 'approvalsFeed',
