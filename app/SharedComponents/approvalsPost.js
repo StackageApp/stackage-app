@@ -55,7 +55,12 @@ export default function ApprovalPost({ postData }) {
       <View style={style.textContainer}>
         <Text style={style.text}>{text}</Text>
 
-        <LinkPreview text={link} metadataContainerStyle={style.linkPreviewContainer} />
+        <LinkPreview
+          text={link}
+          containerStyle={style.linkPreviewContainerFull}
+          metadataContainerStyle={style.linkPreviewContainer}
+          imageContainerStyle={style.linkPreviewContainerText}
+        />
 
         {/* <Text style={style.link}>{link}</Text> */}
       </View>
@@ -186,11 +191,13 @@ const style = StyleSheet.create({
     color: '#9C50B6',
     fontSize: 10,
   },
+
   linkPreviewContainer: {
     flex: 1,
-    paddingHorizontal: 24,
+
     fontSize: 10,
   },
+
   metaContainer: {
     flexDirection: 'row',
     justifyContent: 'space-apart',
