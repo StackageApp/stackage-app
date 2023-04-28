@@ -1,7 +1,6 @@
 import React from 'react';
 import { FlatList, View } from 'react-native';
 
-import styles from '../../../sharedStyles';
 import Post from '../../SharedComponents/Post';
 
 function HomeFeed({ posts }) {

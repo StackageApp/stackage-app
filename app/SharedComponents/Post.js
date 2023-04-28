@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
 import styles from '../../sharedStyles';
 import { dummyPost } from '../Utils/mockPosts';
