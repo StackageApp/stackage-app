@@ -8,11 +8,11 @@ const user = {
   notifications: 0,
   posts: [],
   userInfo: {
-    photoURL: '',
+    photoURL: 'https://firebasestorage.googleapis.com/v0/b/stackage-a022a.appspot.com/o/skate.png?alt=media&token=1811869a-91e0-4c59-93dc-84c0cddc96a7',
     email: 'kyle@emails',
     location: 'Seattle, WA',
     name: 'Kyle Stevens',
-    occupation: 'Janitor',
+    occupation: 'JanitoR',
   },
 };
 

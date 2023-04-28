@@ -8,7 +8,7 @@ export default function ProfileInfo() {
 
   return (
     <View style={styles.container}>
-      <Image style={styles.profilePicture} source={userInfo.profileUrl} />
+      <Image style={styles.profilePicture} src={userInfo.photoURL} />
       <Text style={styles.fullName}>{userInfo.name}</Text>
       <Text>{userInfo.email}</Text>
       <Text>{`${userInfo.occupation} - ${userInfo.location}`}</Text>
