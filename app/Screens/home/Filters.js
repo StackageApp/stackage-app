@@ -27,7 +27,7 @@ function Filters({ posts }) {
   }, [posts]);
 
   return (
-    <View>
+    <View style={styles.filters}>
       <ScrollView horizontal>
         <Pressable
           onPress={() => {
@@ -37,8 +37,9 @@ function Filters({ posts }) {
               setMenu(true);
             }
           }}
+          style={styles.button}
         >
-          <Text>Category </Text>
+          <Text style={styles.buttonText}>Category </Text>
         </Pressable>
         {menu && (
           <ScrollView>
@@ -54,8 +55,9 @@ function Filters({ posts }) {
                     dispatch(filterCategory(`${category}`));
                   }
                 }}
+                style={styles.button}
               >
-                <Text>{category}</Text>
+                <Text style={styles.buttonText}>{category}</Text>
               </Pressable>
             ))}
           </ScrollView>
@@ -71,8 +73,9 @@ function Filters({ posts }) {
               dispatch(filterTop(5));
             }
           }}
+          style={styles.button}
         >
-          <Text>Top </Text>
+          <Text style={styles.buttonText}>Top </Text>
         </Pressable>
         <Pressable
           onPress={async () => {
@@ -85,8 +88,9 @@ function Filters({ posts }) {
               dispatch(filterHot(Date.now()));
             }
           }}
+          style={styles.button}
         >
-          <Text>Hot </Text>
+          <Text style={styles.buttonText}>Hot </Text>
         </Pressable>
       </ScrollView>
     </View>

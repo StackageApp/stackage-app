@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
-
-import { useSelector } from 'react-redux';
+import { Image, Pressable, Text, View } from 'react-native';
 
 import styles from '../../sharedStyles';
 import { dummyPost } from '../Utils/mockPosts';
