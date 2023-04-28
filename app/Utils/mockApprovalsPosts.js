@@ -29,6 +29,7 @@ export const dummyApprovalsPost = {
 export const dummyApprovalsFeed = [
   {
     uid: 2,
+    id: 1,
     name: 'brawoods',
     approved: false,
     userAvatar: require('../../assets/users/Brandon.png'),
@@ -57,6 +58,7 @@ export const dummyApprovalsFeed = [
   },
   {
     uid: 3,
+    id: 2,
     name: 'Jenessap',
     approved: false,
     userAvatar: require('../../assets/users/Jenessa.png'),
@@ -79,6 +81,7 @@ export const dummyApprovalsFeed = [
   },
   {
     uid: 4,
+    id: 3,
     name: 'kylestevens32',
     approved: false,
     userAvatar: require('../../assets/users/Kyle.png'),
@@ -101,6 +104,7 @@ export const dummyApprovalsFeed = [
   },
   {
     uid: 5,
+    id: 4,
     name: 'MSCS22',
     approved: false,
     userAvatar: require('../../assets/users/Majd.png'),
@@ -114,6 +118,7 @@ export const dummyApprovalsFeed = [
   },
   {
     uid: 6,
+    id: 5,
     name: 'mevcaus',
     approved: false,
     userAvatar: require('../../assets/users/Mev.png'),
@@ -127,6 +132,7 @@ export const dummyApprovalsFeed = [
   },
   {
     uid: 7,
+    id: 6,
     name: 'nnguye47',
     approved: false,
     userAvatar: require('../../assets/users/Nam.png'),
@@ -140,6 +146,7 @@ export const dummyApprovalsFeed = [
   },
   {
     uid: 8,
+    id: 7,
     name: 'mevcaus',
     approved: false,
     userAvatar: require('../../assets/users/Mev.png'),
@@ -153,6 +160,7 @@ export const dummyApprovalsFeed = [
   },
   {
     uid: 8,
+    id: 8,
     name: 'ForeDaddy',
     approved: false,
     userAvatar: require('../../assets/users/Donn.png'),

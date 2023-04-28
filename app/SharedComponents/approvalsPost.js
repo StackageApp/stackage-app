@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
-import styles from '../../sharedStyles';
 import { dummyApprovalsPost } from '../Utils/mockApprovalsPosts';
 import { postApi } from '../api';
 
 export default function ApprovalPost({ postData }) {
-  const [{ title, text, name, category, tags, link, likes, comments, userAvatar }, setPost] =
+  const [{ title, text, name, category, tags, link, likes, comments, userAvatar, id }, setPost] =
     useState(dummyApprovalsPost);
   const [tagsExist, setTagsExist] = useState(false);
   const [commentsExist, setCommentsExist] = useState(false);
   const [commentView, setCommentView] = useState(false);
+  const [approveButton, setApproveButton] = useState(false);
+  const [disapproveButton, setDisapproveButton] = useState(false);
 
   useEffect(() => {
     if (tags) {
@@ -66,11 +67,31 @@ export default function ApprovalPost({ postData }) {
           )}
       </View>
       <View style={style.voteContainer}>
-        <View style={style.vote}>
-          <Text style={style.textVote}>Approve</Text>
+        <View style={[style.vote, approveButton ? style.yesVote : style.vote]}>
+          <Pressable
+            onPress={() => {
+              postApi.incrementLikeBy1(id);
+              if (disapproveButton) {
+                setDisapproveButton(!disapproveButton);
+              }
+              setApproveButton(!approveButton);
+            }}
+          >
+            <Text style={style.textVote}>Approve</Text>
+          </Pressable>
         </View>
-        <View style={style.vote}>
-          <Text style={style.textVote}>Disapprove</Text>
+        <View style={[style.vote, disapproveButton ? style.yesVote : style.vote]}>
+          <Pressable
+            onPress={() => {
+              postApi.incrementLikeBy1(id);
+              if (approveButton) {
+                setApproveButton(!approveButton);
+              }
+              setDisapproveButton(!disapproveButton);
+            }}
+          >
+            <Text style={style.textVote}>Disapprove</Text>
+          </Pressable>
         </View>
       </View>
     </View>
@@ -170,6 +191,15 @@ const style = StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 9,
 
+    borderRadius: 5,
+    marginHorizontal: 5,
+  },
+  yesVote: {
+    borderWidth: 1,
+    borderColor: '#e9dac1',
+    paddingHorizontal: 15,
+    paddingVertical: 9,
+    backgroundColor: '#e9dac1',
     borderRadius: 5,
     marginHorizontal: 5,
   },
