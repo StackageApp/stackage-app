@@ -1,8 +1,10 @@
+// Currently nothing is calling this component. I wanted to save this work though to try to get this working in time to demo, but we'll see.
 import React, { useState } from 'react';
 import {
   Button,
   KeyboardAvoidingView,
   Pressable,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -10,11 +12,11 @@ import {
 } from 'react-native';
 
 import { AntDesign } from '@expo/vector-icons';
+import { LinkPreview } from '@flyerhq/react-native-link-preview';
 
 function LinksModal(props) {
   const [currentLink, setCurrentLink] = useState('');
   const [links, setLinks] = useState(props.links);
-  const [warning, setWarning] = useState(false);
 
   const handleLink = (input) => {
     setCurrentLink(input);
@@ -22,15 +24,10 @@ function LinksModal(props) {
 
   const onAddLink = () => {
     if (currentLink.length > 0) {
-      if (currentLink.slice(currentLink.length - 4) !== '.com') {
-        setWarning(true);
-      } else {
-        setWarning(false);
-        const newLinks = links.slice();
-        newLinks.push(currentLink);
-        setLinks(newLinks);
-        setCurrentLink('');
-      }
+      const newLinks = links.slice();
+      newLinks.push(currentLink);
+      setLinks(newLinks);
+      setCurrentLink('');
     }
   };
 
@@ -51,53 +48,52 @@ function LinksModal(props) {
           color="#54bab9"
         />
       </View>
+
       <View style={styles.centerEverything}>
         <Text style={styles.instructions}>Add your links here</Text>
-        <View>
-          {links.map((link, index) => (
-            <Text key={index} style={styles.listItem}>
-              {link}
-            </Text>
-          ))}
+      </View>
+
+      <View>
+        <TextInput
+          onChangeText={(input) => {
+            handleLink(input);
+          }}
+          placeholder="Add a link here"
+          style={styles.input}
+          value={currentLink}
+          KeyboardType="default"
+        />
+        <View styles={styles.evenRow}>
+          {links.length < 5 ? (
+            <Pressable>
+              <AntDesign
+                name="pluscircle"
+                size={45}
+                color="#54bab9"
+                onPress={() => {
+                  onAddLink();
+                }}
+              />
+            </Pressable>
+          ) : null}
+
+          <Pressable
+            title="Done"
+            onPress={() => {
+              onDone();
+            }}
+            style={styles.doneButton}
+          >
+            <Text style={styles.doneButtonText}>Done</Text>
+          </Pressable>
         </View>
       </View>
-      <TextInput
-        onChangeText={(input) => {
-          handleLink(input);
-        }}
-        placeholder="Add a link here"
-        style={styles.input}
-        value={currentLink}
-        KeyboardType="default"
-      />
-      {warning ? (
-        <Text style={styles.warningText}>Invalid link format. Please try again.</Text>
-      ) : null}
 
-      <View style={styles.evenRow}>
-        {links.length < 5 ? (
-          <Pressable>
-            <AntDesign
-              name="pluscircle"
-              size={45}
-              color="#54bab9"
-              onPress={() => {
-                onAddLink();
-              }}
-            />
-          </Pressable>
-        ) : null}
-
-        <Pressable
-          title="Done"
-          onPress={() => {
-            onDone();
-          }}
-          style={styles.doneButton}
-        >
-          <Text style={styles.doneButtonText}>Done</Text>
-        </Pressable>
-      </View>
+      <ScrollView>
+        {links.map((link) => (
+          <LinkPreview text={link} metadataContainerStyle={styles.linkPreviewContainer} />
+        ))}
+      </ScrollView>
     </KeyboardAvoidingView>
   );
 }
@@ -138,22 +134,27 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     paddingTop: 10,
+    flex: 1,
   },
   centerEverything: {
     alignItems: 'center',
+    flex: 1,
   },
   instructions: {
     fontSize: 25,
     fontWeight: 'bold',
     letterSpacing: 0.25,
     margin: 30,
+    flex: 1,
   },
   listItem: {
     margin: 10,
     fontSize: 15,
   },
-  warningText: {
-    color: 'red',
+  linkPreviewContainer: {
+    flex: 2,
+    paddingHorizontal: 24,
+    fontSize: 10,
   },
 });
 
