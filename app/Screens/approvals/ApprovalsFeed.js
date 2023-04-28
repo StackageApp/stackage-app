@@ -59,7 +59,7 @@ function ApprovalsFeed() {
           <Text style={styles.post}>{item.text}</Text>
         </View>
         <View>
-          <Text style={styles.approved}>Approval Votes: {item.approvedCount}</Text>
+          <Text style={styles.approved}>Approval Votes: {item.approvedCount}/5</Text>
         </View>
       </View>
     );
@@ -67,6 +67,7 @@ function ApprovalsFeed() {
 
   return (
     <View>
+      <Text>Swipe to Vote</Text>
       <FlatList data={posts} renderItem={TempPost} />
     </View>
   );
@@ -74,34 +75,38 @@ function ApprovalsFeed() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#EBECF4',
+    backgroundColor: '#E9DAC1',
   },
 
   feed: {
     marginHorizontal: 16,
   },
   feedItem: {
-    backgroundColor: '#FFF',
-    borderRadius: 5,
+    backgroundColor: '#F7ECDE',
+    borderRadius: 15,
     padding: 8,
     flexDirection: 'row',
-    marginVertical: 8,
+    marginVertical: 5,
+    marginHorizontal: 7,
+    borderWidth: 1,
+    borderColor: '#54bab9',
   },
   avatar: {
     width: 36,
     height: 36,
     borderRadius: 18,
+    borderColor: '#54bab9',
+    borderWidth: 2,
     marginRight: 16,
   },
   name: {
     fontSize: 15,
-    fontWeight: '500',
-    color: '#454D65',
+    fontWeight: '700',
+    color: '#54bab9',
   },
   timestamp: {
     fontSize: 11,
-    color: '#C4C6CE',
+    color: '#9ed2c6',
     marginTop: 4,
   },
   post: {
@@ -117,7 +122,7 @@ const styles = StyleSheet.create({
   },
   approved: {
     fontSize: 12,
-    color: 'darkgray',
+    color: 'darkgrey',
   },
   vote: {
     backgroundColor: 'green',
