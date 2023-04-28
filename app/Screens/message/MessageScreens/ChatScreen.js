@@ -17,7 +17,7 @@ function ChatScreen({ route }) {
 
   const [messages, setMessages] = useState([]);
 
-  // redux data
+  // redux message data
   // const { message } = useSelector((state) => state.message);
 
   useEffect(() => {

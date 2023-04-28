@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const user = {
-  uid: '',
+  uid: 'vY1hQh5wpwgI1zzaweeooEqyJAi1',
   isGuest: true,
   friendslist: [],
   messages: [],
-  notifications: 0,
+  notifications: 3,
   posts: [],
   userInfo: {
     photoURL:
