@@ -1,3 +1,4 @@
 import makePostAPI from './makePostAPI.js';
+import postApi from './postApi';
 
-export default makePostAPI;
+export { postApi, makePostAPI };

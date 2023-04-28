@@ -3,7 +3,7 @@ export const mockMessages = [
   {
     _id: 3,
     text: 'How are you doing today?',
-    createdAt: new Date(),
+    createdAt: Date.now(),
     user: {
       _id: 2,
       name: 'React Native',
@@ -13,7 +13,7 @@ export const mockMessages = [
   {
     _id: 2,
     text: 'Hello world',
-    createdAt: new Date(),
+    createdAt: Date.now(),
     user: {
       _id: 1,
       name: 'React Native',
@@ -23,7 +23,7 @@ export const mockMessages = [
   {
     _id: 1,
     text: 'Hello developer',
-    createdAt: new Date(),
+    createdAt: Date.now(),
     user: {
       _id: 2,
       name: 'React Native',
