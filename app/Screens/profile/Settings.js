@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {
-  Button,
   Image,
   Keyboard,
   KeyboardAvoidingView,
@@ -10,15 +9,11 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-
 import { useSelector } from 'react-redux';
-
 import sharedStyles from '../../../sharedStyles';
-// import { useRouter } from "expo-router";
 import { profileApi } from '../../api';
 
 export default function Settings({ navigation }) {
-  // const router = useRouter();
   const uid = useSelector((store) => store.currentUser.uid);
   const userInfo = useSelector((store) => store.currentUser.userInfo);
   const [name, setName] = useState(userInfo.name);
@@ -67,7 +62,6 @@ export default function Settings({ navigation }) {
             <Text style={styles.label}>Location:</Text>
             <TextInput style={styles.input} onChangeText={setLocation} value={location} />
           </View>
-          {/* <Button title="Save" onPress={handleSubmit} /> */}
           <View style={[sharedStyles.button, { alignSelf: 'center' }]}>
             <Text
               style={sharedStyles.buttonText}
@@ -86,7 +80,6 @@ export default function Settings({ navigation }) {
 
 const styles = StyleSheet.create({
   mainContainer: {
-    // flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
     flex: 1,
@@ -119,7 +112,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     paddingLeft: 22,
     width: '85%',
-    // borderWidth: 1,
     padding: 10,
   },
   profilePicture: {

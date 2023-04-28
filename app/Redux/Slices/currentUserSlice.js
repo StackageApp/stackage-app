@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const user = {
-  uid: 'vY1hQh5wpwgI1zzaweeooEqyJAi1',
+  uid: '',
   isGuest: true,
   friendslist: [],
   messages: [],
@@ -10,10 +10,10 @@ const user = {
   userInfo: {
     photoURL:
       'https://firebasestorage.googleapis.com/v0/b/stackage-a022a.appspot.com/o/hiwoody.png?alt=media&token=cda574b8-e718-44e5-b320-404876cbbf1c',
-    email: 'kyle@emails',
-    location: 'Seattle, WA',
-    name: 'Kyle Stevens',
-    occupation: 'JanitoRrr',
+    email: '',
+    location: '',
+    name: '',
+    occupation: '',
   },
 };
 

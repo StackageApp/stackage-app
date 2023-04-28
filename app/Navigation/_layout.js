@@ -56,7 +56,7 @@ export default function () {
       <Tabs.Screen
         name="Profile"
         options={{
-          title: 'Profile',
+          headerShown: false,
           tabBarIcon: ({ color }) => <Ionicons name="person-sharp" size={24} color={color} />,
         }}
       />
