@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
@@ -16,6 +16,15 @@ function Filters({ posts }) {
     hot: false,
   });
   const [menu, setMenu] = useState(false);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const categoryList = new Set();
+    posts.forEach((post) => {
+      categoryList.add(post.category);
+    });
+    setCategories([...categoryList]);
+  }, [posts]);
 
   return (
     <View>
@@ -33,20 +42,20 @@ function Filters({ posts }) {
         </Pressable>
         {menu && (
           <ScrollView>
-            {posts.map((post) => (
+            {categories.map((category, i) => (
               <Pressable
-                key={post.id}
+                key={i}
                 onPress={async () => {
                   if (activeFilters.category) {
                     setActiveFilters({ ...activeFilters, category: false });
                     postApi.getAllPosts();
                   } else {
                     setActiveFilters({ ...activeFilters, category: true });
-                    dispatch(filterCategory(`${post.category}`));
+                    dispatch(filterCategory(`${category}`));
                   }
                 }}
               >
-                <Text>{post.category}</Text>
+                <Text>{category}</Text>
               </Pressable>
             ))}
           </ScrollView>
