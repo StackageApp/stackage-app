@@ -15,7 +15,7 @@ export default function () {
   // these axios calls need to move somewhere else
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:3000/users/vY1hQh5wpwgI1zzaweeooEqyJAi1`)
+      .get(`http://18.219.151.178:3000/users/vY1hQh5wpwgI1zzaweeooEqyJAi1`)
       .then((response) => {
         // set message count to equal number of notifications
         setMessageCount(response.data.notifications);
@@ -28,7 +28,7 @@ export default function () {
   const handleBadgePress = () => {
     // insted of resetting the state, send a put request using axios to users/notifications/reset/:uid
     axios
-      .patch(`http://127.0.0.1:3000/users/notifications/reset/vY1hQh5wpwgI1zzaweeooEqyJAi1`)
+      .patch(`http://18.219.151.178:3000/users/notifications/reset/vY1hQh5wpwgI1zzaweeooEqyJAi1`)
       .then((response) => {
         // set message count to equal number of notifications
         setMessageCount(0);

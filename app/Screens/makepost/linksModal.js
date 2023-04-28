@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   KeyboardAvoidingView,
@@ -13,7 +13,7 @@ import { AntDesign } from '@expo/vector-icons';
 
 function LinksModal(props) {
   const [currentLink, setCurrentLink] = useState('');
-  const [links, setLinks] = useState(['https//www.website.com']);
+  const [links, setLinks] = useState(props.links);
 
   const handleLink = (input) => {
     setCurrentLink(input);
@@ -24,6 +24,7 @@ function LinksModal(props) {
       const newLinks = links.slice();
       newLinks.push(currentLink);
       setLinks(newLinks);
+      setCurrentLink('');
     }
   };
 
@@ -44,10 +45,16 @@ function LinksModal(props) {
           color="#54bab9"
         />
       </View>
-      <Text>Add your links here.</Text>
-      {links.map((link) => (
-        <Text>{link}</Text>
-      ))}
+      <View style={styles.centerEverything}>
+        <Text style={styles.instructions}>Add your links here</Text>
+        <View>
+          {links.map((link, index) => (
+            <Text key={index} style={styles.listItem}>
+              {link}
+            </Text>
+          ))}
+        </View>
+      </View>
       <TextInput
         onChangeText={(input) => {
           handleLink(input);
@@ -58,11 +65,11 @@ function LinksModal(props) {
         KeyboardType="default"
       />
       <View style={styles.evenRow}>
-        {links.length < 11 ? (
+        {links.length < 5 ? (
           <Pressable>
             <AntDesign
               name="pluscircle"
-              size={24}
+              size={45}
               color="#54bab9"
               onPress={() => {
                 onAddLink();
@@ -109,6 +116,7 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     elevation: 3,
   },
+
   doneButtonText: {
     fontSize: 20,
     lineHeight: 21,
@@ -120,6 +128,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     paddingTop: 10,
+  },
+  centerEverything: {
+    alignItems: 'center',
+  },
+  instructions: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    margin: 30,
+  },
+  listItem: {
+    margin: 10,
+    fontSize: 15,
   },
 });
 

@@ -25,7 +25,7 @@ const Messages = [
   {
     id: '2',
     userName: 'Kyle',
-    ProfileImg: require('../../../../assets/users/Kyle.png'),
+    ProfileImg: 'https://i.imgur.com/O9IwNcx.png',
     messageTime: '2 hours ago',
     messageText: 'Hey there, this is my test for a post of my social app in React Native.',
   },
