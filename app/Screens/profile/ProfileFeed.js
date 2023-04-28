@@ -33,13 +33,12 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     width: '100%',
     height: '50%',
+    borderTop: '#e9dac1',
   },
   tabs: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     fontSize: 30,
-    borderBottomColor: '#E9DAC1',
-    borderBottomWidth: 2,
   },
   selectedTab: {
     fontWeight: 'bold',

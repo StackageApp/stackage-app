@@ -13,7 +13,7 @@ const models = {
   createNewUser: (uid, user) => {
     axios
       .post(
-        `http://127.0.0.1:3000/users/${uid}`,
+        `http://18.219.151.178:3000/users/${uid}`,
         { userInfo: user },
         {
           headers: {
@@ -31,7 +31,7 @@ const models = {
 
   getUserInfo: (uid) => {
     axios
-      .get(`http://127.0.0.1:3000/users/${uid}`)
+      .get(`http://18.219.151.178:3000/users/${uid}`)
       .then((response) => {
         response.data.isGuest = false;
         response.data.uid = uid;
