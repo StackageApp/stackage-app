@@ -51,7 +51,7 @@ function ChatScreen({ route }) {
   }, []);
 
   const onSend = useCallback((messages = []) => {
-    console.log('on send', messages);
+    // console.log('on send', messages);
     const postObj = { message: messages[0] };
     // setSentMessages(postObj);
     axios
