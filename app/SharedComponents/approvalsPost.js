@@ -51,6 +51,8 @@ export default function ApprovalPost({ postData }) {
       </View>
       <View style={style.textContainer}>
         <Text style={style.text}>{text}</Text>
+
+        <Text style={style.link}>{link}</Text>
       </View>
       <View style={style.metaContainer}>
         {tagsExist &&
@@ -152,6 +154,7 @@ const style = StyleSheet.create({
     fontSize: 23,
     fontWeight: 600,
     color: '#1d1d1f',
+    flex: 1,
   },
   userName: {
     color: '#54bab9',
@@ -168,6 +171,12 @@ const style = StyleSheet.create({
   text: {
     padding: 10,
     borderRadius: 40,
+  },
+  link: {
+    padding: 10,
+    borderRadius: 40,
+    color: '#9C50B6',
+    fontSize: 10,
   },
   metaContainer: {
     flexDirection: 'row',
