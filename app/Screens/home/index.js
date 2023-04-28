@@ -9,10 +9,11 @@ import HomeFeed from './HomeFeed';
 
 function HomePage() {
   const posts = useSelector((store) => store.homeFeed.posts);
+  const likes = useSelector((store) => store.homeFeed.posts.map((post) => post.likes));
 
-  // useEffect(() => {
-  //   postApi.getAllPosts();
-  // }, []);
+  useEffect(() => {
+    postApi.getAllPosts();
+  }, [likes]);
 
   return (
     <>

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import styles from '../../sharedStyles';
 import { dummyPost } from '../Utils/mockPosts';
+import { postApi } from '../api';
 
 export default function Post({ postData }) {
-  const [{ title, text, name, category, tags, link, likes, comments }, setPost] =
+  const [{ title, text, name, category, tags, link, likes, comments, id }, setPost] =
     useState(dummyPost);
   const [tagsExist, setTagsExist] = useState(false);
   const [commentsExist, setCommentsExist] = useState(false);
@@ -52,7 +53,13 @@ export default function Post({ postData }) {
             )}
         </View>
         <View style={styles.postCommentLikes}>
-          <Text>{likes} Likes</Text>
+          <Pressable
+            onPress={() => {
+              postApi.incrementLikeBy1(id);
+            }}
+          >
+            <Text>{likes} Likes</Text>
+          </Pressable>
           <Text>{commentsExist && comments.length} Comments</Text>
         </View>
       </View>
