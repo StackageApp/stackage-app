@@ -187,6 +187,7 @@ const style = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
+    marginRight: 4,
   },
   userName: {
     color: '#54bab9',
