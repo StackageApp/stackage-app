@@ -12,26 +12,24 @@ function ChatScreen({ route }) {
   const uid = useSelector((store) => store.currentUser.uid) || 'vY1hQh5wpwgI1zzaweeooEqyJAi1';
   const { id } = route.params;
 
-  console.log('id: ', id);
-  console.log('userId: ', uid);
+  // console.log('id: ', id);
+  // console.log('userId: ', uid);
 
   const [messages, setMessages] = useState([]);
 
-  // redux data
+  // redux message data
   // const { message } = useSelector((state) => state.message);
 
   useEffect(() => {
     // Fetch messages every 1 second
     const fetchMessages = () => {
       axios
-        .get(`http://127.0.0.1:3000/users/${uid}`)
+        .get(`http://18.219.151.178:3000/users/${uid}`)
         .then((response) => {
           const messagesThread = response.data.messages[id];
           // reverse the order of messages
           messagesThread.reverse();
           setMessages(messagesThread);
-
-          console.log('response', messagesThread);
         })
         .catch((error) => {
           console.log(error);
@@ -55,15 +53,14 @@ function ChatScreen({ route }) {
     const postObj = { message: messages[0] };
     // setSentMessages(postObj);
     axios
-      .post(`http://127.0.0.1:3000/users/messages/${uid}/${id}`, postObj)
+      .post(`http://18.219.151.178:3000/users/messages/${uid}/${id}`, postObj)
       .then((response) => {
-        console.log('post sucessful', response);
+        // console.log('post sucessful', response);
       })
       .catch((error) => {
         console.log(error);
       });
 
-    console.log('postObj', postObj);
     setMessages((previousMessages) => GiftedChat.append(previousMessages, messages));
   }, []);
 

@@ -1,16 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import {
-  Button,
-  FlatList,
-  KeyboardAvoidingView,
-  Pressable,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import React, { useState } from 'react';
+import { Button, KeyboardAvoidingView, Pressable, StyleSheet, Text, View } from 'react-native';
 
-import RadioGroup from 'react-native-radio-buttons-group';
+import RadioGroup, { RadioButtonProps } from 'react-native-radio-buttons-group';
 
 // const isEqual = require('lodash.isequal');
 
@@ -79,17 +70,25 @@ function CategoryModal(props) {
           color="#54bab9"
         />
       </View>
-      <Text>Select a category</Text>
-      <RadioGroup radioButtons={radioButtons} onPress={onPressRadioButton} />
-      <Pressable
-        title="Done"
-        onPress={() => {
-          onDone();
-        }}
-        style={styles.doneButton}
-      >
-        <Text style={styles.doneButtonText}>Done</Text>
-      </Pressable>
+      <View style={styles.centerEverything}>
+        <Text style={styles.instructions}>Select a category</Text>
+        <View>
+          <RadioGroup
+            radioButtons={radioButtons}
+            onPress={onPressRadioButton}
+            containerStyle={styles.radioGroupStyle}
+          />
+        </View>
+        <Pressable
+          title="Done"
+          onPress={() => {
+            onDone();
+          }}
+          style={styles.doneButton}
+        >
+          <Text style={styles.doneButtonText}>Done</Text>
+        </Pressable>
+      </View>
     </KeyboardAvoidingView>
   );
 }
@@ -117,6 +116,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 7,
     elevation: 3,
+    margin: 50,
   },
   doneButtonText: {
     fontSize: 20,
@@ -124,6 +124,20 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     letterSpacing: 0.25,
     color: 'white',
+  },
+  radioGroupStyle: {
+    width: 200,
+    alignItems: 'left',
+    fontSize: 20,
+  },
+  centerEverything: {
+    alignItems: 'center',
+  },
+  instructions: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    margin: 30,
   },
 });
 

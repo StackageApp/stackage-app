@@ -50,7 +50,7 @@ function MessagesMain() {
         <Stack.Screen
           name="Connections"
           component={Connections}
-          options={({ route }) => ({ title: 'connections' })}
+          options={({ route }) => ({ title: 'Connections' })}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -39,15 +39,58 @@ export default function Post({ postData }) {
     <View style={styles.postContainer}>
       <View className="post-header" style={styles.postHeader}>
         <View style={styles.postCategory}>
-          <Text>{category}</Text>
+          <View style={{ overflow: 'hidden', borderBottomLeftRadius: 25 }}>
+            <Text
+              style={{
+                backgroundColor: '#e9dac1',
+                paddingLeft: 15,
+                textAlign: 'right',
+                paddingRight: 10,
+                fontSize: 10,
+                color: '#54bab9',
+                fontWeight: 600,
+                paddingBottom: 2,
+              }}
+            >
+              {category}
+            </Text>
+          </View>
         </View>
         <View style={styles.main}>
           {/* <Image src={}/> */}
-          <Text style={{ width: '10%' }}>PFP</Text>
+          {/* <Image style={{    width: 50,
+    height: 50,
+    borderRadius: 25,
+    marginRight: 16,
+    borderColor: '#9ed2c6',
+    borderWidth: 1.5 } source='' alt="PFP"}></Image> */}
+          <Text
+            style={{
+              width: 50,
+              height: 50,
+              borderRadius: 25,
+              marginRight: 16,
+              borderColor: '#9ed2c6',
+              borderWidth: 1.5,
+              textAlign: 'center',
+            }}
+          >
+            PFP
+          </Text>
           <View style={{ width: '85%', gap: 10 }}>
-            <Text>{name} @nameOrEmail</Text>
             <View className="post-body" style={styles.postBody}>
               <Text style={styles.postTitle}>{title}</Text>
+              <Text
+                style={{
+                  paddingBottom: 15,
+                  paddingTop: 10,
+                  color: '#54bab9',
+                  fontWeight: 600,
+                  fontSize: 12,
+                }}
+              >
+                posted by {name}{' '}
+              </Text>
               <Text>{text}</Text>
               <Text>{link}</Text>
             </View>
@@ -58,7 +101,15 @@ export default function Post({ postData }) {
         <View style={styles.postTags}>
           {tagsExist &&
             tags.map((tag, i) =>
-              i === tags.length - 1 ? <Text key={i}>{tag}</Text> : <Text key={i}>{tag} | </Text>
+              i === tags.length - 1 ? (
+                <Text key={i} style={styles.tag}>
+                  {tag}
+                </Text>
+              ) : (
+                <Text key={i} style={styles.tag}>
+                  {tag} |{' '}
+                </Text>
+              )
             )}
         </View>
         <View style={styles.postCommentLikes}>

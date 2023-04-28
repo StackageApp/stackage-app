@@ -1,9 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { TouchableOpacity, View } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
+import axios from 'axios';
 import { Tabs } from 'expo-router';
+import { Badge } from 'react-native-elements';
+import { useSelector } from 'react-redux';
 
 export default function () {
+  const [messageCount, setMessageCount] = useState(0);
+  // using redux return use Provider wrapper error
+  // const notifications = useSelector((state) => state.currentUser.notifications);
+
+  // these axios calls need to move somewhere else
+  useEffect(() => {
+    axios
+      .get(`http://18.219.151.178:3000/users/vY1hQh5wpwgI1zzaweeooEqyJAi1`)
+      .then((response) => {
+        // set message count to equal number of notifications
+        setMessageCount(response.data.notifications);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  const handleBadgePress = () => {
+    // insted of resetting the state, send a put request using axios to users/notifications/reset/:uid
+    axios
+      .patch(`http://18.219.151.178:3000/users/notifications/reset/vY1hQh5wpwgI1zzaweeooEqyJAi1`)
+      .then((response) => {
+        // set message count to equal number of notifications
+        setMessageCount(0);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <Tabs
       screenOptions={{
@@ -49,14 +82,25 @@ export default function () {
         options={{
           headerShown: false,
           tabBarIcon: ({ color }) => (
-            <Ionicons name="chatbox-ellipses-outline" size={24} color={color} />
+            <TouchableOpacity onPress={handleBadgePress}>
+              <View style={{ flexDirection: 'row' }}>
+                <Ionicons name="chatbox-ellipses-outline" size={24} color={color} />
+                {messageCount > 0 && (
+                  <Badge
+                    value={messageCount}
+                    status="error"
+                    badgeStyle={{ backgroundColor: 'red', marginLeft: 0 }}
+                  />
+                )}
+              </View>
+            </TouchableOpacity>
           ),
         }}
       />
       <Tabs.Screen
         name="Profile"
         options={{
-          title: 'Profile',
+          headerShown: false,
           tabBarIcon: ({ color }) => <Ionicons name="person-sharp" size={24} color={color} />,
         }}
       />
