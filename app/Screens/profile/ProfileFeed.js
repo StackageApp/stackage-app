@@ -19,10 +19,7 @@ export default function ProfileInfo() {
     <View style={styles.container}>
       <View style={styles.tabs}>
         <Pressable onPress={() => setTab(true)}>
-          <Text style={tab ? styles.selectedTab : null}>Posts</Text>
-        </Pressable>
-        <Pressable onPress={() => setTab(false)}>
-          <Text style={tab ? null : styles.selectedTab}>Saved</Text>
+          <Text style={styles.selectedTab}>Your Posts</Text>
         </Pressable>
       </View>
       <FlatList data={posts} renderItem={(post) => <Post postData={post.item} />} />
@@ -40,9 +37,17 @@ const styles = StyleSheet.create({
   tabs: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
+    fontSize: 30,
+    borderBottomColor: '#E9DAC1',
+    borderBottomWidth: 2,
   },
   selectedTab: {
     fontWeight: 'bold',
     textDecorationLine: 'underline',
+    paddingBottom: 15,
+    fontSize: 20,
+  },
+  notSelectedTab: {
+    fontSize: 20,
   },
 });

@@ -115,8 +115,8 @@ const style = StyleSheet.create({
     paddingBottom: 10,
     borderTopWidth: 2.5,
     borderTopColor: '#e9dac1',
-    borderBottomColor: '#e9dac1',
-    borderBottomWidth: 1.5,
+    // borderBottomColor: '#e9dac1',
+    // borderBottomWidth: 1.5,
   },
   categoryContainer: {
     flexDirection: 'row',
@@ -126,7 +126,7 @@ const style = StyleSheet.create({
   },
   categoryStyle: {
     backgroundColor: '#e9dac1',
-    borderBottomLeftRadius: 50,
+    borderBottomLeftRadius: 25,
 
     overflow: 'hidden',
   },
