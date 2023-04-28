@@ -54,7 +54,6 @@ function PostMessage() {
   };
 
   const sendPost = () => {
-    buildPostObject();
     makePostAPI.postThis(postObj);
   };
 
