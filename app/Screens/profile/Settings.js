@@ -48,10 +48,7 @@ export default function Settings({ navigation }) {
       <KeyboardAvoidingView style={styles.mainContainer} enabled behavior="padding">
         <View style={styles.mainContainer2}>
           <View style={styles.imgContainer}>
-            <Image
-              style={styles.profilePicture}
-              src="https://firebasestorage.googleapis.com/v0/b/stackage-a022a.appspot.com/o/hiwoody.png?alt=media&token=cda574b8-e718-44e5-b320-404876cbbf1c"
-            />
+            <Image style={styles.profilePicture} source={userInfo.photoURL} />
             {/* <Text>Update profile picture</Text> */}
           </View>
           <View style={styles.inputContainer}>

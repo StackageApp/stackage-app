@@ -39,7 +39,15 @@ export default function Post({ postData }) {
     <View style={styles.postContainer}>
       <View className="post-header" style={styles.postHeader}>
         <View style={styles.postCategory}>
-          <Text>{category}</Text>
+          <Text
+            style={{
+              backgroundColor: '#e9dac1',
+              borderBottomLeftRadius: 50,
+              overflow: 'hidden',
+            }}
+          >
+            {category}
+          </Text>
         </View>
         <View style={styles.main}>
           {/* <Image src={}/> */}

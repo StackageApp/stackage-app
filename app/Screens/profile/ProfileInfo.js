@@ -19,10 +19,7 @@ export default function ProfileInfo({ navigation }) {
           style={{ padding: 10 }}
         />
       </View>
-      <Image
-        style={styles.profilePicture}
-        src="https://firebasestorage.googleapis.com/v0/b/stackage-a022a.appspot.com/o/hiwoody.png?alt=media&token=cda574b8-e718-44e5-b320-404876cbbf1c"
-      />
+      <Image style={styles.profilePicture} source={userInfo.profileURL} />
       <View style={styles.information}>
         <Text style={styles.fullName}>{userInfo.name}</Text>
         <Text style={{ fontSize: 20, paddingBottom: 15 }}>{userInfo.email}</Text>
