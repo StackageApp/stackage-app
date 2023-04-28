@@ -11,25 +11,28 @@ export default function Profile({ navigation }) {
   // const router = useRouter();
   // console.log(usePathname());
   return (
-    <View>
-      <Pressable onPress={() => navigation.navigate('Settings')}>
-        <Ionicons name="settings-outline" size={30} color="black" />
-      </Pressable>
+    <View style={styles.container}>
       {/* <Link href='/Settings' asChild> */}
       {/* {({ hovered, pressed }) => ( */}
       {/* <Ionicons style={styles.settingsIcon} name="settings-outline" size={36} /> */}
       {/* )} */}
       {/* </Link> */}
-      <ProfileInfo />
+      <ProfileInfo navigation={navigation} />
       <ProfileFeed />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   settingsIcon: {
-    position: 'absolute',
-    right: 0,
-    padding: 10,
+    alignItems: 'end',
+    borderColor: 'blue',
+    borderWidth: 3,
   },
 });
