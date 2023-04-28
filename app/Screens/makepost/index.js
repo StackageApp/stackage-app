@@ -6,6 +6,7 @@ import { Link } from 'expo-router';
 import { useSelector } from 'react-redux';
 
 import makePostAPI from '../../api';
+import AfterSuccessModal from './afterSuccessModal.js';
 import CategoryModal from './categoryModal.js';
 import LinksModal from './linksModal.js';
 import SuccessModal from './successModal.js';
@@ -18,7 +19,15 @@ function PostMessage() {
   const [tags, setTags] = useState([]);
   const [category, setCategory] = useState('');
   const [links, setLinks] = useState([]);
-  const [postObj, setPostObj] = useState({});
+  const [postObj, setPostObj] = useState({
+    uid: '',
+    timestamp: '',
+    title: '',
+    text: '',
+    tags: [],
+    category: '',
+    links: [],
+  });
   const uid = useSelector((store) => store.currentUser.uid);
 
   const handleInput = (input, field) => {
@@ -54,7 +63,19 @@ function PostMessage() {
   };
 
   const sendPost = () => {
-    makePostAPI.postThis(postObj);
+    buildPostObject();
+    // makePostAPI.postThis(postObj);
+    setShowView('after success');
+    resetState();
+  };
+
+  const resetState = () => {
+    setTitle('');
+    setText('');
+    setTags([]);
+    setCategory('');
+    setLinks([]);
+    setPostObj({});
   };
 
   return (
@@ -66,6 +87,7 @@ function PostMessage() {
               <Text style={styles.close}>X</Text>
             </Link>
           </View>
+          <Text style={styles.labelField}>Title</Text>
           <TextInput
             id="title"
             editable
@@ -80,6 +102,7 @@ function PostMessage() {
             KeyboardType="default"
             clearButtonMode="always"
           />
+          <Text style={styles.labelField}>Text</Text>
           <TextInput
             id="text"
             editable
@@ -96,30 +119,43 @@ function PostMessage() {
             clearButtonMode="always"
           />
           <View style={styles.evenRow}>
-            <Ionicons
-              name="ios-pricetags-outline"
-              size={30}
-              color="black"
-              onPress={() => {
-                setShowView('tags');
-              }}
-            />
-            <Ionicons
-              name="grid-outline"
-              size={30}
-              color="black"
-              onPress={() => {
-                setShowView('category');
-              }}
-            />
-            <Ionicons
-              name="link-outline"
-              size={30}
-              color="black"
-              onPress={() => {
-                setShowView('links');
-              }}
-            />
+            <View>
+              <Ionicons
+                name="ios-pricetags-outline"
+                size={30}
+                color="black"
+                onPress={() => {
+                  setShowView('tags');
+                }}
+              />
+              <Text style={styles.buttonLabel}>Tags</Text>
+            </View>
+            <View>
+              <View style={styles.adjustCategoryIcon}>
+                <Ionicons
+                  name="grid-outline"
+                  size={30}
+                  color="black"
+                  onPress={() => {
+                    setShowView('category');
+                  }}
+                />
+              </View>
+              <Text style={styles.buttonLabel}>Category</Text>
+            </View>
+            <View>
+              <Ionicons
+                name="link-outline"
+                size={30}
+                color="black"
+                onPress={() => {
+                  setShowView('links');
+                }}
+              />
+              <View style={styles.adjustLinkText}>
+                <Text style={styles.buttonLabel}>Links</Text>
+              </View>
+            </View>
             <Pressable
               title="Post"
               onPress={() => {
@@ -145,6 +181,9 @@ function PostMessage() {
       {showView === 'success' ? (
         <SuccessModal setShowView={setShowView} postObj={postObj} sendPost={sendPost} />
       ) : null}
+      {showView === 'after success' ? (
+        <AfterSuccessModal setShowView={setShowView} resetState={resetState} />
+      ) : null}
     </KeyboardAvoidingView>
   );
 }
@@ -152,14 +191,18 @@ function PostMessage() {
 const styles = StyleSheet.create({
   input: {
     height: 40,
-    margin: 12,
+    marginBottom: 12,
+    marginLeft: 12,
+    marginRight: 12,
     borderWidth: 1,
     padding: 10,
     borderRadius: 5,
   },
   longInput: {
     height: 200,
-    margin: 12,
+    marginBottom: 12,
+    marginLeft: 12,
+    marginRight: 12,
     borderWidth: 1,
     padding: 10,
     borderRadius: 5,
@@ -194,6 +237,25 @@ const styles = StyleSheet.create({
   },
   close: {
     color: '#54bab9',
+    fontSize: 17,
+    marginRight: 10,
+  },
+  labelField: {
+    fontSize: 10,
+    marginLeft: 20,
+    marginBottom: 0,
+  },
+  buttonLabel: {
+    fontSize: 10,
+  },
+  alignCenter: {
+    alignItems: 'center',
+  },
+  adjustCategoryIcon: {
+    paddingLeft: 6,
+  },
+  adjustLinkText: {
+    paddingLeft: 2,
   },
 });
 

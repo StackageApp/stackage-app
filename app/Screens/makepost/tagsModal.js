@@ -49,7 +49,7 @@ function TagsModal(props) {
         <Text style={styles.instructions}>Add your tags here</Text>
         <View>
           {tags.map((tag) => (
-            <Text>{tag}</Text>
+            <Text style={styles.listItem}>{tag}</Text>
           ))}
         </View>
       </View>
@@ -134,6 +134,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     letterSpacing: 0.25,
     margin: 30,
+  },
+  listItem: {
+    margin: 10,
+    fontSize: 15,
   },
 });
 

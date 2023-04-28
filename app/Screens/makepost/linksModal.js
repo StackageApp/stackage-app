@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   KeyboardAvoidingView,
@@ -48,8 +48,10 @@ function LinksModal(props) {
       <View style={styles.centerEverything}>
         <Text style={styles.instructions}>Add your links here</Text>
         <View>
-          {links.map((link) => (
-            <Text>{link}</Text>
+          {links.map((link, index) => (
+            <Text key={index} style={styles.listItem}>
+              {link}
+            </Text>
           ))}
         </View>
       </View>
@@ -63,7 +65,7 @@ function LinksModal(props) {
         KeyboardType="default"
       />
       <View style={styles.evenRow}>
-        {links.length < 11 ? (
+        {links.length < 5 ? (
           <Pressable>
             <AntDesign
               name="pluscircle"
@@ -75,6 +77,7 @@ function LinksModal(props) {
             />
           </Pressable>
         ) : null}
+
         <Pressable
           title="Done"
           onPress={() => {
@@ -113,6 +116,7 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     elevation: 3,
   },
+
   doneButtonText: {
     fontSize: 20,
     lineHeight: 21,
@@ -133,6 +137,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     letterSpacing: 0.25,
     margin: 30,
+  },
+  listItem: {
+    margin: 10,
+    fontSize: 15,
   },
 });
 
