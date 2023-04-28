@@ -1,5 +1,13 @@
 import React from 'react';
-import { Button, KeyboardAvoidingView, Pressable, StyleSheet, Text, View } from 'react-native';
+import {
+  Button,
+  KeyboardAvoidingView,
+  Link,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 
 function AfterSuccessModal(props) {
   const onWriteAnotherPost = () => {
@@ -19,8 +27,8 @@ function AfterSuccessModal(props) {
         />
       </View>
       <View style={styles.successTextWrapper}>
-        <Text style={styles.successText}>Your post has been submitted for approval. </Text>
-        <Text style={styles.successText}>
+        <Text style={styles.successText1}>Your post has been submitted for approval. </Text>
+        <Text style={styles.successText2}>
           You should see it go live once five other members approve it.
         </Text>
       </View>
@@ -32,49 +40,20 @@ function AfterSuccessModal(props) {
         >
           <Text style={styles.buttonText}>Write Another Post</Text>
         </Pressable>
+        {/* <View style={styles.writeAnotherButton}>
+          <Link style={styles.buttonText}>Return to Home</Link>
+        </View> */}
       </View>
     </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-    borderRadius: 5,
-  },
   fixToRight: {
     flexDirection: 'row-reverse',
     padding: 10,
   },
-  editButton: {
-    height: 50,
-    width: 100,
-    backgroundColor: '#e8dac1',
-    color: 'fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 10,
-    borderRadius: 7,
-    elevation: 3,
-    margin: 2,
-  },
-  submitButton: {
-    height: 50,
-    width: 150,
-    backgroundColor: '#54bab9',
-    color: 'fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 10,
-    borderRadius: 7,
-    elevation: 3,
-    margin: 10,
-  },
+
   buttonText: {
     fontSize: 20,
     lineHeight: 21,
@@ -105,8 +84,19 @@ const styles = StyleSheet.create({
     letterSpacing: 0.25,
     color: 'white',
   },
-  successText: {
+  successText1: {
     fontSize: 20,
+    marginTop: 60,
+    marginBottom: 10,
+    marginLeft: 40,
+    marginRight: 40,
+  },
+  successText2: {
+    fontSize: 20,
+    marginTop: 10,
+    marginBottom: 40,
+    marginLeft: 40,
+    marginRight: 40,
   },
   successTextWrapper: {
     alignItems: 'center',
