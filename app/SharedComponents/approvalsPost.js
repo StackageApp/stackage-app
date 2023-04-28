@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Image, Pressable, Text, View } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import styles from '../../sharedStyles';
 import { dummyApprovalsPost } from '../Utils/mockApprovalsPosts';
@@ -35,55 +35,126 @@ export default function ApprovalPost({ postData }) {
   }
 
   return (
-    <View style={styles.postContainer}>
-      <View className="post-header" style={styles.postHeader}>
-        <View style={styles.postCategory}>
-          <Text>{category}</Text>
-        </View>
-        <View style={styles.main}>
-          {/* <Image src={}/> */}
-          <Text style={{ width: '10%' }}>PFP</Text>
-          <View style={{ width: '85%', gap: 10 }}>
-            <Text>{name} @nameOrEmail</Text>
-            <View className="post-body" style={styles.postBody}>
-              <Text style={styles.postTitle}>{title}</Text>
-              <Text>{text}</Text>
-              <Text>{link}</Text>
-            </View>
-          </View>
+    <View style={style.postContainer}>
+      <View style={style.categoryContainer}>
+        <View style={style.categoryStyle}>
+          <Text style={style.category}>{category}</Text>
         </View>
       </View>
-      <View className="post-footer" style={styles.postFooter}>
-        <View style={styles.postTags}>
-          {tagsExist &&
-            tags.map((tag, i) =>
-              i === tags.length - 1 ? <Text key={i}>{tag}</Text> : <Text key={i}>{tag} | </Text>
-            )}
-        </View>
-        <View style={styles.postCommentLikes}>
-          <Pressable
-            onPress={() => {
-              postApi.incrementLikeBy1(id);
-              setPost({ ...postData, likes: (likes += 1) });
-            }}
-          >
-            <Text>{likes} Likes</Text>
-          </Pressable>
-          <Pressable onPress={() => toggleComments()}>
-            <Text>{commentsExist && comments.length} Comments</Text>
-          </Pressable>
+      <View style={style.postHeader}>
+        <Image style={style.avatar} source={userAvatar} />
+        <View style={style.postTitleContainer}>
+          <Text style={style.postTitle}>{title}</Text>
+          <Text style={style.userName}>posted by {name}</Text>
         </View>
       </View>
-      {commentView &&
-        comments.map((comment, i) => (
-          <View key={i}>
-            <Text>{comment.author}</Text>
-            <Text>{comment.text}</Text>
-          </View>
-        ))}
+      <View style={style.textContainer}>
+        <Text style={style.text}>{text}</Text>
+      </View>
+      <View style={style.metaContainer}>
+        {tagsExist &&
+          tags.map((tag, i) =>
+            i === tags.length - 1 ? (
+              <Text style={style.tags} key={i}>
+                #{tag}{' '}
+              </Text>
+            ) : (
+              <Text style={style.tags} key={i}>
+                #{tag}{' '}
+              </Text>
+            )
+          )}
+      </View>
+      <View style={style.voteContainer}>
+        <Text>Approve</Text>
+        <Text>Disapprove</Text>
+      </View>
     </View>
   );
 }
+
+const style = StyleSheet.create({
+  postContainer: {
+    flex: 1,
+    backgroundColor: 'f7ecde',
+    marginVertical: 4,
+    paddingLeft: 10,
+    paddingRight: 0,
+    paddingBottom: 10,
+    borderTopWidth: 2.5,
+    borderTopColor: '#E9DAC1',
+  },
+  categoryContainer: {
+    flexDirection: 'row',
+    paddingRight: 0,
+    marginRight: 0,
+    justifyContent: 'flex-end',
+  },
+  categoryStyle: {
+    backgroundColor: '#E9DAC1',
+    borderBottomLeftRadius: 50,
+
+    overflow: 'hidden',
+  },
+  category: {
+    backgroundColor: '#E9DAC1',
+    padding: 2,
+    marginLeft: 15,
+    marginRight: 5,
+    borderBottomLeftRadius: 30,
+    overflow: 'hidden',
+    fontSize: 10,
+    color: '#54bab9',
+    fontWeight: 600,
+  },
+  postHeader: {
+    flexDirection: 'row',
+  },
+  postTitleContainer: {
+    flexDirection: 'column',
+  },
+  avatar: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    marginRight: 16,
+    borderColor: '#9ed2c6',
+    borderWidth: 1.5,
+  },
+  postTitle: {
+    fontSize: 23,
+    fontWeight: 600,
+  },
+  userName: {
+    color: '#9ed2c6',
+    fontWeight: 600,
+    fontSize: 12,
+  },
+  textContainer: {
+    flex: 1,
+    paddingLeft: 57,
+    paddingRight: 15,
+    borderRadius: 40,
+  },
+  text: {
+    padding: 10,
+    borderRadius: 40,
+  },
+  metaContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-apart',
+    paddingLeft: 69,
+  },
+  tags: {
+    flexDirection: 'row',
+    fontSize: 10,
+    color: '#54bab9',
+    fontWeight: 600,
+  },
+  voteContainer: {
+    flexDirection: 'row',
+  },
+});
 
 // const styles = StyleSheet.create({
 //   container: {
