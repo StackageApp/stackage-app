@@ -153,6 +153,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   warningText: {
+    marginLeft: 20,
     color: 'red',
   },
 });
