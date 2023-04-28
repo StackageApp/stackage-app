@@ -1,25 +1,18 @@
 import React from 'react';
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 
-import { Ionicons } from '@expo/vector-icons';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-export default function ProfileInfo({ navigation }) {
-  const { profile } = useSelector((store) => store.profileInfo);
+export default function ProfileInfo() {
+  const userInfo = useSelector((store) => store.currentUser.userInfo);
+  // const picture = userInfo.profileUrl
 
   return (
     <View style={styles.container}>
-      <Pressable style={styles.settingsIcon} onPress={() => navigation.navigate('Settings')}>
-        <Ionicons name="settings-outline" size={36} color="black" />
-      </Pressable>
-      <Image style={styles.profilePicture} source={require('./example-profile.jpeg')} />
-      <View style={styles.information}>
-        <Text style={styles.fullName}>{profile.name}</Text>
-        <Text>@Architect_guy</Text>
-        <Text>{`${profile.occupation} ${profile.location}`}</Text>
-        <Text>___ likes</Text>
-        <Text>Connections</Text>
-      </View>
+      <Image style={styles.profilePicture} source={userInfo.profileUrl} />
+      <Text style={styles.fullName}>{userInfo.name}</Text>
+      <Text>{userInfo.email}</Text>
+      <Text>{`${userInfo.occupation} - ${userInfo.location}`}</Text>
     </View>
   );
 }

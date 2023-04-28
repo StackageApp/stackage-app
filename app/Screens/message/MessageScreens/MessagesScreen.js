@@ -37,7 +37,7 @@ const Messages = [
     messageText: 'Hey there, this is my test for a post of my social app in React Native.',
   },
   {
-    id: '4',
+    id: 'pbbQjIfF7abqfvKD38DOBAbgoHr2',
     userName: 'Mev',
     ProfileImg: require('../../../../assets/users/Mev.png'),
     messageTime: '1 day ago',
@@ -73,7 +73,11 @@ function MessagesScreen({ navigation }) {
         data={Messages}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <Tile onPress={() => navigation.navigate('ChatScreen', { userName: item.userName })}>
+          <Tile
+            onPress={
+              () => navigation.navigate('ChatScreen', { userName: item.userName, id: item.id }) // change item.id to _id to match incoming data object properties
+            }
+          >
             <UserInfo>
               <UserImgWrapper>
                 <ProfileImg source={item.ProfileImg} />

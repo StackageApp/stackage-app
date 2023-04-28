@@ -28,7 +28,7 @@ const contacts = [
     ProfileImg: require('../../../../assets/users/Nam.png'),
   },
   {
-    id: '4',
+    id: 'pbbQjIfF7abqfvKD38DOBAbgoHr2',
     userName: 'Mev',
     ProfileImg: require('../../../../assets/users/Mev.png'),
   },
@@ -56,7 +56,11 @@ function Connections({ navigation }) {
         data={contacts}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <Tile onPress={() => navigation.navigate('ChatScreen', { userName: item.userName })}>
+          <Tile
+            onPress={() =>
+              navigation.navigate('ChatScreen', { userName: item.userName, id: item.id })
+            }
+          >
             <UserInfo>
               <UserImgWrapper>
                 <ProfileImg source={item.ProfileImg} />

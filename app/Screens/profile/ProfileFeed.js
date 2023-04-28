@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
+
+import { useSelector } from 'react-redux';
 
 import Post from '../../SharedComponents/Post';
+import { profileApi } from '../../api';
 
 export default function ProfileInfo() {
   const [tab, setTab] = useState(true);
-  const posts = [{}];
+  const uid = useSelector((store) => store.currentUser.uid);
+  const posts = useSelector((store) => store.profileInfo.posts);
+
+  useEffect(() => {
+    profileApi.getProfileFeed(uid);
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -17,11 +25,7 @@ export default function ProfileInfo() {
           <Text style={tab ? null : styles.selectedTab}>Saved</Text>
         </Pressable>
       </View>
-      <View style={{ borderColor: 'black', borderWidth: 4, width: '100%', height: '100%' }}>
-        {posts.map((post) => (
-          <Post key={post} />
-        ))}
-      </View>
+      <FlatList data={posts} renderItem={(post) => <Post postData={post.item} />} />
     </View>
   );
 }

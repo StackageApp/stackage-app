@@ -34,7 +34,7 @@ export const TextSection = styled.View`
   padding: 15px;
   padding-left: 0;
   margin-left: 10px;
-  width: 300px;
+  flex-shrink: 1;
   border-bottom-width: 1px;
   border-bottom-color: #cccccc;
 `;
@@ -43,19 +43,23 @@ export const UserInfoText = styled.View`
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 5px;
+  width: 100%;
 `;
 
 export const UserName = styled.Text`
   font-size: 14px;
   font-weight: bold;
+  flex-shrink: 1;
 `;
 
 export const MessageTime = styled.Text`
   font-size: 12px;
   color: #666;
+  flex-shrink: 1;
 `;
 
 export const MessageText = styled.Text`
   font-size: 14px;
   color: #333333;
+  flex-shrink: 1;
 `;
