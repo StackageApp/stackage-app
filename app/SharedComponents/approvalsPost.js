@@ -141,6 +141,7 @@ const style = StyleSheet.create({
   },
   postTitleContainer: {
     flexDirection: 'column',
+    flex: 1,
   },
   avatar: {
     width: 50,
@@ -152,9 +153,11 @@ const style = StyleSheet.create({
   },
   postTitle: {
     fontSize: 23,
-    fontWeight: 600,
+    fontWeight: 500,
     color: '#1d1d1f',
     flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
   },
   userName: {
     color: '#54bab9',
