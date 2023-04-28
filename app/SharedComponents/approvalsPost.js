@@ -16,10 +16,8 @@ const Nam = require('../../assets/users/Nam.png');
 const Mev = require('../../assets/users/Mev.png');
 
 export default function ApprovalPost({ postData }) {
-  const [
-    { title, text, name, category, tags, links, likes, comments, userAvatar, id, uid },
-    setPost,
-  ] = useState(dummyApprovalsPost);
+  const [{ title, text, name, category, tags, links, likes, comments, id, uid }, setPost] =
+    useState(dummyApprovalsPost);
   const [tagsExist, setTagsExist] = useState(false);
   const [commentsExist, setCommentsExist] = useState(false);
   const [commentView, setCommentView] = useState(false);
@@ -133,7 +131,7 @@ export default function ApprovalPost({ postData }) {
         <View style={[style.vote, approveButton ? style.yesVote : style.vote]}>
           <Pressable
             onPress={() => {
-              postApi.incrementLikeBy1(uid);
+              postApi.incrementLikeBy1(id);
               if (disapproveButton) {
                 setDisapproveButton(!disapproveButton);
               }
@@ -146,7 +144,7 @@ export default function ApprovalPost({ postData }) {
         <View style={[style.vote, disapproveButton ? style.yesVote : style.vote]}>
           <Pressable
             onPress={() => {
-              postApi.incrementLikeBy1(id);
+              postApi.decrementLikeBy1(id);
               if (approveButton) {
                 setApproveButton(!approveButton);
               }
