@@ -37,7 +37,7 @@ function MessagesMain() {
                 }}
                 style={{ marginRight: 10 }}
               >
-                <Text style={{ color: '#FFFFFF', fontSize: 16 }}>connections</Text>
+                <Text style={{ color: '#D9D9D9', fontSize: 16 }}>Connections</Text>
               </TouchableOpacity>
             ),
           })}

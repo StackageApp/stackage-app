@@ -8,13 +8,16 @@ import { dummyApprovalsPost } from '../Utils/mockApprovalsPosts';
 import { postApi } from '../api';
 
 export default function ApprovalPost({ postData }) {
-  const [{ title, text, name, category, tags, link, likes, comments, userAvatar, id }, setPost] =
-    useState(dummyApprovalsPost);
+  const [
+    { title, text, name, category, tags, links, likes, comments, userAvatar, id, uid },
+    setPost,
+  ] = useState(dummyApprovalsPost);
   const [tagsExist, setTagsExist] = useState(false);
   const [commentsExist, setCommentsExist] = useState(false);
   const [commentView, setCommentView] = useState(false);
   const [approveButton, setApproveButton] = useState(false);
   const [disapproveButton, setDisapproveButton] = useState(false);
+  const [linksExist, setLinksExist] = useState(false);
 
   useEffect(() => {
     if (tags) {
@@ -23,7 +26,10 @@ export default function ApprovalPost({ postData }) {
     if (comments) {
       setCommentsExist(true);
     }
-  }, [tags, comments]);
+    if (links) {
+      setLinksExist(true);
+    }
+  }, [tags, comments, links]);
 
   useEffect(() => {
     if (postData) {
@@ -54,8 +60,26 @@ export default function ApprovalPost({ postData }) {
       </View>
       <View style={style.textContainer}>
         <Text style={style.text}>{text}</Text>
-
-        <LinkPreview text={link} metadataContainerStyle={style.linkPreviewContainer} />
+        {linksExist &&
+          links.map((link, i) =>
+            i === links.length - 1 ? (
+              <LinkPreview
+                key={i}
+                text={link}
+                containerStyle={style.linkPreviewContainerFull}
+                metadataContainerStyle={style.linkPreviewContainer}
+                imageContainerStyle={style.linkPreviewContainerText}
+              />
+            ) : (
+              <LinkPreview
+                key={i}
+                text={link}
+                containerStyle={style.linkPreviewContainerFull}
+                metadataContainerStyle={style.linkPreviewContainer}
+                imageContainerStyle={style.linkPreviewContainerText}
+              />
+            )
+          )}
 
         {/* <Text style={style.link}>{link}</Text> */}
       </View>
@@ -77,7 +101,7 @@ export default function ApprovalPost({ postData }) {
         <View style={[style.vote, approveButton ? style.yesVote : style.vote]}>
           <Pressable
             onPress={() => {
-              postApi.incrementLikeBy1(id);
+              postApi.incrementLikeBy1(uid);
               if (disapproveButton) {
                 setDisapproveButton(!disapproveButton);
               }
@@ -163,6 +187,7 @@ const style = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
+    marginRight: 4,
   },
   userName: {
     color: '#54bab9',
@@ -186,11 +211,13 @@ const style = StyleSheet.create({
     color: '#9C50B6',
     fontSize: 10,
   },
+
   linkPreviewContainer: {
     flex: 1,
-    paddingHorizontal: 24,
+
     fontSize: 10,
   },
+
   metaContainer: {
     flexDirection: 'row',
     justifyContent: 'space-apart',
