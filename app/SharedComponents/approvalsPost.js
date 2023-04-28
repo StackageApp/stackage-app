@@ -8,8 +8,10 @@ import { dummyApprovalsPost } from '../Utils/mockApprovalsPosts';
 import { postApi } from '../api';
 
 export default function ApprovalPost({ postData }) {
-  const [{ title, text, name, category, tags, link, likes, comments, userAvatar, id }, setPost] =
-    useState(dummyApprovalsPost);
+  const [
+    { title, text, name, category, tags, link, likes, comments, userAvatar, id, uid },
+    setPost,
+  ] = useState(dummyApprovalsPost);
   const [tagsExist, setTagsExist] = useState(false);
   const [commentsExist, setCommentsExist] = useState(false);
   const [commentView, setCommentView] = useState(false);
@@ -82,7 +84,7 @@ export default function ApprovalPost({ postData }) {
         <View style={[style.vote, approveButton ? style.yesVote : style.vote]}>
           <Pressable
             onPress={() => {
-              postApi.incrementLikeBy1(id);
+              postApi.incrementLikeBy1(uid);
               if (disapproveButton) {
                 setDisapproveButton(!disapproveButton);
               }
