@@ -43,7 +43,7 @@ export default function Settings({ navigation }) {
       <KeyboardAvoidingView style={styles.mainContainer} enabled behavior="padding">
         <View style={styles.mainContainer2}>
           <View style={styles.imgContainer}>
-            <Image style={styles.profilePicture} source={userInfo.photoURL} />
+            <Image style={styles.profilePicture} src='https://i.imgur.com/O9IwNcx.png' />
             {/* <Text>Update profile picture</Text> */}
           </View>
           <View style={styles.inputContainer}>

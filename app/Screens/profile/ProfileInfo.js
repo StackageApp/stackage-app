@@ -19,7 +19,7 @@ export default function ProfileInfo({ navigation }) {
           style={{ padding: 10 }}
         />
       </View>
-      <Image style={styles.profilePicture} source={userInfo.profileURL} />
+      <Image style={styles.profilePicture} src='https://i.imgur.com/O9IwNcx.png' />
       <View style={styles.information}>
         <Text style={styles.fullName}>{userInfo.name}</Text>
         <Text style={{ fontSize: 20, paddingBottom: 15 }}>{userInfo.email}</Text>
