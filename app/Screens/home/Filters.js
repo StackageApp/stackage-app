@@ -34,10 +34,14 @@ function Filters({ posts }) {
       <ScrollView horizontal>
         <Pressable
           onPress={() => {
-            if (menu) {
+            if (activeFilters.category) {
+              setActiveFilters({ ...activeFilters, category: false });
               setMenu(false);
-            } else {
+              postApi.getAllPosts();
+            } else if (!activeFilters.category && !menu) {
               setMenu(true);
+            } else {
+              setMenu(false);
             }
           }}
           style={[styles.inactiveBtn, activeFilters.category ? styles.button : styles.inactiveBtn]}
@@ -45,19 +49,16 @@ function Filters({ posts }) {
           <Text style={styles.buttonText}>Category</Text>
         </Pressable>
         {menu && (
-          <ScrollView>
+          <ScrollView style={{ position: 'relative' }}>
             {categories.map((category, i) => (
               <Pressable
                 key={i}
                 onPress={async () => {
-                  if (activeFilters.category) {
-                    setActiveFilters({ ...activeFilters, category: false });
-                    postApi.getAllPosts();
-                  } else {
-                    setActiveFilters({ ...activeFilters, category: true });
-                    dispatch(filterCategory(`${category}`));
-                  }
+                  setActiveFilters({ ...activeFilters, category: true });
+                  dispatch(filterCategory(`${category}`));
+                  setMenu(false);
                 }}
+                style={styles.inactiveBtn}
               >
                 <Text style={styles.buttonText}>{category}</Text>
               </Pressable>
