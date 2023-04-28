@@ -27,8 +27,10 @@ function PostMessage() {
     tags: [],
     category: '',
     links: [],
+    name: '',
   });
   const uid = useSelector((store) => store.currentUser.uid);
+  const name = useSelector((store) => store.currentUser.userInfo.name);
 
   const handleInput = (input, field) => {
     if (field === 'title') {
@@ -58,13 +60,14 @@ function PostMessage() {
     newPost.tags = tags || [];
     newPost.category = category || '';
     newPost.links = links || [];
+    newPost.name = name;
 
     setPostObj(newPost);
   };
 
   const sendPost = () => {
     buildPostObject();
-    // makePostAPI.postThis(postObj);
+    makePostAPI.postThis(postObj);
     setShowView('after success');
     resetState();
   };
