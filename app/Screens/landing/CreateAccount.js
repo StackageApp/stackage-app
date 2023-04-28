@@ -105,12 +105,7 @@ export default function CreateAccount({ visible, showModal }) {
       <View>
         <Modal animationType="slide" transparent visible={visible} onRequestClose={showModal}>
           {notSubmitted ? (
-            <KeyboardAvoidingView
-              enabled
-              style={localStyles.container}
-              behavior="padding"
-              keyboardVerticalOffset={-10}
-            >
+            <KeyboardAvoidingView enabled style={localStyles.container} behavior="padding">
               <View
                 style={localStyles.modalView}
                 onPress={() => {
