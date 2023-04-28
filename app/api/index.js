@@ -1,4 +1,5 @@
-import postApi from './postApi'
+import makePostAPI from './makePostAPI.js';
+import postApi from './postApi';
 import profileApi from './profileApi';
 
-export { postApi, profileApi }
+export { postApi, makePostAPI, profileApi };
