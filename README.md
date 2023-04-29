@@ -1,19 +1,145 @@
 # StackageApp
 
-StackageApp is an open source project for creating an online network for the purpose of connecting people and businesses. 
+StackageApp is a community-powered, self-policing fully mobile social media platform for sharing information about technology. In the application, authenticated users can make and share posts, view and filter a feed of others' posts, approve posts for inclusion in the feed, make a profile, view and connect with other users, message connections, and more. Limited features are also available to unauthenticated users when they sign in as a guest. StackageApp is an open source project.
 
-## Table of Contents
+## Built With
 
-1. [Description](#description)
-2. [Installation](#installation)
-3. [Sample .env File](#sample-env-file)
-4. [Authors and Contributors](#authors-and-contributors)
-5. [Wins and Improvements](#wins-and-improvements)
-6. [Tips for Making Readme Better](#tips-for-making-readme-better)
+![ReactNative](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+![Node](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Expo](https://img.shields.io/badge/Expo-1B1F23?style=for-the-badge&logo=expo&logoColor=white)
+![Redux](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)
+![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
+![Firebase](https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black)
 
-## Description
+## Authors
 
-StackageApp is a web-based application that allows users to create an online network for the purpose of connecting people and businesses. It is designed to be a platform for entrepreneurs, small business owners, and freelancers to connect with customers and other professionals. The app also provides tools for managing and tracking customer relationships, managing projects, and creating documents.
+- [Brandon Woods](https://github.com/brawoods)
+- [Donn Neufeld](https://github.com/ForeDaddy)
+- [Kyle Stevens](https://github.com/kylestevens32)
+- [Mevludin Causevic](https://github.com/mevcaus)
+- [Majd Saleh](https://github.com/MSCS22)
+- [Nam Nguyen](https://github.com/nnguye47)
+- [Jenessa Peterson](https://github.com/Jenessap)
+
+## Features
+
+1. [Authentication](#Authentication)
+2. [Home Feed](#Home-Feed)
+3. [Approvals Page](#Approvals-Page)
+4. [Compose a Post](#Compose-a-Post)
+5. [Messaging](#Messaging)
+6. [Profile Page](#Profile-Page)
+
+## Authentication
+
+- User sign-in and authentication
+- Account creation
+- Input type validation
+- Guest mode option
+<details>
+  <summary>Additional Images</summary>
+	<ul>
+	  <li>asdfs</li>
+		<li>asdg</li>
+	  <li>asdgasd</li>
+		<li>asdg</li>
+	</ul>
+</details>
+
+## Home Feed
+
+- Live updating feed
+- Filtering available by category, top, and hot
+- Like and comment features
+
+<details>
+  <summary>Additional Images</summary>
+	<ul>
+	  <li>asdfs</li>
+		<li>asdg</li>
+	  <li>asdgasd</li>
+		<li>asdg</li>
+	</ul>
+</details>
+
+## Approvals Page
+
+- Live updating feed
+- Community members approve or disapprove posts
+- Community approvals requirement met when 5 members approve a post
+
+<details>
+  <summary>Additional Images</summary>
+	<ul>
+	  <li>asdfs</li>
+		<li>asdg</li>
+	  <li>asdgasd</li>
+		<li>asdg</li>
+	</ul>
+</details>
+
+## Compose a Post
+
+![composeKeyboard](https://media.giphy.com/media/9lxokFo3oiekkHhkll/giphy.gif)
+
+- Write posts and add tags, category, and links
+- Radio button category selection
+- Input validation in links component
+- Confirmation screen and editing capabilities
+
+<details>
+<summary>Additional Images</summary>
+
+![mainCompose](https://media.giphy.com/media/tFqVVKdP94T6M1hJ3l/giphy.gif)
+![tags](https://media.giphy.com/media/v3erTp2CSjUwVb5D38/giphy.gif)
+![category](https://media.giphy.com/media/L0aQJMvVaKqXK7XhMW/giphy.gif)
+![links](https://media.giphy.com/media/2mw1bAJFLZTOHr8mdB/giphy.gif)
+![editAndPost](https://media.giphy.com/media/zmr9znlnJO8DvCbNq6/giphy.gif)
+![confirmationPage](https://media.giphy.com/media/o5W71aaWFR15YcMaek/giphy.gif)
+
+</details>
+
+## Messaging
+
+- ;kajsdng
+- aksjdng
+- The user can message any of his contacts and view previous conversation threads:
+in the messaging landing page the user will view all the messages threads
+<br>
+![Messaging Feature](https://i.imgur.com/sjYQATO.png)
+<br>
+ clicking on any of the conversation tiles will open a chat page:
+ <br>
+![Messaging Feature](https://i.imgur.com/pXoZb9A.png)
+<br>
+
+
+  <details>
+  <summary>Additional Images</summary>
+	<ul>
+	  <li>asdfs</li>
+		<li>asdg</li>
+	  <li>asdgasd</li>
+		<li>asdg</li>
+	</ul>
+</details>
+
+## Profile Page
+
+- asbd
+- fkajsbdg
+- ajsbdg
+
+<details>
+  <summary>Additional Images</summary>
+	<ul>
+	  <li>asdfs</li>
+		<li>asdg</li>
+	  <li>asdgasd</li>
+		<li>asdg</li>
+	</ul>
+</details>
 
 ## Installation
 
@@ -40,43 +166,4 @@ DB_HOST=localhost
 DB_USER=username
 DB_PASS=password
 ```
-## Features
-messaging:
-The user can message any of his contacts and view previous conversation threads:
-in the messaging landing page the user will view all the messages threads
-<br>
-![Messaging Feature](https://i.imgur.com/sjYQATO.png)
-<br>
- clicking on any of the conversation tiles will open a chat page:
- <br>
-![Messaging Feature](https://i.imgur.com/pXoZb9A.png)
-<br>
 
-## Authors and Contributors
-
-StackageApp was created by 
- Home Feed: [Jane Doe](https://github.com/janedoe)
- Approvals: [Jane Doe](https://github.com/janedoe)
- Post: [Jane Doe](https://github.com/janedoe)
- Messaging: [Majd Saleh](https://github.com/MSCS22)
- Profile: [Jane Doe](https://github.com/janedoe).
- Product Design: [Jane Doe](https://github.com/janedoe)
- BackEnd & Architecture: [Jane Doe](https://github.com/janedoe).
-
-## Wins and Improvements
-
-StackageApp has been successful in creating an online network for connecting people and businesses. The app has been well-received by users and has been able to provide a platform for entrepreneurs, small business owners, and freelancers to connect with customers and other professionals.
-
-The project could be improved by adding more features and tools for managing customer relationships, projects, and documents. Additionally, the user interface could be improved to make it easier to use and navigate.
-
-## Tips for Making Readme Better
-
-Making your README look better will help attract more people to your project. Here are some tips for making your README look even better:
-
-- Add badges to the README to show the current status of the project (e.g. build status, code coverage, etc.).
-- Use headings to break up the content and make it easier to read.
-- Include screenshots of the project in action.
-- Link to any external resources that may be helpful for users.
-- Use images and GIFs to illustrate concepts.
-
-You can find better badges for your README here: [alexandresanlim/Badges4-README.md-Profile#badges](https://github.com/alexandresanlim/Badges4-README.md-Profile#badges)
