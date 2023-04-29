@@ -13,7 +13,7 @@ import {
 
 import { useRouter } from 'expo-router';
 
-import logo from '../../../assets/stackageLogo2.png';
+import logo from '../../../assets/updatedLogo.png';
 import styles from '../../../sharedStyles';
 import CreateAccount from './CreateAccount';
 import controllers from './controllers';
@@ -151,7 +151,9 @@ const localStyles = StyleSheet.create({
     gap: 10,
   },
   logo: {
-    height: 150,
-    width: 150,
+    // height: 200,
+    width: '70%',
+    borderColor: 'black',
+    borderWidth: 1,
   },
 });

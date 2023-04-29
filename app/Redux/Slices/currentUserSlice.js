@@ -8,8 +8,7 @@ const user = {
   notifications: 3,
   posts: [],
   userInfo: {
-    photoURL:
-      'https://firebasestorage.googleapis.com/v0/b/stackage-a022a.appspot.com/o/hiwoody.png?alt=media&token=cda574b8-e718-44e5-b320-404876cbbf1c',
+    photoURL: '',
     email: '',
     location: '',
     name: '',

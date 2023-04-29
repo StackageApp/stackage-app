@@ -244,7 +244,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   labelField: {
-    fontSize: 10,
+    fontSize: 50,
     marginLeft: 20,
     marginBottom: 0,
   },
