@@ -35,58 +35,50 @@ StackageApp is a community-powered, self-policing fully mobile social media plat
 
 ![CreateAccount](https://media.giphy.com/media/qQqfPJTec1tHSrbTPT/giphy.gif)
 
+<details>
+  <summary>Additional Images</summary>
+
+![TypeValidation](https://media.giphy.com/media/rBD7NjY0qm3TT4ikOS/giphy.gif)
+![SignIn](https://media.giphy.com/media/LQADitaPz4npfpiQqs/giphy.gif)
+
+</details>
+
 - User sign-in and authentication
 - Account creation
 - Input type validation
 - Guest mode option
 
-  <details>
-    <summary>Additional Images</summary>
-
-  ![TypeValidation](https://media.giphy.com/media/rBD7NjY0qm3TT4ikOS/giphy.gif)
-  ![SignIn](https://media.giphy.com/media/LQADitaPz4npfpiQqs/giphy.gif)
-  </details>
-
 ## Home Feed
+
+<details>
+  <summary>Additional Images</summary>
+
+![TypeValidation](https://media.giphy.com/media/rBD7NjY0qm3TT4ikOS/giphy.gif)
+![SignIn](https://media.giphy.com/media/LQADitaPz4npfpiQqs/giphy.gif)
+
+</details>
 
 - Live updating feed
 - Filtering available by category, top, and hot
 - Like and comment features
 
+## Approvals Page
+
 <details>
   <summary>Additional Images</summary>
-	<ul>
-	  <li>asdfs</li>
-		<li>asdg</li>
-	  <li>asdgasd</li>
-		<li>asdg</li>
-	</ul>
-</details>
 
-## Approvals Page
+![TypeValidation](https://media.giphy.com/media/rBD7NjY0qm3TT4ikOS/giphy.gif)
+![SignIn](https://media.giphy.com/media/LQADitaPz4npfpiQqs/giphy.gif)
+
+</details>
 
 - Live updating feed
 - Community members approve or disapprove posts
 - Community approvals requirement met when 5 members approve a post
 
-<details>
-  <summary>Additional Images</summary>
-	<ul>
-	  <li>asdfs</li>
-		<li>asdg</li>
-	  <li>asdgasd</li>
-		<li>asdg</li>
-	</ul>
-</details>
-
 ## Compose a Post
 
 ![composeKeyboard](https://media.giphy.com/media/9lxokFo3oiekkHhkll/giphy.gif)
-
-- Write posts and add tags, category, and links
-- Radio button category selection
-- Input validation in links component
-- Confirmation screen and editing capabilities
 
 <details>
 <summary>Additional Images</summary>
@@ -100,29 +92,24 @@ StackageApp is a community-powered, self-policing fully mobile social media plat
 
 </details>
 
+- Write posts and add tags, category, and links
+- Radio button category selection
+- Input validation in links component
+- Confirmation screen and editing capabilities
+
 ## Messaging
 
-- ;kajsdng
-- aksjdng
-- The user can message any of his contacts and view previous conversation threads:
-in the messaging landing page the user will view all the messages threads
-<br>
-![Messaging Feature](https://i.imgur.com/sjYQATO.png)
-<br>
-clicking on any of the conversation tiles will open a chat page:
-<br>
-![Messaging Feature](https://i.imgur.com/pXoZb9A.png)
-<br>
+<details>
+<summary>Additional Images</summary>
 
-  <details>
-  <summary>Additional Images</summary>
-	<ul>
-	  <li>asdfs</li>
-		<li>asdg</li>
-	  <li>asdgasd</li>
-		<li>asdg</li>
-	</ul>
+![Messaging Feature](https://i.imgur.com/sjYQATO.png)
+![Messaging Feature](https://i.imgur.com/pXoZb9A.png)
+
 </details>
+
+- The user can message any of his contacts and view previous conversation threads
+- In the messaging landing page the user will view all the messages threads
+- Clicking on any of the conversation tiles will open a chat page
 
 ## Profile Page
 
