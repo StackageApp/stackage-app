@@ -136,3 +136,13 @@ export default function Post({ postData }) {
     </View>
   );
 }
+
+const localStyles = StyleSheet.create({
+  name: {
+    paddingBottom: 15,
+    paddingTop: 10,
+    color: '#54bab9',
+    fontWeight: 600,
+    fontSize: 12,
+  },
+});
