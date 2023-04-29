@@ -153,3 +153,13 @@ You can then run the application by running the following command:
 ```
 npm start
 ```
+
+## Sample .env File
+
+If you need to set environment variables for the application, you can create a `.env` file in the root directory of the project with the following contents:
+
+```
+DB_HOST=localhost
+DB_USER=username
+DB_PASS=password
+```
