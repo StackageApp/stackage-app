@@ -85,6 +85,7 @@ StackageApp is a community-powered, self-policing fully mobile social media plat
 - asldg
 - asdg
 ![StackageComposeLarge__AdobeExpress_AdobeExpress_AdobeExpress](https://user-images.githubusercontent.com/7408367/235322172-35122d53-da18-4814-b448-e29882a9f626.gif)
+![Giphy Stackage Compose Element 1](https://media.giphy.com/media/tFqVVKdP94T6M1hJ3l/giphy.gif)
 
   <details>
   <summary>Additional Features</summary>
