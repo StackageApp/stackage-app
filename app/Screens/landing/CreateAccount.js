@@ -148,6 +148,7 @@ export default function CreateAccount({ visible, showModal }) {
                     style={sharedStyles.signUpField}
                     allowFontScaling
                     secureTextEntry
+                    textContentType="oneTimeCode"
                   />
                 </View>
                 <View>
@@ -167,6 +168,7 @@ export default function CreateAccount({ visible, showModal }) {
                     style={sharedStyles.signUpField}
                     allowFontScaling
                     secureTextEntry
+                    textContentType="oneTimeCode"
                   />
                 </View>
                 <View>

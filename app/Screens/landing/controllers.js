@@ -16,9 +16,13 @@ const controllers = {
   },
 
   signIn: (email, password) => {
-    signInFB(email, password).then((userCredential) => {
-      models.getUserInfo(userCredential.user.uid);
-    });
+    signInFB(email, password)
+      .then((userCredential) => {
+        models.getUserInfo(userCredential.user.uid);
+      })
+      .catch((err) => {
+        console.log('could not sign in', err);
+      });
   },
 
   continueAsGuest: () => {

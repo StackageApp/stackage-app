@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
   selectedTab: {
     fontWeight: 'bold',
     textDecorationLine: 'underline',
-    paddingBottom: 15,
     fontSize: 20,
   },
   notSelectedTab: {

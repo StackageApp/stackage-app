@@ -30,10 +30,7 @@ const auth = getAuth(app);
 export const authenticateNewUserFB = (email, password) =>
   createUserWithEmailAndPassword(auth, email, password).catch((err) => console.log(err));
 
-export const signInFB = (email, password) =>
-  signInWithEmailAndPassword(auth, email, password).catch((err) =>
-    console.log('could not sign in', err)
-  );
+export const signInFB = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
 export const signOutFB = () =>
   signOut(auth).catch((err) => {
