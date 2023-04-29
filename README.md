@@ -54,7 +54,14 @@ in the messaging landing page the user will view all the messages threads
 
 ## Authors and Contributors
 
-StackageApp was created by [John Smith](https://github.com/johnsmith) and [Jane Doe](https://github.com/janedoe).
+StackageApp was created by 
+ Home Feed: [Jane Doe](https://github.com/janedoe)
+ Approvals: [Jane Doe](https://github.com/janedoe)
+ Post: [Jane Doe](https://github.com/janedoe)
+ Messaging: [Majd Saleh](https://github.com/MSCS22)
+ Profile: [Jane Doe](https://github.com/janedoe).
+ Product Design: [Jane Doe](https://github.com/janedoe)
+ BackEnd & Architecture: [Jane Doe](https://github.com/janedoe).
 
 ## Wins and Improvements
 
