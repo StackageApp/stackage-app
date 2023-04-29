@@ -55,13 +55,19 @@ StackageApp is a community-powered, self-policing fully mobile social media plat
 - asdfg
 - asldg
 - asdg
-  ![StackageComposeMediumSize__AdobeExpress_AdobeExpress](https://user-images.githubusercontent.com/7408367/235321770-768fe925-b0e1-4c49-9b02-daa58627b56e.gif)
+  ![StackageComposeLarge__AdobeExpress_AdobeExpress_AdobeExpress](https://user-images.githubusercontent.com/7408367/235322172-35122d53-da18-4814-b448-e29882a9f626.gif)
 
 ### Messaging Component
 
 - ;kajsdng
 - aksjdng
 - ;ajsndg
+  ![Messaging Feature](https://i.imgur.com/sjYQATO.png)
+  <br>
+  clicking on any of the conversation tiles will open a chat page:
+  <br>
+  ![Messaging Feature](https://i.imgur.com/pXoZb9A.png)
+  <br>
 
 ### Profile Page
 
