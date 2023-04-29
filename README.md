@@ -81,21 +81,29 @@ StackageApp is a community-powered, self-policing fully mobile social media plat
 
 ### Compose a Post Component
 
+![composeKeyboard](https://media.giphy.com/media/9lxokFo3oiekkHhkll/giphy.gif)
+![mainCompose](https://media.giphy.com/media/tFqVVKdP94T6M1hJ3l/giphy.gif)
+![tags](https://media.giphy.com/media/v3erTp2CSjUwVb5D38/giphy.gif)
+![category](https://media.giphy.com/media/L0aQJMvVaKqXK7XhMW/giphy.gif)
+![links](https://media.giphy.com/media/2mw1bAJFLZTOHr8mdB/giphy.gif)
+![editAndPost](https://media.giphy.com/media/zmr9znlnJO8DvCbNq6/giphy.gif)
+
 - asdfg
 - asldg
 - asdg
-![StackageComposeLarge__AdobeExpress_AdobeExpress_AdobeExpress](https://user-images.githubusercontent.com/7408367/235322172-35122d53-da18-4814-b448-e29882a9f626.gif)
-![Giphy Stackage Compose Element 1](https://media.giphy.com/media/tFqVVKdP94T6M1hJ3l/giphy.gif)
 
-  <details>
-  <summary>Additional Features</summary>
-	<ul>
-	  <li>asdfs</li>
-		<li>asdg</li>
-	  <li>asdgasd</li>
-		<li>asdg</li>
-	</ul>
-</details>
+    <details>
+    <summary>Additional Features</summary>
+  	<ul>
+  	  <li>asdfs</li>
+  		<li>asdg</li>
+  	  <li>asdgasd</li>
+  		<li>asdg</li>
+      ![StackageComposeLarge__AdobeExpress_AdobeExpress_AdobeExpress](https://user-images.githubusercontent.com/7408367/235322172-35122d53-da18-4814-b448-e29882a9f626.gif)
+
+      </ul>
+
+  </details>
 
 ### Messaging Component
 
