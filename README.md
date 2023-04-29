@@ -25,53 +25,48 @@ StackageApp is a community-powered, self-policing fully mobile social media plat
 ## Features
 
 1. [Authentication](#Authentication)
-2. [Home Feed](#HomeFeed)
-3. [Sample .env File](#sample-env-file)
-4. [Authors and Contributors](#authors-and-contributors)
-5. [Wins and Improvements](#wins-and-improvements)
-6. [Tips for Making Readme Better](#tips-for-making-readme-better)
+2. [Home Feed](#Home-Feed)
+3. [Approvals Page](#Approvals-Page)
+4. [Compose a Post Component](#Compose-a-Post-Component)
+5. [Profile Page](#Profile-Page)
+6. [Messaging Component](#Messaging-Component)
 
 ## Authentication
 
-StackageApp is a web-based application that allows users to create an online network for the purpose of connecting people and businesses. It is designed to be a platform for entrepreneurs, small business owners, and freelancers to connect with customers and other professionals. The app also provides tools for managing and tracking customer relationships, managing projects, and creating documents.
+- User sign-in and authentication
+- Account creation
+- Input type validation
+- Guest mode option
 
 ## Home Feed
 
-To install and run StackageApp, you will need to have [Node.js](https://nodejs.org/) installed on your computer.
+- Live updating feed
+- Filtering available by category, top, and hot
+- Like and comment features
 
-Once you have Node.js installed, you can install the dependencies for StackageApp by running the following command in the root directory of the project:
+## Approvals Page
 
-```
-npm install
-```
+- Live updating feed
+- Community members approve or disapprove posts
+- Community approvals requirement met when 5 members approve a post
 
-You can then run the application by running the following command:
+## Compose a Post Component
 
-```
-npm start
-```
+- asdfg
+- asldg
+- asdg
 
-## Sample .env File
+## Profile Page
 
-If you need to set environment variables for the application, you can create a `.env` file in the root directory of the project with the following contents:
+- asbd
+- fkajsbdg
+- ajsbdg
 
-```
-DB_HOST=localhost
-DB_USER=username
-DB_PASS=password
-```
+## Messaging Component
 
-## Authors and Contributors
-
-StackageApp was created by [John Smith](https://github.com/johnsmith) and [Jane Doe](https://github.com/janedoe).
-
-## Wins and Improvements
-
-StackageApp has been successful in creating an online network for connecting people and businesses. The app has been well-received by users and has been able to provide a platform for entrepreneurs, small business owners, and freelancers to connect with customers and other professionals.
-
-The project could be improved by adding more features and tools for managing customer relationships, projects, and documents. Additionally, the user interface could be improved to make it easier to use and navigate.
-
-## Tips for Making Readme Better
+- ;kajsdng
+- aksjdng
+- ;ajsndg
 
 Making your README look better will help attract more people to your project. Here are some tips for making your README look even better:
 
