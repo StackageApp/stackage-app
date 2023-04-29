@@ -37,6 +37,15 @@ StackageApp is a community-powered, self-policing fully mobile social media plat
 - Account creation
 - Input type validation
 - Guest mode option
+<details>
+  <summary>Additional Features</summary>
+	<ul>
+	  <li>asdfs</li>
+		<li>asdg</li>
+	  <li>asdgasd</li>
+		<li>asdg</li>
+	</ul>
+</details>
 
 ### Home Feed
 
@@ -44,33 +53,83 @@ StackageApp is a community-powered, self-policing fully mobile social media plat
 - Filtering available by category, top, and hot
 - Like and comment features
 
+<details>
+  <summary>Additional Features</summary>
+	<ul>
+	  <li>asdfs</li>
+		<li>asdg</li>
+	  <li>asdgasd</li>
+		<li>asdg</li>
+	</ul>
+</details>
+
 ### Approvals Page
 
 - Live updating feed
 - Community members approve or disapprove posts
 - Community approvals requirement met when 5 members approve a post
 
+<details>
+  <summary>Additional Features</summary>
+	<ul>
+	  <li>asdfs</li>
+		<li>asdg</li>
+	  <li>asdgasd</li>
+		<li>asdg</li>
+	</ul>
+</details>
+
 ### Compose a Post Component
 
 - asdfg
 - asldg
 - asdg
-  ![StackageComposeLarge__AdobeExpress_AdobeExpress_AdobeExpress](https://user-images.githubusercontent.com/7408367/235322172-35122d53-da18-4814-b448-e29882a9f626.gif)
+![StackageComposeLarge__AdobeExpress_AdobeExpress_AdobeExpress](https://user-images.githubusercontent.com/7408367/235322172-35122d53-da18-4814-b448-e29882a9f626.gif)
+
+  <details>
+  <summary>Additional Features</summary>
+	<ul>
+	  <li>asdfs</li>
+		<li>asdg</li>
+	  <li>asdgasd</li>
+		<li>asdg</li>
+	</ul>
+</details>
 
 ### Messaging Component
 
 - ;kajsdng
 - aksjdng
 - ;ajsndg
-  ![Messaging Feature](https://i.imgur.com/sjYQATO.png)
-  <br>
-  clicking on any of the conversation tiles will open a chat page:
-  <br>
-  ![Messaging Feature](https://i.imgur.com/pXoZb9A.png)
-  <br>
+![Messaging Feature](https://i.imgur.com/sjYQATO.png)
+<br>
+clicking on any of the conversation tiles will open a chat page:
+<br>
+![Messaging Feature](https://i.imgur.com/pXoZb9A.png)
+<br>
+
+  <details>
+  <summary>Additional Features</summary>
+	<ul>
+	  <li>asdfs</li>
+		<li>asdg</li>
+	  <li>asdgasd</li>
+		<li>asdg</li>
+	</ul>
+</details>
 
 ### Profile Page
 
 - asbd
 - fkajsbdg
 - ajsbdg
+
+<details>
+  <summary>Additional Features</summary>
+	<ul>
+	  <li>asdfs</li>
+		<li>asdg</li>
+	  <li>asdgasd</li>
+		<li>asdg</li>
+	</ul>
+</details>
