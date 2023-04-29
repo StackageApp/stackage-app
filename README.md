@@ -40,6 +40,16 @@ DB_HOST=localhost
 DB_USER=username
 DB_PASS=password
 ```
+## Features
+messaging:
+The user can message any of his contacts and view previous conversation threads:
+in the messaging landing page the user will view all the messages threads
+![Messaging Feature](https://i.imgur.com/sjYQATO.png)
+
+ clicking on any of the conversation tiles will open a chat page:
+ 
+![Messaging Feature](https://i.imgur.com/pXoZb9A.png)
+
 
 ## Authors and Contributors
 
