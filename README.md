@@ -39,8 +39,10 @@ StackageApp is a community-powered, self-policing fully mobile social media plat
 - Account creation
 - Input type validation
 - Guest mode option
+
   <details>
     <summary>Additional Images</summary>
+
   ![TypeValidation](https://media.giphy.com/media/rBD7NjY0qm3TT4ikOS/giphy.gif)
   ![SignIn](https://media.giphy.com/media/LQADitaPz4npfpiQqs/giphy.gif)
   </details>
@@ -107,11 +109,10 @@ in the messaging landing page the user will view all the messages threads
 <br>
 ![Messaging Feature](https://i.imgur.com/sjYQATO.png)
 <br>
- clicking on any of the conversation tiles will open a chat page:
- <br>
+clicking on any of the conversation tiles will open a chat page:
+<br>
 ![Messaging Feature](https://i.imgur.com/pXoZb9A.png)
 <br>
-
 
   <details>
   <summary>Additional Images</summary>
@@ -164,4 +165,3 @@ DB_HOST=localhost
 DB_USER=username
 DB_PASS=password
 ```
-
