@@ -33,19 +33,17 @@ StackageApp is a community-powered, self-policing fully mobile social media plat
 
 ## Authentication
 
+![CreateAccount](https://media.giphy.com/media/qQqfPJTec1tHSrbTPT/giphy.gif)
+
 - User sign-in and authentication
 - Account creation
 - Input type validation
 - Guest mode option
-<details>
-  <summary>Additional Images</summary>
-	<ul>
-	  <li>asdfs</li>
-		<li>asdg</li>
-	  <li>asdgasd</li>
-		<li>asdg</li>
-	</ul>
-</details>
+  <details>
+    <summary>Additional Images</summary>
+  ![TypeValidation](https://media.giphy.com/media/rBD7NjY0qm3TT4ikOS/giphy.gif)
+  ![SignIn](https://media.giphy.com/media/LQADitaPz4npfpiQqs/giphy.gif)
+  </details>
 
 ## Home Feed
 
