@@ -17,10 +17,7 @@ const controllers = {
 
   signIn: (email, password) => {
     signInFB(email, password).then((userCredential) => {
-      // console.log('signed in auth', userCredential);
-      // userCredential.user.uid
-      // hard coded uid for the purpose of the demo
-      models.getUserInfo('vY1hQh5wpwgI1zzaweeooEqyJAi1');
+      models.getUserInfo(userCredential.user.uid);
     });
   },
 

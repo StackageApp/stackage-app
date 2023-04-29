@@ -151,7 +151,6 @@ const localStyles = StyleSheet.create({
     gap: 10,
   },
   logo: {
-    // height: 200,
     width: '70%',
   },
 });

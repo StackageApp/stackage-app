@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Image, Pressable, Text, View } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import styles from '../../sharedStyles';
 import { dummyPost } from '../Utils/mockPosts';
@@ -73,35 +73,11 @@ export default function Post({ postData }) {
       <View className="post-header" style={styles.postHeader}>
         <View style={styles.postCategory}>
           <View style={{ overflow: 'hidden', borderBottomLeftRadius: 25 }}>
-            <Text
-              style={{
-                backgroundColor: '#e9dac1',
-                paddingLeft: 15,
-                textAlign: 'right',
-                paddingRight: 10,
-                fontSize: 10,
-                color: '#54bab9',
-                fontWeight: 600,
-                paddingBottom: 2,
-              }}
-            >
-              {category}
-            </Text>
+            <Text style={localStyles.category}>{category}</Text>
           </View>
         </View>
         <View style={styles.main}>
-          <Image
-            style={{
-              width: 50,
-              height: 50,
-              borderRadius: 25,
-              marginRight: 16,
-              borderColor: '#9ed2c6',
-              borderWidth: 1.5,
-            }}
-            source={avatar}
-            alt="PFP"
-          />
+          <Image style={localStyles.pfp} source={avatar} alt="PFP" />
           {/* <Text
             style={{
               width: 50,
@@ -118,17 +94,7 @@ export default function Post({ postData }) {
           <View style={{ width: '85%', gap: 10 }}>
             <View className="post-body" style={styles.postBody}>
               <Text style={styles.postTitle}>{title}</Text>
-              <Text
-                style={{
-                  paddingBottom: 15,
-                  paddingTop: 10,
-                  color: '#54bab9',
-                  fontWeight: 600,
-                  fontSize: 12,
-                }}
-              >
-                posted by {name}{' '}
-              </Text>
+              <Text style={localStyles.name}>posted by {name} </Text>
               <Text>{text}</Text>
               <Text>{link}</Text>
             </View>
@@ -176,11 +142,29 @@ export default function Post({ postData }) {
 }
 
 const localStyles = StyleSheet.create({
+  category: {
+    backgroundColor: '#e9dac1',
+    paddingLeft: 15,
+    textAlign: 'right',
+    paddingRight: 10,
+    fontSize: 10,
+    color: '#54bab9',
+    fontWeight: 600,
+    paddingBottom: 2,
+  },
   name: {
     paddingBottom: 15,
     paddingTop: 10,
     color: '#54bab9',
     fontWeight: 600,
     fontSize: 12,
+  },
+  pfp: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    marginRight: 16,
+    borderColor: '#9ed2c6',
+    borderWidth: 1.5,
   },
 });

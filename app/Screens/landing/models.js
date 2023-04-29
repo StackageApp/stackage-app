@@ -12,15 +12,7 @@ update the store or do some other action
 const models = {
   createNewUser: (uid, user) => {
     axios
-      .post(
-        `http://18.219.151.178:3000/users/${uid}`,
-        { userInfo: user },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      )
+      .post(`http://18.219.151.178:3000/users/${uid}`, { userInfo: user })
       .then(() => {
         models.getUserInfo(uid);
       })
