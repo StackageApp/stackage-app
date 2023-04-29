@@ -137,3 +137,19 @@ clicking on any of the conversation tiles will open a chat page:
 		<li>asdg</li>
 	</ul>
 </details>
+
+## Installation
+
+To install and run StackageApp, you will need to have [Node.js](https://nodejs.org/) installed on your computer.
+
+Once you have Node.js installed, you can install the dependencies for StackageApp by running the following command in the root directory of the project:
+
+```
+npm install
+```
+
+You can then run the application by running the following command:
+
+```
+npm start
+```
