@@ -104,13 +104,16 @@ StackageApp is a community-powered, self-policing fully mobile social media plat
 
 - ;kajsdng
 - aksjdng
-- ;ajsndg
+- The user can message any of his contacts and view previous conversation threads:
+in the messaging landing page the user will view all the messages threads
+<br>
 ![Messaging Feature](https://i.imgur.com/sjYQATO.png)
 <br>
-clicking on any of the conversation tiles will open a chat page:
-<br>
+ clicking on any of the conversation tiles will open a chat page:
+ <br>
 ![Messaging Feature](https://i.imgur.com/pXoZb9A.png)
 <br>
+
 
   <details>
   <summary>Additional Images</summary>
@@ -163,3 +166,4 @@ DB_HOST=localhost
 DB_USER=username
 DB_PASS=password
 ```
+
