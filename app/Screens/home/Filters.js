@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Pressable, ScrollView, Text, View } from 'react-native';
+import { Pressable, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
 import { useDispatch } from 'react-redux';
@@ -27,35 +27,38 @@ function Filters({ posts }) {
   }, [posts]);
 
   return (
-    <View style={styles.filters}>
+    <View>
+      <View style={{ backgroundColor: '#E9DAC1' }}>
+        <Text style={{ paddingLeft: 3, color: 'black', fontSize: 16 }}>Filters</Text>
+      </View>
       <ScrollView horizontal>
         <Pressable
           onPress={() => {
-            if (menu) {
+            if (activeFilters.category) {
+              setActiveFilters({ ...activeFilters, category: false });
               setMenu(false);
-            } else {
+              postApi.getAllPosts();
+            } else if (!activeFilters.category && !menu) {
               setMenu(true);
+            } else {
+              setMenu(false);
             }
           }}
-          style={styles.button}
+          style={[styles.inactiveBtn, activeFilters.category ? styles.button : styles.inactiveBtn]}
         >
-          <Text style={styles.buttonText}>Category </Text>
+          <Text style={styles.buttonText}>Category</Text>
         </Pressable>
         {menu && (
-          <ScrollView>
+          <ScrollView style={{ position: 'relative' }}>
             {categories.map((category, i) => (
               <Pressable
                 key={i}
                 onPress={async () => {
-                  if (activeFilters.category) {
-                    setActiveFilters({ ...activeFilters, category: false });
-                    postApi.getAllPosts();
-                  } else {
-                    setActiveFilters({ ...activeFilters, category: true });
-                    dispatch(filterCategory(`${category}`));
-                  }
+                  setActiveFilters({ ...activeFilters, category: true });
+                  dispatch(filterCategory(`${category}`));
+                  setMenu(false);
                 }}
-                style={styles.button}
+                style={styles.inactiveBtn}
               >
                 <Text style={styles.buttonText}>{category}</Text>
               </Pressable>
@@ -73,9 +76,9 @@ function Filters({ posts }) {
               dispatch(filterTop(5));
             }
           }}
-          style={styles.button}
+          style={[styles.inactiveBtn, activeFilters.top ? styles.button : styles.inactiveBtn]}
         >
-          <Text style={styles.buttonText}>Top </Text>
+          <Text style={styles.buttonText}>Top</Text>
         </Pressable>
         <Pressable
           onPress={async () => {
@@ -88,9 +91,9 @@ function Filters({ posts }) {
               dispatch(filterHot(Date.now()));
             }
           }}
-          style={styles.button}
+          style={[styles.inactiveBtn, activeFilters.hot ? styles.button : styles.inactiveBtn]}
         >
-          <Text style={styles.buttonText}>Hot </Text>
+          <Text style={styles.buttonText}>Hot</Text>
         </Pressable>
       </ScrollView>
     </View>

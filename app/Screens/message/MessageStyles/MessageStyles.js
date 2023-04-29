@@ -3,7 +3,7 @@ import { Dimensions } from 'react-native';
 import styled from 'styled-components';
 
 const screenWidth = Dimensions.get('window').width;
-const textSectionWidth = screenWidth - 80;
+const textSectionWidth = screenWidth - 100;
 
 export const Container = styled.View`
   flex: 1;
