@@ -55,7 +55,7 @@ StackageApp is a community-powered, self-policing fully mobile social media plat
 - asdfg
 - asldg
 - asdg
-  ![Compose a Post Component](https://github.com/StackageApp/stackage-app/blob/readme/assets/readmeGifs/StackageComposeMediumSize__AdobeExpress_AdobeExpress.gif)
+  ![Compose a Post Component](https://imgur.com/a/m0XbT1V)
 
 ### Messaging Component
 
