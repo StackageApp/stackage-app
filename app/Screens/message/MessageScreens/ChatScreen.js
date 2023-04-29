@@ -1,30 +1,21 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Button, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
 
 import axios from 'axios';
-import { nanoid } from 'nanoid';
 import { Bubble, GiftedChat, Send } from 'react-native-gifted-chat';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 function ChatScreen({ route }) {
   const uid = useSelector((store) => store.currentUser.uid) || 'vY1hQh5wpwgI1zzaweeooEqyJAi1';
   const { id } = route.params;
-
-  // console.log('id: ', id);
-  // console.log('userId: ', uid);
-
   const [messages, setMessages] = useState([]);
 
-  // redux message data
-  // const { message } = useSelector((state) => state.message);
-
   useEffect(() => {
-    // Fetch messages every 1 second
     const fetchMessages = () => {
       axios
-        .get(`http://18.219.151.178:3000/users/${uid}`)
+        .get(`http://127.0.0.1:3000/users/${uid}`)
         .then((response) => {
           const messagesThread = response.data.messages[id];
           // reverse the order of messages
@@ -49,17 +40,10 @@ function ChatScreen({ route }) {
   }, []);
 
   const onSend = useCallback((messages = []) => {
-    // console.log('on send', messages);
     const postObj = { message: messages[0] };
-    // setSentMessages(postObj);
-    axios
-      .post(`http://18.219.151.178:3000/users/messages/${uid}/${id}`, postObj)
-      .then((response) => {
-        // console.log('post sucessful', response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    axios.post(`http://127.0.0.1:3000/users/messages/${uid}/${id}`, postObj).catch((error) => {
+      console.log(error);
+    });
 
     setMessages((previousMessages) => GiftedChat.append(previousMessages, messages));
   }, []);
