@@ -153,7 +153,5 @@ const localStyles = StyleSheet.create({
   logo: {
     // height: 200,
     width: '70%',
-    borderColor: 'black',
-    borderWidth: 1,
   },
 });
