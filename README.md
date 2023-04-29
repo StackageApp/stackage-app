@@ -1,6 +1,6 @@
 # StackageApp
 
-StackageApp is an open source project. This application is a community-powered, self-policing fully mobile social media platform for sharing information about technology. In the application, authenticated users can make and share posts, view and filter a feed of others' posts, approve posts for inclusion in the feed, make a profile, view and connect with other users, message connections, and more. Limited features are also available to unauthenticated users when they sign in as a guest.
+StackageApp is a community-powered, self-policing fully mobile social media platform for sharing information about technology. In the application, authenticated users can make and share posts, view and filter a feed of others' posts, approve posts for inclusion in the feed, make a profile, view and connect with other users, message connections, and more. Limited features are also available to unauthenticated users when they sign in as a guest. StackageApp is an open source project.
 
 ## Built With
 
@@ -14,13 +14,13 @@ StackageApp is an open source project. This application is a community-powered, 
 
 ## Authors
 
-[Brandon Woods](https://github.com/brawoods)
-[Donn Neufeld](https://github.com/ForeDaddy)
-[Kyle Stevens](https://github.com/kylestevens32)
-[Mevludin Causevic](https://github.com/mevcaus)
-[Majd Saleh](https://github.com/MSCS22)
-[Nam Nguyen](https://github.com/nnguye47)
-[Jenessa Peterson](https://github.com/Jenessap)
+- [Brandon Woods](https://github.com/brawoods)
+- [Donn Neufeld](https://github.com/ForeDaddy)
+- [Kyle Stevens](https://github.com/kylestevens32)
+- [Mevludin Causevic](https://github.com/mevcaus)
+- [Majd Saleh](https://github.com/MSCS22)
+- [Nam Nguyen](https://github.com/nnguye47)
+- [Jenessa Peterson](https://github.com/Jenessap)
 
 ## Features
 
