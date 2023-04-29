@@ -28,52 +28,43 @@ StackageApp is a community-powered, self-policing fully mobile social media plat
 2. [Home Feed](#Home-Feed)
 3. [Approvals Page](#Approvals-Page)
 4. [Compose a Post Component](#Compose-a-Post-Component)
-5. [Profile Page](#Profile-Page)
-6. [Messaging Component](#Messaging-Component)
+5. [Messaging Component](#Messaging-Component)
+6. [Profile Page](#Profile-Page)
 
-## Authentication
+### Authentication
 
 - User sign-in and authentication
 - Account creation
 - Input type validation
 - Guest mode option
 
-## Home Feed
+### Home Feed
 
 - Live updating feed
 - Filtering available by category, top, and hot
 - Like and comment features
 
-## Approvals Page
+### Approvals Page
 
 - Live updating feed
 - Community members approve or disapprove posts
 - Community approvals requirement met when 5 members approve a post
 
-## Compose a Post Component
+### Compose a Post Component
 
 - asdfg
 - asldg
 - asdg
+  ![Compose a Post Component](https://github.com/StackageApp/stackage-app/blob/readme/assets/readmeGifs/StackageComposeMediumSize__AdobeExpress_AdobeExpress.gif)
 
-## Profile Page
-
-- asbd
-- fkajsbdg
-- ajsbdg
-
-## Messaging Component
+### Messaging Component
 
 - ;kajsdng
 - aksjdng
 - ;ajsndg
 
-Making your README look better will help attract more people to your project. Here are some tips for making your README look even better:
+### Profile Page
 
-- Add badges to the README to show the current status of the project (e.g. build status, code coverage, etc.).
-- Use headings to break up the content and make it easier to read.
-- Include screenshots of the project in action.
-- Link to any external resources that may be helpful for users.
-- Use images and GIFs to illustrate concepts.
-
-You can find better badges for your README here: [alexandresanlim/Badges4-README.md-Profile#badges](https://github.com/alexandresanlim/Badges4-README.md-Profile#badges)
+- asbd
+- fkajsbdg
+- ajsbdg
