@@ -7,17 +7,24 @@ import { Link } from 'expo-router';
 import { dummyApprovalsPost } from '../Utils/mockApprovalsPosts';
 import { postApi } from '../api';
 
+const Brandon = require('../../assets/users/Brandon.png');
+const Donn = require('../../assets/users/Donn.png');
+const Jenessa = require('../../assets/users/Jenessa.png');
+const Kyle = require('../../assets/users/Kyle.png');
+const Majd = require('../../assets/users/Majd.png');
+const Nam = require('../../assets/users/Nam.png');
+const Mev = require('../../assets/users/Mev.png');
+
 export default function ApprovalPost({ postData }) {
-  const [
-    { title, text, name, category, tags, links, likes, comments, userAvatar, id, uid },
-    setPost,
-  ] = useState(dummyApprovalsPost);
+  const [{ title, text, name, category, tags, links, likes, comments, id, uid }, setPost] =
+    useState(dummyApprovalsPost);
   const [tagsExist, setTagsExist] = useState(false);
   const [commentsExist, setCommentsExist] = useState(false);
   const [commentView, setCommentView] = useState(false);
   const [approveButton, setApproveButton] = useState(false);
   const [disapproveButton, setDisapproveButton] = useState(false);
   const [linksExist, setLinksExist] = useState(false);
+  const [avatar, setAvatar] = useState('');
 
   useEffect(() => {
     if (tags) {
@@ -43,6 +50,29 @@ export default function ApprovalPost({ postData }) {
       setCommentView(true);
     }
   }
+  useEffect(() => {
+    if (name === 'Brandon Woods') {
+      setAvatar(Brandon);
+    }
+    if (name === 'Kyle Stevens') {
+      setAvatar(Kyle);
+    }
+    if (name === 'Donn Neufeld') {
+      setAvatar(Donn);
+    }
+    if (name === 'Jenessa Peterson') {
+      setAvatar(Jenessa);
+    }
+    if (name === 'Majd Saleh') {
+      setAvatar(Majd);
+    }
+    if (name === 'Mevludin Causevic') {
+      setAvatar(Mev);
+    }
+    if (name === 'Nam Nguyen') {
+      setAvatar(Nam);
+    }
+  });
 
   return (
     <View style={style.postContainer}>
@@ -52,7 +82,7 @@ export default function ApprovalPost({ postData }) {
         </View>
       </View>
       <View style={style.postHeader}>
-        <Image style={style.avatar} source={userAvatar} />
+        <Image style={style.avatar} source={avatar} />
         <View style={style.postTitleContainer}>
           <Text style={style.postTitle}>{title}</Text>
           <Text style={style.userName}>posted by {name}</Text>
@@ -101,7 +131,7 @@ export default function ApprovalPost({ postData }) {
         <View style={[style.vote, approveButton ? style.yesVote : style.vote]}>
           <Pressable
             onPress={() => {
-              postApi.incrementLikeBy1(uid);
+              postApi.incrementLikeBy1(id);
               if (disapproveButton) {
                 setDisapproveButton(!disapproveButton);
               }
@@ -114,7 +144,7 @@ export default function ApprovalPost({ postData }) {
         <View style={[style.vote, disapproveButton ? style.yesVote : style.vote]}>
           <Pressable
             onPress={() => {
-              postApi.incrementLikeBy1(id);
+              postApi.decrementLikeBy1(id);
               if (approveButton) {
                 setApproveButton(!approveButton);
               }

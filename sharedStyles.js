@@ -49,6 +49,12 @@ const sharedStyles = StyleSheet.create({
   filters: {
     backgroundColor: 'lightgray',
   },
+  inactiveBtn: {
+    backgroundColor: 'lightgray',
+    borderRadius: 5,
+    height: 50,
+    width: 180,
+  },
   postContainer: {
     flex: 1,
     flexDirection: 'column',

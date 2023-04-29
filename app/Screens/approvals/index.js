@@ -16,12 +16,17 @@ function Approvals() {
 
   useEffect(() => {
     postApi.getAllPosts();
-    setUnapprovedPosts(posts.filter((post) => post.isApproved === false));
+    // filteredPosts = posts.filter(post => post.isApproved === false)
+    setUnapprovedPosts(
+      posts
+        .filter((post) => post.isApproved === false)
+        .sort((a, b) => new Date(b.timestamp - new Date(a.timestamp)))
+    );
   }, []);
 
   return (
     <View>
-      <ApprovalsFeed posts={posts} />
+      <ApprovalsFeed posts={unapprovedPosts} />
     </View>
   );
 }

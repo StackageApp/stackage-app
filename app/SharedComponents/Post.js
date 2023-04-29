@@ -5,12 +5,21 @@ import styles from '../../sharedStyles';
 import { dummyPost } from '../Utils/mockPosts';
 import { postApi } from '../api';
 
+const Brandon = require('../../assets/users/Brandon.png');
+const Donn = require('../../assets/users/Donn.png');
+const Jenessa = require('../../assets/users/Jenessa.png');
+const Kyle = require('../../assets/users/Kyle.png');
+const Majd = require('../../assets/users/Majd.png');
+const Nam = require('../../assets/users/Nam.png');
+const Mev = require('../../assets/users/Mev.png');
+
 export default function Post({ postData }) {
   let [{ title, text, name, category, tags, link, likes, comments, id }, setPost] =
     useState(dummyPost);
   const [tagsExist, setTagsExist] = useState(false);
   const [commentsExist, setCommentsExist] = useState(false);
   const [commentView, setCommentView] = useState(false);
+  const [avatar, setAvatar] = useState('');
 
   useEffect(() => {
     if (tags) {
@@ -35,6 +44,30 @@ export default function Post({ postData }) {
     }
   }
 
+  useEffect(() => {
+    if (name === 'Brandon Woods') {
+      setAvatar(Brandon);
+    }
+    if (name === 'Kyle Stevens') {
+      setAvatar(Kyle);
+    }
+    if (name === 'Donn Neufeld') {
+      setAvatar(Donn);
+    }
+    if (name === 'Jenessa Peterson') {
+      setAvatar(Jenessa);
+    }
+    if (name === 'Majd Saleh') {
+      setAvatar(Majd);
+    }
+    if (name === 'Mevludin Causevic') {
+      setAvatar(Mev);
+    }
+    if (name === 'Nam Nguyen') {
+      setAvatar(Nam);
+    }
+  });
+
   return (
     <View style={styles.postContainer}>
       <View className="post-header" style={styles.postHeader}>
@@ -57,14 +90,19 @@ export default function Post({ postData }) {
           </View>
         </View>
         <View style={styles.main}>
-          {/* <Image src={}/> */}
-          {/* <Image style={{    width: 50,
-    height: 50,
-    borderRadius: 25,
-    marginRight: 16,
-    borderColor: '#9ed2c6',
-    borderWidth: 1.5 } source='' alt="PFP"}></Image> */}
-          <Text
+          <Image
+            style={{
+              width: 50,
+              height: 50,
+              borderRadius: 25,
+              marginRight: 16,
+              borderColor: '#9ed2c6',
+              borderWidth: 1.5,
+            }}
+            source={avatar}
+            alt="PFP"
+          />
+          {/* <Text
             style={{
               width: 50,
               height: 50,
@@ -76,7 +114,7 @@ export default function Post({ postData }) {
             }}
           >
             PFP
-          </Text>
+          </Text> */}
           <View style={{ width: '85%', gap: 10 }}>
             <View className="post-body" style={styles.postBody}>
               <Text style={styles.postTitle}>{title}</Text>
@@ -136,3 +174,13 @@ export default function Post({ postData }) {
     </View>
   );
 }
+
+const localStyles = StyleSheet.create({
+  name: {
+    paddingBottom: 15,
+    paddingTop: 10,
+    color: '#54bab9',
+    fontWeight: 600,
+    fontSize: 12,
+  },
+});
