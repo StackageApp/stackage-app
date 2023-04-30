@@ -113,9 +113,7 @@ StackageApp is a community-powered, self-policing fully mobile social media plat
 
 ## Profile Page
 
-- asbd
-- fkajsbdg
-- ajsbdg
+![Profile Feature](https://giphy.com/gifs/IOhVy2X7lRkYt9Bgkn)
 
 <details>
   <summary>Additional Images</summary>
