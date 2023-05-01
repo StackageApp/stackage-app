@@ -113,17 +113,10 @@ StackageApp is a community-powered, self-policing fully mobile social media plat
 
 ## Profile Page
 
-![Profile Feature](https://giphy.com/gifs/IOhVy2X7lRkYt9Bgkn)
+![Profile Feature](https://media.giphy.com/media/IOhVy2X7lRkYt9Bgkn/giphy.gif)
 
-<details>
-  <summary>Additional Images</summary>
-	<ul>
-	  <li>asdfs</li>
-		<li>asdg</li>
-	  <li>asdgasd</li>
-		<li>asdg</li>
-	</ul>
-</details>
+- The user can see their profile information as well as a feed of their posts
+- Can access the settings to update their profile information
 
 ## Installation
 
